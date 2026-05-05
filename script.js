@@ -150,6 +150,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+/* ===== DARK MODE TOGGLE ===== */
+(function () {
+  const btn = document.getElementById('themeToggle');
+  const DARK = 'dark';
+
+  // Apply saved preference or system preference on load
+  const saved = localStorage.getItem('theme');
+  if (saved === DARK || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.body.classList.add(DARK);
+  }
+
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle(DARK);
+    localStorage.setItem('theme', document.body.classList.contains(DARK) ? DARK : 'light');
+  });
+})();
+
 /* ===== AI CHATBOT ===== */
 (function () {
   const fab       = document.getElementById('chatbotFab');
