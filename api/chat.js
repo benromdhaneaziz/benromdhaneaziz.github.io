@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        'HTTP-Referer': 'https://benromdhaneaziz.github.io',
+        'HTTP-Referer': req.headers.origin || 'https://benromdhaneaziz-github-io.vercel.app',
         'X-Title': 'Aziz Portfolio Chatbot',
       },
       body: JSON.stringify({
