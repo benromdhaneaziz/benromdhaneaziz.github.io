@@ -1,0 +1,913 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Mohamed Aziz Ben Romdhane — Data Science Engineering Student & AI Developer" />
+  <title>Mohamed Aziz Ben Romdhane | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">AZ.</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#certifications">Certs</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <span class="hero-tag"><span></span>&#x1F4BC; Working @ Worldsoft</span>
+        <h1 class="hero-title">
+          Hi, I&#8217;m<br />
+          <span class="name-grad">Mohamed Aziz</span><br />
+          Ben Romdhane
+        </h1>
+        <p class="hero-subtitle" id="typedText"></p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/mohamed-aziz-ben-romdhane-986110408/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:Benromdhane.Aziz@esprit.tn" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-ring">
+          <img src="https://avatars.githubusercontent.com/u/94076528?v=4" alt="Mohamed Aziz Ben Romdhane" class="avatar" />
+        </div>
+        <div class="floating-badge badge-1">&#x1F9E0; Deep Learning</div>
+        <div class="floating-badge badge-2">&#x1F4CA; Machine Learning</div>
+        <div class="floating-badge badge-3">&#x1F916; AI Systems</div>
+        <div class="floating-badge badge-4">&#x26A1; Backend</div>
+        <div class="floating-badge badge-5">&#x2699;&#xFE0F; DevOps</div>
+        <div class="floating-badge badge-6">&#x1F310; Web Dev</div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-down" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">About <span class="highlight">Me</span></h2>
+      <p class="section-subtitle">Get to know who I am and what I do</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I am an engineering student specialized in <strong>Data Science</strong> at
+            <strong>ESPRIT</strong> (&#201;cole Sup&#233;rieure Priv&#233;e d&#8217;Ing&#233;nierie et de Technologies), Tunisia.
+            I am passionate about building intelligent systems that turn raw data into real business value.
+          </p>
+          <p>
+            My experience spans <strong>multi-agent AI architectures</strong>, <strong>machine learning pipelines</strong>,
+            <strong>full-stack development</strong>, and <strong>DevOps practices</strong>. I thrive at the
+            intersection of data engineering and applied AI.
+          </p>
+          <p>
+            Currently at <strong>Worldsoft</strong>, I built and am actively scaling a production-grade
+            <strong>Travel CRM &amp; AI Platform</strong> — an 8-agent LangGraph system with 52 REST endpoints, SSE streaming,
+            Angular 17 dashboard, and Oracle DB. Previously interned at <strong>Prosper Us</strong> (C# / .NET Core development)
+            and <strong>AS2E</strong> (WordPress &amp; Google Apps Script).
+          </p>
+          <div class="about-info">
+            <div class="info-item">
+              <span class="info-icon">&#x1F393;</span>
+              <div>
+                <strong>Education</strong>
+                <span>Engineering Cycle &#8212; Data Science, ESPRIT</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">&#x1F4CD;</span>
+              <div>
+                <strong>Location</strong>
+                <span>Tunisia &#x1F1F9;&#x1F1F3;</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">&#x1F50D;</span>
+              <div>
+                <strong>Status</strong>
+                <span>Software Engineer @ Worldsoft</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">&#x1F4AC;</span>
+              <div>
+                <strong>Languages</strong>
+                <span>Arabic &middot; French &middot; English</span>
+              </div>
+            </div>
+          </div>
+          <a href="mailto:Benromdhane.Aziz@esprit.tn" class="btn btn-primary">Hire Me</a>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-number">11+</span>
+            <span class="stat-label">GitHub Projects</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Companies</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">8</span>
+            <span class="stat-label">AI Agents Built</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">52</span>
+            <span class="stat-label">API Endpoints</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section section-alt" id="skills">
+    <div class="container">
+      <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+      <p class="section-subtitle">Technologies and tools I work with</p>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3 class="skill-category-title"><span class="skill-icon">&#x1F4BB;</span> Programming</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title"><span class="skill-icon">&#x1F916;</span> AI &amp; Machine Learning</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">LangChain</span>
+            <span class="skill-tag">LangGraph</span>
+            <span class="skill-tag">DeepSeek LLM</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">BERT</span>
+            <span class="skill-tag">Graph Neural Networks</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Time Series</span>
+            <span class="skill-tag">Anomaly Detection</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title"><span class="skill-icon">&#x26A1;</span> Backend &amp; API</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">ASP.NET Core</span>
+            <span class="skill-tag">EF Core</span>
+            <span class="skill-tag">Symfony / PHP</span>
+            <span class="skill-tag">REST API</span>
+            <span class="skill-tag">Jinja2</span>
+            <span class="skill-tag">Oracle DB</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">SQLite</span>
+            <span class="skill-tag">JWT Auth</span>
+            <span class="skill-tag">SSE Streaming</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title"><span class="skill-icon">&#x1F5A5;&#xFE0F;</span> Frontend &amp; Frameworks</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Angular 17</span>
+            <span class="skill-tag">Bootstrap 4/5</span>
+            <span class="skill-tag">JavaFX</span>
+            <span class="skill-tag">Streamlit</span>
+            <span class="skill-tag">ApexCharts</span>
+            <span class="skill-tag">MapLibre GL</span>
+            <span class="skill-tag">SCSS</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title"><span class="skill-icon">&#x2699;&#xFE0F;</span> DevOps &amp; Tools</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Git / GitHub</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Maven</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">Prometheus</span>
+            <span class="skill-tag">Grafana</span>
+            <span class="skill-tag">Uvicorn</span>
+            <span class="skill-tag">OCR (Tesseract)</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title"><span class="skill-icon">&#x1F4CA;</span> Data &amp; Analytics</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Knowledge Graphs</span>
+            <span class="skill-tag">Customer Segmentation</span>
+            <span class="skill-tag">Z-score Analysis</span>
+            <span class="skill-tag">Amadeus API</span>
+            <span class="skill-tag">Plotly</span>
+            <span class="skill-tag">Jupyter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+      <p class="section-subtitle">A selection of work that showcases my skills</p>
+
+      <div class="projects-grid">
+
+        <!-- COMPANY PROJECT (FEATURED) -->
+        <div class="project-card featured" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F30D;</span>
+              <div class="project-meta">
+                <span class="project-badge company">&#x1F3E2; Company Project</span>
+                <span class="project-badge private">&#x1F512; Private &#x2014; GitLab</span>
+              </div>
+            </div>
+            <h3 class="project-title">Travel CRM &amp; Analytics Platform &#x2014; AI Multi-Agent System</h3>
+            <p class="project-desc">
+              Enterprise-grade Travel CRM built during my internship. Features an <strong>8-agent AI chatbot</strong>
+              (SQL, Analyst, Forecast, Anomaly, Segmentation, Hotel, Flight, Orchestrator) powered by
+              <strong>LangGraph + DeepSeek LLM</strong> via OpenRouter. The system exposes
+              <strong>52 REST endpoints</strong> over an Oracle 11.2g database, streams responses via SSE,
+              and is served through an <strong>Angular 17</strong> dashboard with interactive charts,
+              real-time maps, hotel contract PDF parsing, and a Streamlit testing UI.
+            </p>
+            <div class="project-tags">
+              <span>Python</span><span>FastAPI</span><span>LangGraph</span>
+              <span>LangChain</span><span>DeepSeek LLM</span><span>Angular 17</span>
+              <span>Oracle DB</span><span>SQLite</span><span>Docker</span>
+              <span>Amadeus API</span><span>OCR</span><span>SSE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BVMT ANALYTICS (FEATURED) -->
+        <div class="project-card featured" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F4C8;</span>
+              <div class="project-meta">
+                <span class="project-badge company">&#x1F1F9;&#x1F1F3; ESPRIT Team Project</span>
+                <div class="project-links">
+                  <a href="https://github.com/benromdhaneaziz/bvmt-analytics-platform" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">BVMT Analytics Platform &#x2014; Tunisian Stock Market</h3>
+            <p class="project-desc">
+              Multi-page <strong>Streamlit</strong> app for analysing the <strong>Bourse des Valeurs Mobili&egrave;res de Tunis (BVMT)</strong>.
+              Features stock price prediction (AdaBoost, Gradient Boosting), risk classification,
+              DBSCAN + UMAP clustering, dividend forecasting with <strong>Prophet</strong>, market sentiment via web scraping,
+              and an <strong>AI RAG chatbot</strong> (LangChain + Llama2 + FAISS + HuggingFace Embeddings).
+              Data sourced from MongoDB Atlas &mdash; 2016&ndash;2023 historical records.
+            </p>
+            <div class="project-tags">
+              <span>Python</span><span>Streamlit</span><span>Scikit-learn</span><span>LangChain</span>
+              <span>Llama2</span><span>FAISS</span><span>MongoDB</span><span>Prophet</span>
+              <span>DBSCAN</span><span>UMAP</span><span>Plotly</span><span>Selenium</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANOMALY DETECTION -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F50D;</span>
+              <div class="project-meta">
+                <span class="project-badge contrib">&#x1F465; Forked &amp; Contributed</span>
+                <div class="project-links">
+                  <a href="https://github.com/benromdhaneaziz/Anomaly-Detection-and-Intrusion-Detection-System" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Anomaly &amp; Intrusion Detection System</h3>
+            <p class="project-desc">
+              Uses <strong>Gaussian Mixture Models (GMM)</strong> for anomaly detection and
+              <strong>Decision Tree + K-Nearest Neighbors (KNN)</strong> for intrusion detection on the
+              <strong>NSL-KDD dataset</strong>. Classifies network attacks into 4 categories:
+              DoS, U2R (User-to-Root), R2L (Remote-to-Local), and Probe attacks.
+            </p>
+            <div class="project-tags">
+              <span>Python</span><span>Scikit-learn</span><span>GMM</span><span>Decision Tree</span><span>KNN</span><span>NSL-KDD</span><span>Jupyter</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIME SERIES -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F4C8;</span>
+              <div class="project-meta">
+                <span class="project-badge contrib">&#x1F465; Forked &amp; Contributed</span>
+                <div class="project-links">
+                  <a href="https://github.com/benromdhaneaziz/Time-Series-Project-Federal-Reserve-Economic-Data-FRED-" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Time Series &#x2014; Federal Reserve (FRED)</h3>
+            <p class="project-desc">
+              3-phase analysis of two FRED economic series:
+              <strong>Retail Sales &#x2014; Book Stores</strong> (MRTSSM451211USN) and
+              <strong>Housing Units Started</strong> (HOUSTNENSA). Covers statistical exploration,
+              stationarity tests (ADF / KPSS), <strong>ARIMA / SARIMA</strong> modeling,
+              and residual diagnostics.
+            </p>
+            <div class="project-tags">
+              <span>Python</span><span>StatsModels</span><span>ARIMA</span><span>SARIMA</span><span>ADF Test</span><span>FRED</span><span>HTML</span><span>Jupyter</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KNOWLEDGE GRAPH -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F9E0;</span>
+              <div class="project-meta">
+                <span class="project-badge contrib">&#x1F465; Forked &amp; Contributed</span>
+                <div class="project-links">
+                  <a href="https://github.com/benromdhaneaziz/A_knowledge_graph_system_for_Project_Management" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Knowledge Graph &#x2014; Deep Learning for Project Management</h3>
+            <p class="project-desc">
+              Deep learning system using <strong>PyTorch + RGCN</strong> (Relational Graph
+              Convolutional Networks) for link prediction, <strong>BERT embeddings</strong>
+              for semantic text representation, <strong>Pinecone</strong> vector DB for similarity
+              search, and <strong>GPT-4 Mini</strong> for natural language Q&amp;A over project
+              management knowledge graphs. Confirmed team contributor alongside
+              ArafetMarnissi, saifzribi, and Houssemeddine40.
+            </p>
+            <div class="project-tags">
+              <span>Python</span><span>PyTorch</span><span>RGCN</span><span>BERT</span><span>GPT-4 Mini</span><span>Pinecone</span><span>GNN</span><span>Jupyter</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEVOPS PROJECT -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x2699;&#xFE0F;</span>
+              <div class="project-links">
+                <a href="https://github.com/benromdhaneaziz/Devops-Project" target="_blank" rel="noopener" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">DevOps Project &#x2014; Spring Boot &amp; Angular</h3>
+            <p class="project-desc">
+              <strong>Spring Boot</strong> microservice (<code>tn.esprit.devops_project</code>)
+              with a full DevOps pipeline: <strong>JUnit + Mockito</strong> unit tests,
+              <strong>Log4j</strong> logging, <strong>Prometheus + Grafana</strong> monitoring,
+              and <strong>Docker Compose</strong> containerization. Paired with an
+              <strong>Angular 16</strong> frontend. 2-person collaboration with @amenidrira.
+            </p>
+            <div class="project-tags">
+              <span>Java</span><span>Spring Boot</span><span>Maven</span><span>JUnit</span><span>Log4j</span><span>Docker</span><span>Prometheus</span><span>Grafana</span><span>Angular 16</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMPLE API LOGGER -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F50C;</span>
+              <div class="project-links">
+                <a href="https://github.com/benromdhaneaziz/Simple-Api-Logger" target="_blank" rel="noopener" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Simple API Logger</h3>
+            <p class="project-desc">
+              <strong>FastAPI</strong> REST service with <strong>SQLite</strong> storage and
+              custom middleware that captures every request (method, URL, body, status code,
+              response time). Live <strong>Bootstrap 5 + Jinja2</strong> dashboard
+              auto-refreshes every 5 s. Includes a <em>trigger500</em> mechanism for
+              error-handling tests. Endpoints: <code>POST /api/log</code>,
+              <code>GET /api/logs</code>, <code>GET /api/stats</code>.
+            </p>
+            <div class="project-tags">
+              <span>Python</span><span>FastAPI</span><span>SQLite</span><span>Bootstrap 5</span><span>Jinja2</span><span>Middleware</span><span>REST API</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SMART REAL ESTATE -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F3E0;</span>
+              <div class="project-meta">
+                <span class="project-badge contrib">&#x1F465; Forked &amp; Contributed</span>
+                <div class="project-links">
+                  <a href="https://github.com/benromdhaneaziz/Smart_Real_Estate_Agency_2A8" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Smart Real Estate Agency App</h3>
+            <p class="project-desc">
+              Team project developing a smart real estate management system with property
+              listings, agency management, and client tracking. Built with
+              <strong>C++</strong> and <strong>.NET</strong> technologies.
+              Collaborative contribution alongside team Armi64bit.
+            </p>
+            <div class="project-tags">
+              <span>C++</span><span>.NET</span><span>OOP</span><span>Database</span><span>Team Project</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PIDEV -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F4BB;</span>
+              <div class="project-meta">
+                <span class="project-badge contrib">&#x1F465; Forked &amp; Contributed</span>
+                <div class="project-links">
+                  <a href="https://github.com/benromdhaneaziz/PiDev-2022-2023" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">PiDev Full-Stack Web App</h3>
+            <p class="project-desc">
+              ESPRIT integrative project 2022&#x2013;2023 &#x2014; full-stack web app built with
+              <strong>Symfony / PHP</strong> backend, <strong>Twig</strong> templates,
+              and <strong>SCSS/CSS</strong> styling. Docker Compose for deployment.
+              Language mix: CSS 41%, SCSS 31%, JS 14%, Twig 8%, PHP 6%.
+            </p>
+            <div class="project-tags">
+              <span>PHP</span><span>Symfony</span><span>Twig</span><span>CSS</span><span>SCSS</span><span>JavaScript</span><span>Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESCHOOL / GESTION DE COURS -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F3EB;</span>
+              <div class="project-links">
+                <a href="https://github.com/benromdhaneaziz/eSchool" target="_blank" rel="noopener" aria-label="eSchool">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                </a>
+                <a href="https://github.com/benromdhaneaziz/gestion-de-cours" target="_blank" rel="noopener" aria-label="gestion-de-cours" style="font-size:.7rem;padding:2px 6px;border-radius:4px;background:rgba(79,70,229,.1);color:var(--primary)">v2</a>
+              </div>
+            </div>
+            <h3 class="project-title">eSchool &#x2014; School Management System</h3>
+            <p class="project-desc">
+              Full-stack school management web application built with <strong>PHP</strong> and
+              <strong>Bootstrap 4</strong>. Covers student management, attendance tracking,
+              homework assignments, grade/marks management, online exam &amp; questions bank,
+              and class schedule routines. Custom PHP CRUD operations backed by MySQL.
+            </p>
+            <div class="project-tags">
+              <span>PHP</span><span>HTML</span><span>Bootstrap 4</span><span>MySQL</span><span>CRUD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHARMA REPORT -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F48A;</span>
+              <div class="project-meta">
+                <span class="project-badge company">&#x1F3E2; Prosper Us</span>
+                <div class="project-links">
+                  <a href="https://github.com/benromdhaneaziz/PharmaReport" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">PharmaReport &#x2014; Pharmacy Reporting System</h3>
+            <p class="project-desc">
+              <strong>ASP.NET Core</strong> web application for pharmacy reporting, built with the
+              MVC + Razor Pages pattern. Includes Controllers, Models, Views, Entity Framework
+              Core Migrations, and two dedicated modules: <em>MedicalReport</em> and
+              <em>ReportSheet</em> for generating structured pharmacy/medical documents.
+            </p>
+            <div class="project-tags">
+              <span>C#</span><span>ASP.NET Core</span><span>Razor Pages</span><span>EF Core</span><span>MVC</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- .NET CORE TRAINING PROJECT -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F4BB;</span>
+              <div class="project-links">
+                <a href="https://github.com/benromdhaneaziz/.NetCore-Project-" target="_blank" rel="noopener" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">.NET Core Training Project</h3>
+            <p class="project-desc">
+              <strong>C# .NET Core</strong> training / internship project (<em>ProjectForStage</em>).
+              Demonstrates .NET Core application architecture, with a Visual Studio solution
+              structure built as part of a professional development internship.
+            </p>
+            <div class="project-tags">
+              <span>C#</span><span>.NET Core</span><span>Visual Studio</span><span>OOP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- JAVAFX SUSTAINABLE DEVELOPMENT -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F33F;</span>
+              <div class="project-meta">
+                <span class="project-badge contrib">&#x1F465; Forked &amp; Contributed</span>
+                <div class="project-links">
+                  <a href="https://github.com/benromdhaneaziz/JavaFxSustainableDevelopment" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Sustainable Development App &#x2014; JavaFX</h3>
+            <p class="project-desc">
+              <strong>JavaFX</strong> desktop application promoting sustainable development
+              practices. ESPRIT team project featuring a rich GUI for tracking and raising
+              awareness of eco-friendly habits and sustainable goals.
+            </p>
+            <div class="project-tags">
+              <span>Java</span><span>JavaFX</span><span>OOP</span><span>Desktop App</span>
+            </div>
+          </div>
+        </div>
+
+      <!-- Hotel Nearest Places -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F3E8;</span>
+              <div class="project-meta">
+                <span class="project-badge">&#x1F9EA; Personal Project</span>
+                <div class="project-links">
+                  <a href="https://github.com/DefNotScreaMy/hotel-nearest-places" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Hotel Nearest Places</h3>
+            <p class="project-desc">
+              <strong>Flask</strong> web app that finds nearby points of interest for any hotel using
+              <strong>Groq Llama 3</strong> for natural language processing, <strong>OpenRouteService</strong> for routing,
+              <strong>OpenWeatherMap</strong> for weather data, and <strong>Overpy/OSM</strong> for location queries.
+            </p>
+            <div class="project-tags">
+              <span>Python</span><span>Flask</span><span>Groq API</span><span>Llama 3</span><span>OpenRouteService</span><span>OpenWeatherMap</span><span>Overpy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flight Invoice RAG Chatbot -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x2708;&#xFE0F;</span>
+              <div class="project-meta">
+                <span class="project-badge">&#x1F9EA; Personal Project</span>
+                <div class="project-links">
+                  <a href="https://github.com/DefNotScreaMy/flight-rag-chatbot" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Flight Invoice RAG Chatbot</h3>
+            <p class="project-desc">
+              <strong>Streamlit</strong> chatbot using <strong>Retrieval-Augmented Generation</strong> to answer questions
+              about flight invoices. Built with <strong>LangChain</strong>, <strong>ChromaDB</strong> vector store,
+              <strong>HuggingFace</strong> embeddings, and <strong>Groq Llama 3</strong> for fast inference.
+            </p>
+            <div class="project-tags">
+              <span>Python</span><span>Streamlit</span><span>LangChain</span><span>ChromaDB</span><span>HuggingFace</span><span>Groq Llama 3</span><span>RAG</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Minecraft LLM Bot -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F3AE;</span>
+              <div class="project-meta">
+                <span class="project-badge">&#x1F9EA; Personal Project</span>
+                <div class="project-links">
+                  <a href="https://github.com/DefNotScreaMy/minecraft-llm-bot" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Minecraft LLM Bot</h3>
+            <p class="project-desc">
+              AI-powered Minecraft server bot using <strong>OpenRouter (Gemini 2.5 Flash)</strong> for natural language
+              understanding. Connects via <strong>RCON</strong> to execute in-game commands, moderate chat, run events,
+              build structures, and respond to players in natural language.
+            </p>
+            <div class="project-tags">
+              <span>Python</span><span>OpenRouter</span><span>Gemini 2.5 Flash</span><span>RCON</span><span>Minecraft</span><span>Chat Moderation</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end projects-grid -->
+
+      <div class="projects-cta">
+        <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener" class="btn btn-outline">
+          View All on GitHub &#x2192;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section class="section section-alt" id="certifications">
+    <div class="container">
+      <h2 class="section-title">Certifi<span class="highlight">cations</span></h2>
+      <p class="section-subtitle">Verified credentials from NVIDIA, DeepLearning.AI, Microsoft &amp; more</p>
+      <div class="certs-grid">
+
+        <!-- NVIDIA -->
+        <div class="cert-card" style="--cert-color:#76b900">
+          <div class="cert-issuer">NVIDIA</div>
+          <div class="cert-title">Building Transformer-Based Natural Language Processing Applications</div>
+          <div class="cert-date">April 20, 2024</div>
+          <a class="cert-link" href="https://learn.nvidia.com/certificates?id=b7uE7ZSjS7-w8-u5BGUC7g" target="_blank" rel="noopener">&#x2713; Verify Certificate &#x2192;</a>
+        </div>
+
+        <!-- DeepLearning.AI NLP Specialization -->
+        <div class="cert-card" style="--cert-color:#e63946">
+          <div class="cert-issuer">DeepLearning.AI &middot; Coursera</div>
+          <div class="cert-title">NLP with Classification and Vector Spaces</div>
+          <div class="cert-date">November 5, 2024</div>
+          <a class="cert-link" href="https://coursera.org/verify/LYFVF7T8ZP8U" target="_blank" rel="noopener">&#x2713; Verify Certificate &#x2192;</a>
+        </div>
+
+        <div class="cert-card" style="--cert-color:#e63946">
+          <div class="cert-issuer">DeepLearning.AI &middot; Coursera</div>
+          <div class="cert-title">NLP with Probabilistic Models</div>
+          <div class="cert-date">November 7, 2024</div>
+          <a class="cert-link" href="https://coursera.org/verify/ICWRLT2AYSNU" target="_blank" rel="noopener">&#x2713; Verify Certificate &#x2192;</a>
+        </div>
+
+        <div class="cert-card" style="--cert-color:#e63946">
+          <div class="cert-issuer">DeepLearning.AI &middot; Coursera</div>
+          <div class="cert-title">NLP with Sequence Models</div>
+          <div class="cert-date">November 9, 2024</div>
+          <a class="cert-link" href="https://coursera.org/verify/38WFKXFT7QMO" target="_blank" rel="noopener">&#x2713; Verify Certificate &#x2192;</a>
+        </div>
+
+        <div class="cert-card" style="--cert-color:#e63946">
+          <div class="cert-issuer">DeepLearning.AI &middot; Coursera</div>
+          <div class="cert-title">NLP with Attention Models</div>
+          <div class="cert-date">November 9, 2024</div>
+          <a class="cert-link" href="https://coursera.org/verify/SJX3WJPOOLIE" target="_blank" rel="noopener">&#x2713; Verify Certificate &#x2192;</a>
+        </div>
+
+        <!-- Microsoft Azure -->
+        <div class="cert-card" style="--cert-color:#0078d4">
+          <div class="cert-issuer">Microsoft &middot; Coursera</div>
+          <div class="cert-title">Introduction to Microsoft Azure Cloud Services</div>
+          <div class="cert-date">November 18, 2024</div>
+          <a class="cert-link" href="https://coursera.org/verify/3GU325ONQQYB" target="_blank" rel="noopener">&#x2713; Verify Certificate &#x2192;</a>
+        </div>
+
+        <div class="cert-card" style="--cert-color:#0078d4">
+          <div class="cert-issuer">Microsoft &middot; Coursera</div>
+          <div class="cert-title">Microsoft Azure Services and Lifecycles</div>
+          <div class="cert-date">November 19, 2024</div>
+          <a class="cert-link" href="https://coursera.org/verify/XJAJKOBEN5HQ" target="_blank" rel="noopener">&#x2713; Verify Certificate &#x2192;</a>
+        </div>
+
+        <div class="cert-card" style="--cert-color:#0078d4">
+          <div class="cert-issuer">Microsoft &middot; Coursera</div>
+          <div class="cert-title">Microsoft Azure Management Tools and Security Solutions</div>
+          <div class="cert-date">November 18, 2024</div>
+          <a class="cert-link" href="https://coursera.org/verify/MKBV35XKHH1B" target="_blank" rel="noopener">&#x2713; Verify Certificate &#x2192;</a>
+        </div>
+
+        <!-- Hashgraph -->
+        <div class="cert-card" style="--cert-color:#6b46c1">
+          <div class="cert-issuer">The Hashgraph Association &middot; Hedera</div>
+          <div class="cert-title">Hashgraph Developer Course</div>
+          <div class="cert-date">November 21, 2024</div>
+          <span class="cert-link" style="cursor:default;opacity:.7">&#x2713; Certificate of Completion</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+      <p class="section-subtitle">I&#8217;m open to opportunities, collaborations, and internships</p>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <div class="contact-card">
+            <span class="contact-icon">&#x1F4E7;</span>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:Benromdhane.Aziz@esprit.tn">Benromdhane.Aziz@esprit.tn</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">&#x1F4BC;</span>
+            <div>
+              <strong>LinkedIn</strong>
+              <a href="https://www.linkedin.com/in/mohamed-aziz-ben-romdhane-986110408/" target="_blank" rel="noopener">
+                Mohamed Aziz Ben Romdhane
+              </a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">&#x1F4BB;</span>
+            <div>
+              <strong>GitHub</strong>
+              <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">@benromdhaneaziz</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">&#x1F4CD;</span>
+            <div>
+              <strong>Location</strong>
+              <span>Tunisia &#x1F1F9;&#x1F1F3;</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Hello! I&#x27;d like to talk about..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+          <p class="form-note" id="formNote"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; 2025</p>
+      <div class="footer-links">
+        <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/mohamed-aziz-ben-romdhane-986110408/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:Benromdhane.Aziz@esprit.tn">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== AI CHATBOT ===== -->
+  <div class="chatbot-fab" id="chatbotFab" aria-label="Open AI assistant" title="Ask me about Aziz's portfolio">
+    <svg class="chat-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg class="chat-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <span class="chatbot-notif">1</span>
+  </div>
+
+  <div class="chatbot-panel" id="chatbotPanel" aria-hidden="true">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <div class="chatbot-avatar">AZ</div>
+        <div>
+          <div class="chatbot-name">Aziz's AI Assistant</div>
+          <div class="chatbot-status"><span class="chatbot-dot"></span>Online &mdash; Powered by Gemini</div>
+        </div>
+      </div>
+      <button class="chatbot-close-btn" id="chatbotCloseBtn" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chat-msg assistant">
+        <div class="chat-bubble">
+          👋 Hi! I'm Aziz's AI assistant. Ask me anything about his projects, skills, experience, or certifications!
+        </div>
+      </div>
+    </div>
+
+    <div class="chatbot-input-area">
+      <input
+        type="text"
+        id="chatbotInput"
+        class="chatbot-input"
+        placeholder="Ask about projects, skills, experience…"
+        autocomplete="off"
+        maxlength="500"
+      />
+      <button class="chatbot-send-btn" id="chatbotSendBtn" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
