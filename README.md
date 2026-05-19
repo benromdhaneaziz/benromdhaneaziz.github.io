@@ -1,11 +1,10 @@
 ﻿# Hi, I'm Mohamed Aziz Ben Romdhane 👋
 
-### 🌐 Portfolio: [benromdhaneaziz.github.io](https://benromdhaneaziz.github.io) · [Vercel](https://benromdhaneaziz-github-io.vercel.app)
+### 🌐 Portfolio: [benromdhaneaziz-github-io.vercel.app](https://benromdhaneaziz-github-io.vercel.app)
 
 ![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&pause=1000&color=4F46E5&center=false&vCenter=true&width=750&lines=Data+Science+Engineering+Student;Multi-Agent+AI+Systems+Builder;FastAPI+%2B+LangGraph+Developer;NLP+%26+Transformer+Models;NVIDIA+%7C+DeepLearning.AI+%7C+Azure+Certified;Python+%C2%B7+Java+%C2%B7+C%23+Developer)
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-benromdhaneaziz.github.io-4F46E5?style=for-the-badge&logo=vercel&logoColor=white)](https://benromdhaneaziz.github.io)
-[![Vercel](https://img.shields.io/badge/Vercel%20Deploy-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://benromdhaneaziz-github-io.vercel.app)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Vercel-4F46E5?style=for-the-badge&logo=vercel&logoColor=white)](https://benromdhaneaziz-github-io.vercel.app)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohamed-aziz-ben-romdhane-986110408/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/benromdhaneaziz)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:Benromdhane.Aziz@esprit.tn)
@@ -13,7 +12,7 @@
 
 ---
 
-> 🌐 **Portfolio:** **[benromdhaneaziz.github.io](https://benromdhaneaziz.github.io)** · **[Vercel](https://benromdhaneaziz-github-io.vercel.app)**
+> 🌐 **Portfolio:** **[benromdhaneaziz-github-io.vercel.app](https://benromdhaneaziz-github-io.vercel.app)**
 
 ## 🧑‍💻 About Me
 
@@ -21,7 +20,7 @@
 aziz = {
     "role":       "Software Engineer @ Worldsoft  |  Data Science Student @ ESPRIT",
     "location":   "Tunisia 🇹🇳",
-    "portfolio":  "https://benromdhaneaziz.github.io",
+    "portfolio":  "https://benromdhaneaziz-github-io.vercel.app",
     "focus":      ["Multi-Agent AI Systems", "LLM Orchestration", "Backend APIs", "NLP"],
     "stack":      ["Python", "FastAPI", "LangGraph", "Angular 17", "Java", "C#"],
     "currently":  "Scaling a Travel CRM AI platform to production @ Worldsoft",
