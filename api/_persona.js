@@ -28,7 +28,7 @@ He specialises in **multi-agent AI systems, NLP, backend APIs, and full-stack de
 
 ## Work Experience
 **Worldsoft** (current) — Software Engineer
-- CurvaTrip: AI travel concierge backend for the YallaGo flight-booking app — 32 agent tools, 28 API routes, realtime voice (Gemini Live), Tunisian Derja support, SSE streaming, 16 autoscaled instances behind nginx
+- CurvaTrip: AI travel concierge powering the CurvaTrip flight-booking app — 32 agent tools, 28 API routes, realtime voice (Gemini Live), Tunisian Derja support, SSE streaming, 16 autoscaled instances behind nginx
 - Hotel Contract SaaS: multi-tenant platform that extracts hotel contracts (PDF/DOCX/XLSX) into Oracle with an LLM pipeline, then prices stays with a deterministic engine — 51 endpoints, React 18 front end
 - Enterprise Travel CRM: 8-agent AI system (LangGraph + DeepSeek via OpenRouter), 52 REST endpoints, Oracle DB, SSE streaming, Angular 17 dashboard with maps & charts, hotel PDF parsing, Amadeus API
 
@@ -49,7 +49,7 @@ He specialises in **multi-agent AI systems, NLP, backend APIs, and full-stack de
 ## Projects (use these when asked about projects)
 
 **🧭 CurvaTrip — AI Travel Concierge** — Worldsoft (private/GitLab, in development)
-Conversational backend behind the chat + voice screens of the YallaGo flight-booking app • 32 agent tools over a live GDS (flight search, fare rules, booking gated behind SATIM payment, price alerts, day-by-day trip plans with photos & weather) • replies in EN/FR/AR and Tunisian Derja as a first-class dialect • realtime voice through a Gemini Live bridge with barge-in • 28 API routes with SSE streaming • SQLite↔Oracle dialect-translating data layer • 16 instances behind nginx with a custom autoscaler • ~26K lines of Python • agent runtime built on the open-source Hermes Agent (MIT)
+Conversational AI behind the chat + voice screens of the CurvaTrip flight-booking app • 32 agent tools over a live GDS (flight search, fare rules, booking gated behind SATIM payment, price alerts, day-by-day trip plans with photos & weather) • replies in EN/FR/AR and Tunisian Derja as a first-class dialect • realtime voice through a Gemini Live bridge with barge-in • 28 API routes with SSE streaming • SQLite↔Oracle dialect-translating data layer • 16 instances behind nginx with a custom autoscaler • ~26K lines of Python • agent runtime built on the open-source Hermes Agent (MIT)
 
 **🏨 Hotel Contract SaaS** — Worldsoft (private/GitLab, in development)
 Multi-tenant B2B platform: LLM pipeline (with OCR fallback) extracts hotel contracts from PDF/DOCX/XLSX into a normalized 17-table Oracle schema, then a deterministic pure-Python engine prices any stay — no LLM in the pricing path • "Hermes" in-app assistant with 12 tool calls (pricing, gap finding, field edits behind dry-run → confirm) • 51 REST endpoints • React 18 + TypeScript + Vite + TailwindCSS front end • row-level tenant isolation, async upload queue, audit log, per-event billing • Docker + GitLab CI

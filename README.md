@@ -85,7 +85,7 @@ aziz = {
 
 ### 🧭 CurvaTrip — AI Travel Concierge — `Worldsoft` *(Private — GitLab · in development)*
 
-> Conversational backend behind the chat and voice screens of the **YallaGo** flight-booking app. **32 agent tools** over a live GDS: flight search & refinement, fare rules, booking gated behind **SATIM** payment, price alerts, and day-by-day trip plans with photos, weather and distances. Replies in EN / FR / AR and **Tunisian Derja** as a first-class dialect, with realtime speech through a **Gemini Live** bridge (PCM16, barge-in). **28 API routes** with SSE streaming, a SQLite↔Oracle dialect-translating data layer, and **16 instances** behind nginx with a custom autoscaler. Agent runtime built on the open-source Hermes Agent (MIT).
+> Conversational AI behind the chat and voice screens of the **CurvaTrip** flight-booking app. **32 agent tools** over a live GDS: flight search & refinement, fare rules, booking gated behind **SATIM** payment, price alerts, and day-by-day trip plans with photos, weather and distances. Replies in EN / FR / AR and **Tunisian Derja** as a first-class dialect, with realtime speech through a **Gemini Live** bridge (PCM16, barge-in). **28 API routes** with SSE streaming, a SQLite↔Oracle dialect-translating data layer, and **16 instances** behind nginx with a custom autoscaler. Agent runtime built on the open-source Hermes Agent (MIT).
 >
 > `Python` `FastAPI` `Gemini Live` `OpenRouter` `SSE` `WebSockets` `Oracle` `Flutter` `Nginx`
 
