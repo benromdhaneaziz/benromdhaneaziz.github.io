@@ -1,152 +1,264 @@
 /* ===== NAVBAR: scroll & active link ===== */
-const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('.nav-links a');
-const sections = document.querySelectorAll('section[id]');
+(function () {
+  const navbar = document.getElementById('navbar');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+  if (!navbar) return;
 
-window.addEventListener('scroll', () => {
-  // scrolled class for shadow
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
+  let ticking = false;
 
-  // active link highlight
-  let current = '';
-  sections.forEach(sec => {
-    if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
-  });
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-});
+  function onScroll() {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+    ticking = false;
+  }
+
+  // rAF throttle: layout reads happen once per frame, not once per scroll event.
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(onScroll);
+    }
+  }, { passive: true });
+
+  onScroll();
+})();
 
 /* ===== HAMBURGER MENU ===== */
-const hamburger = document.getElementById('hamburger');
-const navLinksEl = document.getElementById('navLinks');
+(function () {
+  const hamburger = document.getElementById('hamburger');
+  const navLinksEl = document.getElementById('navLinks');
+  if (!hamburger || !navLinksEl) return;
 
-hamburger.addEventListener('click', () => {
-  navLinksEl.classList.toggle('open');
-  hamburger.classList.toggle('open');
-});
+  function setOpen(open) {
+    navLinksEl.classList.toggle('open', open);
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  }
 
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinksEl.classList.remove('open');
-    hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.addEventListener('click', () => setOpen(!navLinksEl.classList.contains('open')));
+  navLinksEl.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navLinksEl.classList.contains('open')) setOpen(false);
   });
-});
+})();
+
+/* ===== FOOTER YEAR ===== */
+(function () {
+  const el = document.getElementById('footerYear');
+  if (el) el.textContent = String(new Date().getFullYear());
+})();
 
 /* ===== TYPING ANIMATION ===== */
-const phrases = [
-  'Data Science Engineering Student',
-  'Multi-Agent AI Systems Builder',
-  'NLP & Transformer Models',
-  'FastAPI + LangGraph Developer',
-  'NVIDIA · DeepLearning.AI · Azure Certified',
-  'Python · Java · C# Developer',
-];
-const typedEl = document.getElementById('typedText');
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingDelay = 80;
+(function () {
+  const typedEl = document.getElementById('typedText');
+  if (!typedEl) return;
 
-function typeEffect() {
-  const currentPhrase = phrases[phraseIndex];
+  const phrases = [
+    'AI & Backend Engineer @ Worldsoft',
+    'Multi-Agent AI Systems Builder',
+    'LLM Pipelines · RAG · Voice Agents',
+    'FastAPI + LangGraph Developer',
+    'Data Science Engineering Student @ ESPRIT',
+    'Python · Java · C# Developer',
+  ];
 
-  if (isDeleting) {
-    typedEl.textContent = currentPhrase.slice(0, charIndex - 1);
-    charIndex--;
-    typingDelay = 40;
-  } else {
-    typedEl.textContent = currentPhrase.slice(0, charIndex + 1);
-    charIndex++;
-    typingDelay = 80;
-  }
-
-  if (!isDeleting && charIndex === currentPhrase.length) {
-    // Pause at end
-    typingDelay = 1800;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-    typingDelay = 300;
-  }
-
-  setTimeout(typeEffect, typingDelay);
-}
-
-typeEffect();
-
-/* ===== INTERSECTION OBSERVER: project cards ===== */
-const cards = document.querySelectorAll('.project-card');
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        // Stagger animation
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.1 }
-);
-
-cards.forEach(card => observer.observe(card));
-
-/* ===== CONTACT FORM (mailto fallback) ===== */
-const contactForm = document.getElementById('contactForm');
-const formNote = document.getElementById('formNote');
-
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById('name');
-  const email = document.getElementById('email');
-  const message = document.getElementById('message');
-  let valid = true;
-
-  // Simple validation
-  [name, email, message].forEach(field => field.classList.remove('error'));
-
-  if (!name.value.trim()) { name.classList.add('error'); valid = false; }
-  if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-    email.classList.add('error'); valid = false;
-  }
-  if (!message.value.trim()) { message.classList.add('error'); valid = false; }
-
-  if (!valid) {
-    formNote.textContent = 'Please fill in all fields correctly.';
-    formNote.className = 'form-note error-msg';
+  // Respect reduced-motion: show the first phrase and stop.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    typedEl.textContent = phrases[0];
     return;
   }
 
-  // Open mailto as fallback (no backend needed for GitHub Pages)
-  const subject = encodeURIComponent(`Portfolio contact from ${name.value}`);
-  const body = encodeURIComponent(
-    `Name: ${name.value}\nEmail: ${email.value}\n\n${message.value}`
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingDelay = 80;
+
+  function typeEffect() {
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      typedEl.textContent = currentPhrase.slice(0, charIndex - 1);
+      charIndex--;
+      typingDelay = 40;
+    } else {
+      typedEl.textContent = currentPhrase.slice(0, charIndex + 1);
+      charIndex++;
+      typingDelay = 80;
+    }
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      typingDelay = 1800;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typingDelay = 300;
+    }
+
+    setTimeout(typeEffect, typingDelay);
+  }
+
+  typeEffect();
+})();
+
+/* ===== PROJECT CARDS: reveal on scroll ===== */
+const revealCard = (() => {
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach((entry, i) => {
+        if (!entry.isIntersecting) return;
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.1 }
   );
-  window.location.href = `mailto:Benromdhane.Aziz@esprit.tn?subject=${subject}&body=${body}`;
 
-  formNote.textContent = 'Opening your email client... Thanks for reaching out!';
-  formNote.className = 'form-note success';
+  document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
+  return card => observer.observe(card);
+})();
 
-  contactForm.reset();
-  setTimeout(() => { formNote.textContent = ''; }, 5000);
-});
+/* ===== PROJECT FILTERS ===== */
+(function () {
+  const bar = document.getElementById('projectsFilter');
+  const grid = document.getElementById('projectsGrid');
+  if (!bar || !grid) return;
+
+  const cards = Array.from(grid.querySelectorAll('.project-card'));
+
+  // Show how many projects sit behind each filter.
+  bar.querySelectorAll('.filter-btn').forEach(btn => {
+    const filter = btn.dataset.filter;
+    const count = filter === 'all'
+      ? cards.length
+      : cards.filter(c => (c.dataset.cat || '').split(' ').includes(filter)).length;
+    const label = document.createElement('span');
+    label.className = 'count';
+    label.textContent = count;
+    btn.appendChild(document.createTextNode(' '));
+    btn.appendChild(label);
+  });
+
+  bar.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+
+    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === btn));
+
+    const filter = btn.dataset.filter;
+    cards.forEach(card => {
+      const cats = (card.dataset.cat || '').split(' ');
+      const show = filter === 'all' || cats.includes(filter);
+      card.classList.toggle('hidden', !show);
+      // A card revealed by a filter change may never have crossed the observer.
+      if (show && !card.classList.contains('visible')) revealCard(card);
+    });
+  });
+})();
+
+/* ===== CONTACT FORM ===== */
+(function () {
+  const contactForm = document.getElementById('contactForm');
+  const formNote = document.getElementById('formNote');
+  const submitBtn = document.getElementById('contactSubmit');
+  if (!contactForm || !formNote) return;
+
+  const EMAIL = 'Benromdhane.Aziz@esprit.tn';
+
+  function note(text, kind) {
+    formNote.textContent = text;
+    formNote.className = 'form-note' + (kind ? ' ' + kind : '');
+  }
+
+  function mailtoFallback(name, email, message) {
+    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+  }
+
+  contactForm.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+    const company = document.getElementById('company');
+    let valid = true;
+
+    [name, email, message].forEach(field => field.classList.remove('error'));
+
+    if (!name.value.trim()) { name.classList.add('error'); valid = false; }
+    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      email.classList.add('error'); valid = false;
+    }
+    if (!message.value.trim()) { message.classList.add('error'); valid = false; }
+
+    if (!valid) {
+      note('Please fill in all fields correctly.', 'error-msg');
+      return;
+    }
+
+    const payload = {
+      name: name.value.trim(),
+      email: email.value.trim(),
+      message: message.value.trim(),
+      company: company ? company.value : '',
+    };
+
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.classList.add('is-loading'); }
+    note('Sending…');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        note('Thanks! Your message is on its way — I usually reply within a day.', 'success');
+        contactForm.reset();
+      } else if (data.fallback === 'mailto') {
+        // Mail service unavailable: hand the message to the visitor's mail client.
+        note('Opening your email client…');
+        mailtoFallback(payload.name, payload.email, payload.message);
+      } else {
+        note(data.error || 'Could not send the message. Please try again.', 'error-msg');
+      }
+    } catch (err) {
+      console.error('Contact form error:', err);
+      note('Network error — opening your email client instead…');
+      mailtoFallback(payload.name, payload.email, payload.message);
+    } finally {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.classList.remove('is-loading'); }
+      setTimeout(() => { if (formNote.classList.contains('success')) note(''); }, 6000);
+    }
+  });
+})();
 
 /* ===== SMOOTH SCROLL for all anchor links ===== */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      const offset = document.getElementById('navbar').offsetHeight + 16;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    e.preventDefault();
+    const offset = document.getElementById('navbar').offsetHeight + 16;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
   });
 });
 
@@ -160,10 +272,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   if (saved === DARK || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.body.classList.add(DARK);
   }
+  if (!btn) return;
 
   btn.addEventListener('click', () => {
     document.body.classList.toggle(DARK);
-    localStorage.setItem('theme', document.body.classList.contains(DARK) ? DARK : 'light');
+    const isDark = document.body.classList.contains(DARK);
+    localStorage.setItem('theme', isDark ? DARK : 'light');
+    btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   });
 })();
 
@@ -175,120 +290,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   const input     = document.getElementById('chatbotInput');
   const sendBtn   = document.getElementById('chatbotSendBtn');
   const messages  = document.getElementById('chatbotMessages');
+  const notif     = document.getElementById('chatbotNotif');
+  if (!fab || !panel || !input || !sendBtn || !messages) return;
 
-  // ── System prompt ────────────────────────────────────────────────
-  const SYSTEM_PROMPT = `You are the AI assistant embedded in the personal portfolio of Mohamed Aziz Ben Romdhane.
-Your job is to help visitors discover Aziz's work, skills, and background in an engaging, human way.
-
-**Tone & Style rules — follow these strictly:**
-- Be warm, enthusiastic, and conversational — like a proud colleague talking about Aziz
-- Use clear structure: bold project names, short bullet points for features, never walls of text
-- Keep answers focused — 3-5 sentences or a short bullet list max, unless more detail is asked
-- Always mention the tech stack when talking about a project
-- If asked about the best/top projects, pick 3 with a short exciting description each
-- End with a helpful nudge: offer to dive deeper, or link to GitHub / contact section
-- Respond in the same language the visitor uses
-- Never say "I don't have information about that" for things in this prompt — you know everything below
-
----
-
-## About Aziz
-Mohamed Aziz Ben Romdhane is a **Data Science Engineering student at ESPRIT** (Tunisia) and a full-time **Software Engineer at Worldsoft**.
-He specialises in **multi-agent AI systems, NLP, backend APIs, and full-stack development**.
-- GitHub (main): https://github.com/benromdhaneaziz
-- GitHub (personal): https://github.com/DefNotScreaMy
-- Email: Benromdhane.Aziz@esprit.tn
-
-## Work Experience
-**Worldsoft** (current) — Software Engineer
-- Enterprise Travel CRM: 8-agent AI system (LangGraph + DeepSeek via OpenRouter), 52 REST endpoints, Oracle DB, SSE streaming, Angular 17 dashboard with maps & charts, hotel PDF parsing, Amadeus API
-
-**Prosper Us** (internship) — .NET Developer
-- PharmaReport: ASP.NET Core MVC + Razor Pages pharmacy reporting app (EF Core, MedicalReport & ReportSheet modules)
-
-**AS2E** (internship)
-- WordPress management & Google Apps Script automation
-
-## Skills
-- **Languages**: Python, Java, C#, TypeScript, PHP, HTML5, CSS3, SQL
-- **AI/ML**: LangChain, LangGraph, PyTorch, Scikit-learn, HuggingFace, FAISS, ChromaDB, Pandas, NumPy
-- **Backend**: FastAPI, Spring Boot, ASP.NET Core, EF Core, Symfony/PHP, JWT, SSE
-- **Frontend**: Angular 17, Bootstrap 4/5, Streamlit, JavaFX, ApexCharts, MapLibre GL
-- **Databases**: Oracle DB, MySQL, SQLite, MongoDB
-- **DevOps**: Git, Docker, Maven, Prometheus, Grafana
-
-## Projects (use these when asked about projects)
-
-**🌍 Travel CRM & Analytics Platform** — Worldsoft (private/GitLab)
-8-agent AI chatbot (SQL, Analyst, Forecast, Anomaly, Segmentation, Hotel, Flight, Orchestrator) • LangGraph + DeepSeek LLM • 52 FastAPI endpoints • Oracle 11.2g • SSE streaming • Angular 17 with interactive maps & charts • hotel contract PDF parsing • Amadeus API
-
-**📈 BVMT Analytics Platform** — github.com/benromdhaneaziz/bvmt-analytics-platform
-Streamlit app for Tunisian Stock Market • AdaBoost & Gradient Boosting for price prediction • DBSCAN + UMAP clustering • Prophet dividend forecasting • RAG chatbot (LangChain + Llama2 + FAISS) • MongoDB Atlas 2016–2023 data • Selenium scraping
-
-**🔍 Anomaly & Intrusion Detection** — github.com/benromdhaneaziz/Anomaly-Detection-and-Intrusion-Detection-System
-GMM anomaly detection + Decision Tree / KNN intrusion detection on NSL-KDD dataset • classifies DoS, U2R, R2L, Probe attacks
-
-**📊 Time Series Forecasting** — github.com/benromdhaneaziz/Time-Series-Analysis-and-Forecasting
-ARIMA, Prophet, deep learning models • Python, Pandas, Jupyter
-
-**🧠 Knowledge Graph Builder** — github.com/benromdhaneaziz/KnowledgeGraph
-NLP entity extraction → knowledge graph • spaCy, NetworkX
-
-**⚙️ DevOps Full Pipeline** — github.com/benromdhaneaziz/DevOps-Project
-Full CI/CD • Docker, Maven, Jenkins, Prometheus, Grafana
-
-**🏠 Smart Real Estate Platform** — github.com/benromdhaneaziz/Smart-Real-Estate
-AI price prediction for real estate • Python ML + Spring Boot
-
-**💊 PharmaReport** — github.com/benromdhaneaziz/PharmaReport (Prosper Us internship)
-ASP.NET Core MVC + Razor Pages pharmacy app • EF Core • C#
-
-**🏫 eSchool** — github.com/benromdhaneaziz/eSchool
-PHP + Bootstrap 4 school management: students, attendance, marks, online exams, question bank • MySQL
-
-**☕ PiDev / JavaFX Projects** — Spring Boot + JavaFX desktop apps (ESPRIT projects)
-
-**🏨 Hotel Nearest Places** — github.com/DefNotScreaMy/hotel-nearest-places
-Flask web app • Groq Llama 3 for NLP • OpenRouteService routing • OpenWeatherMap • Overpy/OSM
-
-**✈️ Flight Invoice RAG Chatbot** — github.com/DefNotScreaMy/flight-rag-chatbot
-Streamlit RAG chatbot for flight invoices • LangChain + ChromaDB + HuggingFace embeddings + Groq Llama 3
-
-**🎮 Minecraft LLM Bot** — github.com/DefNotScreaMy/minecraft-llm-bot
-AI Minecraft server bot • OpenRouter (Gemini 2.5 Flash) • RCON commands • chat moderation • event engine • structure building
-
-## Certifications
-- NVIDIA: Building Transformer-Based NLP Applications (Apr 2024)
-- DeepLearning.AI: NLP Specialisation x4 — Classification & Vector Spaces, Probabilistic Models, Sequence Models, Attention Models (Nov 2024)
-- Microsoft Azure x3 — Cloud Services, Services & Lifecycles, Management Tools & Security (Nov 2024)
-- The Hashgraph Association: Hashgraph Developer Course (Nov 2024)`;
-
-
-  // ── State ─────────────────────────────────────────────────────────
+  // The system prompt lives in api/_persona.js — the browser never sees it.
   const history = [];
   let isOpen = false;
   let isLoading = false;
 
-  // ── Toggle panel ─────────────────────────────────────────────────
-  function togglePanel() {
-    isOpen = !isOpen;
+  if (notif && localStorage.getItem('chatSeen') === '1') notif.style.display = 'none';
+
+  function togglePanel(force) {
+    isOpen = typeof force === 'boolean' ? force : !isOpen;
     fab.classList.toggle('open', isOpen);
     panel.classList.toggle('open', isOpen);
     panel.setAttribute('aria-hidden', String(!isOpen));
+    fab.setAttribute('aria-expanded', String(isOpen));
+    fab.setAttribute('aria-label', isOpen ? 'Close AI assistant' : 'Open AI assistant');
+
     if (isOpen) {
       setTimeout(() => input.focus(), 300);
+      if (notif) notif.style.display = 'none';
+      localStorage.setItem('chatSeen', '1');
+    } else {
+      fab.focus();
     }
   }
 
-  fab.addEventListener('click', togglePanel);
-  closeBtn.addEventListener('click', togglePanel);
+  fab.addEventListener('click', () => togglePanel());
+  if (closeBtn) closeBtn.addEventListener('click', () => togglePanel(false));
 
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isOpen) togglePanel();
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && isOpen) togglePanel(false);
   });
 
-  // ── Append message bubble ─────────────────────────────────────────
   function appendMessage(role, text) {
     const div = document.createElement('div');
     div.className = `chat-msg ${role}`;
@@ -305,7 +340,6 @@ AI Minecraft server bot • OpenRouter (Gemini 2.5 Flash) • RCON commands • 
     return bubble;
   }
 
-  // ── Typing indicator ──────────────────────────────────────────────
   function showTyping() {
     const div = document.createElement('div');
     div.className = 'chat-msg assistant';
@@ -319,7 +353,6 @@ AI Minecraft server bot • OpenRouter (Gemini 2.5 Flash) • RCON commands • 
     if (el) el.remove();
   }
 
-  // ── Send message ──────────────────────────────────────────────────
   async function sendMessage() {
     const text = input.value.trim();
     if (!text || isLoading) return;
@@ -330,40 +363,39 @@ AI Minecraft server bot • OpenRouter (Gemini 2.5 Flash) • RCON commands • 
 
     appendMessage('user', text);
     history.push({ role: 'user', content: text });
-
     showTyping();
 
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          messages: [
-            { role: 'system', content: SYSTEM_PROMPT },
-            ...history,
-          ],
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
       });
 
+      const data = await response.json().catch(() => ({}));
+      hideTyping();
+
       if (!response.ok) {
-        throw new Error(`API error ${response.status}`);
+        appendMessage(
+          'assistant',
+          response.status === 429
+            ? (data.error || 'Too many messages — give me a minute and try again.')
+            : (data.error || 'Sorry, something went wrong. Please try again in a moment.')
+        );
+        history.pop();
+        return;
       }
 
-      const data = await response.json();
-      const reply = data.choices?.[0]?.message?.content?.trim() || 'Sorry, I could not generate a response.';
-
-      hideTyping();
+      const reply = (data.reply || '').trim() || 'Sorry, I could not generate a response.';
       appendMessage('assistant', reply);
       history.push({ role: 'assistant', content: reply });
 
-      // Keep history from growing too large (last 10 exchanges)
-      if (history.length > 20) history.splice(0, 2);
-
+      // Keep the history bounded (last 10 exchanges).
+      if (history.length > 20) history.splice(0, history.length - 20);
     } catch (err) {
       hideTyping();
       appendMessage('assistant', 'Sorry, something went wrong. Please try again in a moment.');
+      history.pop();
       console.error('Chatbot error:', err);
     } finally {
       isLoading = false;
@@ -373,7 +405,7 @@ AI Minecraft server bot • OpenRouter (Gemini 2.5 Flash) • RCON commands • 
   }
 
   sendBtn.addEventListener('click', sendMessage);
-  input.addEventListener('keydown', (e) => {
+  input.addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();

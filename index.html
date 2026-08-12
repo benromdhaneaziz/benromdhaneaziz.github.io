@@ -3,14 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Mohamed Aziz Ben Romdhane — Data Science Engineering Student & AI Developer" />
-  <title>Mohamed Aziz Ben Romdhane | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+  <title>Mohamed Aziz Ben Romdhane | AI &amp; Backend Engineer</title>
+  <meta name="description" content="Software Engineer at Worldsoft and Data Science engineering student at ESPRIT. I build multi-agent AI systems, LLM pipelines and production backends — CurvaTrip, Hotel SaaS, Travel CRM." />
+  <meta name="author" content="Mohamed Aziz Ben Romdhane" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/" />
+
+  <!-- Social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/" />
+  <meta property="og:title" content="Mohamed Aziz Ben Romdhane | AI &amp; Backend Engineer" />
+  <meta property="og:description" content="Multi-agent AI systems, LLM pipelines and production backends. CurvaTrip AI travel concierge, Hotel Contract SaaS, Travel CRM." />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/94076528?v=4" />
+  <meta property="og:image:alt" content="Mohamed Aziz Ben Romdhane" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mohamed Aziz Ben Romdhane | AI &amp; Backend Engineer" />
+  <meta name="twitter:description" content="Multi-agent AI systems, LLM pipelines and production backends." />
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/94076528?v=4" />
+
+  <!-- Inline SVG favicon: no extra request, works in both themes -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Inter,Arial,sans-serif' font-size='32' font-weight='800' fill='%23fff' text-anchor='middle'%3EAZ%3C/text%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Markdown rendering for chatbot replies (deferred: not needed for first paint) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohamed Aziz Ben Romdhane",
+    "jobTitle": "Software Engineer",
+    "worksFor": { "@type": "Organization", "name": "Worldsoft" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "ESPRIT — École Supérieure Privée d'Ingénierie et de Technologies" },
+    "email": "mailto:Benromdhane.Aziz@esprit.tn",
+    "address": { "@type": "PostalAddress", "addressCountry": "TN" },
+    "url": "https://benromdhaneaziz-github-io.vercel.app/",
+    "sameAs": [
+      "https://github.com/benromdhaneaziz",
+      "https://github.com/DefNotScreaMy",
+      "https://www.linkedin.com/in/mohamed-aziz-ben-romdhane-986110408/"
+    ],
+    "knowsAbout": ["Multi-agent AI systems", "LangGraph", "LLM engineering", "FastAPI", "Machine Learning", "Oracle Database", "Angular", "React"]
+  }
+  </script>
 </head>
 <body>
 
@@ -104,10 +145,13 @@
             intersection of data engineering and applied AI.
           </p>
           <p>
-            Currently at <strong>Worldsoft</strong>, I built and am actively scaling a production-grade
-            <strong>Travel CRM &amp; AI Platform</strong> — an 8-agent LangGraph system with 52 REST endpoints, SSE streaming,
-            Angular 17 dashboard, and Oracle DB. Previously interned at <strong>Prosper Us</strong> (C# / .NET Core development)
-            and <strong>AS2E</strong> (WordPress &amp; Google Apps Script).
+            Currently at <strong>Worldsoft</strong>, where I ship AI products end to end:
+            <strong>CurvaTrip</strong>, an AI travel concierge (32 agent tools, realtime voice, Tunisian Derja support)
+            behind the YallaGo booking app; a <strong>Hotel Contract SaaS</strong> that turns PDF contracts into a
+            priced, queryable Oracle schema; and the <strong>Travel CRM &amp; Analytics Platform</strong>, an
+            8-agent LangGraph system with 52 REST endpoints and an Angular 17 dashboard.
+            Previously interned at <strong>Prosper Us</strong> (C# / .NET Core) and <strong>AS2E</strong>
+            (WordPress &amp; Google Apps Script).
           </p>
           <div class="about-info">
             <div class="info-item">
@@ -143,20 +187,20 @@
         </div>
         <div class="about-stats">
           <div class="stat-card">
-            <span class="stat-number">11+</span>
-            <span class="stat-label">GitHub Projects</span>
+            <span class="stat-number">19</span>
+            <span class="stat-label">Public Repositories</span>
           </div>
           <div class="stat-card">
             <span class="stat-number">3</span>
             <span class="stat-label">Companies</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">8</span>
-            <span class="stat-label">AI Agents Built</span>
+            <span class="stat-number">130+</span>
+            <span class="stat-label">REST Endpoints Shipped</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">52</span>
-            <span class="stat-label">API Endpoints</span>
+            <span class="stat-number">50+</span>
+            <span class="stat-label">AI Agent Tools</span>
           </div>
         </div>
       </div>
@@ -187,10 +231,15 @@
           <div class="skill-tags">
             <span class="skill-tag">LangChain</span>
             <span class="skill-tag">LangGraph</span>
-            <span class="skill-tag">DeepSeek LLM</span>
+            <span class="skill-tag">Tool-Calling Agents</span>
+            <span class="skill-tag">RAG</span>
+            <span class="skill-tag">OpenRouter</span>
+            <span class="skill-tag">Gemini / DeepSeek LLM</span>
+            <span class="skill-tag">Gemini Live (Voice)</span>
             <span class="skill-tag">PyTorch</span>
             <span class="skill-tag">BERT</span>
             <span class="skill-tag">Graph Neural Networks</span>
+            <span class="skill-tag">Vector DBs (FAISS / Chroma / Pinecone)</span>
             <span class="skill-tag">Scikit-learn</span>
             <span class="skill-tag">Pandas</span>
             <span class="skill-tag">NumPy</span>
@@ -212,14 +261,21 @@
             <span class="skill-tag">Oracle DB</span>
             <span class="skill-tag">MySQL</span>
             <span class="skill-tag">SQLite</span>
-            <span class="skill-tag">JWT Auth</span>
+            <span class="skill-tag">JWT / SSO</span>
             <span class="skill-tag">SSE Streaming</span>
+            <span class="skill-tag">WebSockets</span>
+            <span class="skill-tag">Multi-tenancy</span>
           </div>
         </div>
         <div class="skill-category">
           <h3 class="skill-category-title"><span class="skill-icon">&#x1F5A5;&#xFE0F;</span> Frontend &amp; Frameworks</h3>
           <div class="skill-tags">
             <span class="skill-tag">Angular 17</span>
+            <span class="skill-tag">React 18</span>
+            <span class="skill-tag">Vite</span>
+            <span class="skill-tag">TailwindCSS</span>
+            <span class="skill-tag">shadcn/ui</span>
+            <span class="skill-tag">Flutter / Dart</span>
             <span class="skill-tag">Bootstrap 4/5</span>
             <span class="skill-tag">JavaFX</span>
             <span class="skill-tag">Streamlit</span>
@@ -232,9 +288,11 @@
           <h3 class="skill-category-title"><span class="skill-icon">&#x2699;&#xFE0F;</span> DevOps &amp; Tools</h3>
           <div class="skill-tags">
             <span class="skill-tag">Git / GitHub</span>
-            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Docker &amp; Compose</span>
+            <span class="skill-tag">GitLab CI/CD</span>
+            <span class="skill-tag">Nginx</span>
+            <span class="skill-tag">systemd</span>
             <span class="skill-tag">Maven</span>
-            <span class="skill-tag">CI/CD</span>
             <span class="skill-tag">Prometheus</span>
             <span class="skill-tag">Grafana</span>
             <span class="skill-tag">Uvicorn</span>
@@ -262,10 +320,91 @@
       <h2 class="section-title">My <span class="highlight">Projects</span></h2>
       <p class="section-subtitle">A selection of work that showcases my skills</p>
 
-      <div class="projects-grid">
+      <div class="projects-filter" id="projectsFilter" role="group" aria-label="Filter projects by category">
+        <button class="filter-btn active" type="button" data-filter="all">All</button>
+        <button class="filter-btn" type="button" data-filter="ai">AI &amp; Agents</button>
+        <button class="filter-btn" type="button" data-filter="data">Data &amp; ML</button>
+        <button class="filter-btn" type="button" data-filter="web">Full-Stack</button>
+        <button class="filter-btn" type="button" data-filter="devops">DevOps</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <!-- CURVATRIP (FLAGSHIP) -->
+        <div class="project-card featured flagship" data-cat="ai web">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F9ED;</span>
+              <div class="project-meta">
+                <span class="project-badge company">&#x1F3E2; Worldsoft</span>
+                <span class="project-badge private">&#x1F512; Private &#x2014; GitLab</span>
+                <span class="project-badge wip">&#x1F6A7; In Development</span>
+              </div>
+            </div>
+            <h3 class="project-title">CurvaTrip &#x2014; AI Travel Concierge for the YallaGo App</h3>
+            <p class="project-desc">
+              Conversational backend powering the chat and voice screens of the <strong>YallaGo</strong> flight-booking app.
+              <strong>32 agent tools</strong> sit over a live GDS: flight search and refinement, fare rules, booking gated
+              behind <strong>SATIM</strong> payment, price alerts, and day-by-day trip plans with photos, weather and
+              distances. Replies in EN / FR / AR and <strong>Tunisian Derja</strong> as a first-class dialect, with realtime
+              speech through a <strong>Gemini Live</strong> bridge (PCM16, barge-in). Ships as an <strong>SSE</strong>
+              streaming API, a SQLite&#x2194;Oracle dialect-translating data layer, and 16 instances behind
+              <strong>nginx</strong> with a custom autoscaler and sticky routing. Agent runtime built on the
+              open-source Hermes Agent (MIT); the travel product, language stack and voice bridge are my own code.
+            </p>
+            <div class="project-metrics">
+              <div class="project-metric"><b>32</b><span>Agent tools</span></div>
+              <div class="project-metric"><b>28</b><span>API routes</span></div>
+              <div class="project-metric"><b>~26K</b><span>Lines of Python</span></div>
+              <div class="project-metric"><b>16</b><span>Autoscaled instances</span></div>
+            </div>
+            <div class="project-tags">
+              <span>Python</span><span>FastAPI</span><span>Gemini Live</span><span>OpenRouter</span>
+              <span>SSE</span><span>WebSockets</span><span>Oracle</span><span>SQLite</span>
+              <span>Flutter</span><span>Nginx</span><span>JWT</span><span>Voice AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOTEL CONTRACT SAAS (FLAGSHIP) -->
+        <div class="project-card featured flagship" data-cat="ai web">
+          <div class="project-card-top"></div>
+          <div class="project-card-body">
+            <div class="project-header">
+              <span class="project-icon">&#x1F3E8;</span>
+              <div class="project-meta">
+                <span class="project-badge company">&#x1F3E2; Worldsoft</span>
+                <span class="project-badge private">&#x1F512; Private &#x2014; GitLab</span>
+                <span class="project-badge wip">&#x1F6A7; In Development</span>
+              </div>
+            </div>
+            <h3 class="project-title">Hotel Contract SaaS &#x2014; LLM Extraction &amp; Pricing Engine</h3>
+            <p class="project-desc">
+              Multi-tenant B2B platform that turns hotel contracts (PDF / DOCX / XLSX) into a normalized
+              <strong>Oracle</strong> schema of 17 tables through an LLM extraction pipeline with an OCR fallback,
+              then prices any stay with a <strong>deterministic pure-Python engine</strong> &#x2014; no LLM anywhere in
+              the pricing path. <strong>Hermes</strong>, the in-app tool-calling assistant, answers questions, finds
+              missing fields and proposes edits behind a dry-run &#x2192; confirm flow. Includes row-level tenant
+              isolation from the JWT, an Oracle-backed async upload queue (<code>FOR UPDATE SKIP LOCKED</code>),
+              parse-quality scoring, audit log and per-event billing.
+            </p>
+            <div class="project-metrics">
+              <div class="project-metric"><b>51</b><span>REST endpoints</span></div>
+              <div class="project-metric"><b>12</b><span>Assistant tools</span></div>
+              <div class="project-metric"><b>17</b><span>Contract tables</span></div>
+              <div class="project-metric"><b>~24K</b><span>Lines of code</span></div>
+            </div>
+            <div class="project-tags">
+              <span>Python</span><span>FastAPI</span><span>Oracle</span><span>React 18</span>
+              <span>TypeScript</span><span>Vite</span><span>TailwindCSS</span><span>LangGraph</span>
+              <span>OCR</span><span>Docker</span><span>GitLab CI</span><span>Multi-tenant</span>
+            </div>
+          </div>
+        </div>
 
         <!-- COMPANY PROJECT (FEATURED) -->
-        <div class="project-card featured" data-aos="fade-up">
+        <div class="project-card featured" data-cat="ai data">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -294,7 +433,7 @@
         </div>
 
         <!-- BVMT ANALYTICS (FEATURED) -->
-        <div class="project-card featured" data-aos="fade-up">
+        <div class="project-card featured" data-cat="data ai">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -325,7 +464,7 @@
         </div>
 
         <!-- ANOMALY DETECTION -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="data">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -353,7 +492,7 @@
         </div>
 
         <!-- TIME SERIES -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="data">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -382,7 +521,7 @@
         </div>
 
         <!-- KNOWLEDGE GRAPH -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="data ai">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -412,7 +551,7 @@
         </div>
 
         <!-- DEVOPS PROJECT -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="devops">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -438,7 +577,7 @@
         </div>
 
         <!-- SIMPLE API LOGGER -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="web">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -465,7 +604,7 @@
         </div>
 
         <!-- SMART REAL ESTATE -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="web">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -493,7 +632,7 @@
         </div>
 
         <!-- PIDEV -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="web">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -521,7 +660,7 @@
         </div>
 
         <!-- ESCHOOL / GESTION DE COURS -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="web">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -547,7 +686,7 @@
         </div>
 
         <!-- PHARMA REPORT -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="web">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -575,7 +714,7 @@
         </div>
 
         <!-- .NET CORE TRAINING PROJECT -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="web">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -599,7 +738,7 @@
         </div>
 
         <!-- JAVAFX SUSTAINABLE DEVELOPMENT -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="web">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -626,7 +765,7 @@
         </div>
 
       <!-- Hotel Nearest Places -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="ai web">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -653,7 +792,7 @@
         </div>
 
         <!-- Flight Invoice RAG Chatbot -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="ai">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -680,7 +819,7 @@
         </div>
 
         <!-- Minecraft LLM Bot -->
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card" data-cat="ai">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -845,8 +984,13 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="5" placeholder="Hello! I&#x27;d like to talk about..." required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-          <p class="form-note" id="formNote"></p>
+          <!-- Honeypot: hidden from humans, filled by bots -->
+          <div class="form-hp" aria-hidden="true">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="contactSubmit">Send Message</button>
+          <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -855,7 +999,7 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
-      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; 2025</p>
+      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
       <div class="footer-links">
         <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/mohamed-aziz-ben-romdhane-986110408/" target="_blank" rel="noopener">LinkedIn</a>
@@ -865,11 +1009,12 @@
   </footer>
 
   <!-- ===== AI CHATBOT ===== -->
-  <div class="chatbot-fab" id="chatbotFab" aria-label="Open AI assistant" title="Ask me about Aziz's portfolio">
+  <button type="button" class="chatbot-fab" id="chatbotFab" aria-label="Open AI assistant"
+          aria-expanded="false" aria-controls="chatbotPanel" title="Ask me about Aziz's portfolio">
     <svg class="chat-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     <svg class="chat-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    <span class="chatbot-notif">1</span>
-  </div>
+    <span class="chatbot-notif" id="chatbotNotif">1</span>
+  </button>
 
   <div class="chatbot-panel" id="chatbotPanel" aria-hidden="true">
     <div class="chatbot-header">
@@ -885,7 +1030,7 @@
       </button>
     </div>
 
-    <div class="chatbot-messages" id="chatbotMessages">
+    <div class="chatbot-messages" id="chatbotMessages" role="log" aria-live="polite" aria-label="Chat messages">
       <div class="chat-msg assistant">
         <div class="chat-bubble">
           👋 Hi! I'm Aziz's AI assistant. Ask me anything about his projects, skills, experience, or certifications!
@@ -908,6 +1053,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script defer src="script.js"></script>
 </body>
 </html>

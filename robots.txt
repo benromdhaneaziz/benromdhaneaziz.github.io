@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://benromdhaneaziz-github-io.vercel.app/sitemap.xml

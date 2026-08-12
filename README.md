@@ -23,17 +23,17 @@ aziz = {
     "portfolio":  "https://benromdhaneaziz-github-io.vercel.app",
     "focus":      ["Multi-Agent AI Systems", "LLM Orchestration", "Backend APIs", "NLP"],
     "stack":      ["Python", "FastAPI", "LangGraph", "Angular 17", "Java", "C#"],
-    "currently":  "Scaling a Travel CRM AI platform to production @ Worldsoft",
+    "currently":  "Building CurvaTrip (AI travel concierge) & a Hotel Contract SaaS @ Worldsoft",
     "certified":  ["NVIDIA NLP", "DeepLearning.AI NLP Specialization x4", "Azure x3", "Hashgraph"],
 }
 ```
 
 - 🏢 **Software Engineer** at **Worldsoft** — building production-scale AI travel systems
 - 🎓 **Data Science Engineering** student at **ESPRIT**, Tunisia
-- 🤖 Specialist in **8-agent LangGraph pipelines**, **RAG**, **FastAPI** backends, **Angular 17** dashboards
+- 🤖 Specialist in **tool-calling agents**, **LangGraph pipelines**, **RAG**, **FastAPI** backends, **Angular / React** dashboards
 - 🏗️ Past: **Prosper Us** (C# / .NET), **AS2E** (WordPress & Google Apps Script)
 - 🏆 **9 certifications** — NVIDIA, DeepLearning.AI (×4), Microsoft Azure (×3), Hashgraph
-- 📊 Built systems with **52 REST endpoints**, **Oracle DB**, **SSE streaming**, and **Amadeus API**
+- 📊 **130+ REST endpoints** and **50+ agent tools** shipped across CurvaTrip, Hotel Contract SaaS and the Travel CRM
 
 ---
 
@@ -82,6 +82,22 @@ aziz = {
 ---
 
 ## 🚀 Featured Projects
+
+### 🧭 CurvaTrip — AI Travel Concierge — `Worldsoft` *(Private — GitLab · in development)*
+
+> Conversational backend behind the chat and voice screens of the **YallaGo** flight-booking app. **32 agent tools** over a live GDS: flight search & refinement, fare rules, booking gated behind **SATIM** payment, price alerts, and day-by-day trip plans with photos, weather and distances. Replies in EN / FR / AR and **Tunisian Derja** as a first-class dialect, with realtime speech through a **Gemini Live** bridge (PCM16, barge-in). **28 API routes** with SSE streaming, a SQLite↔Oracle dialect-translating data layer, and **16 instances** behind nginx with a custom autoscaler. Agent runtime built on the open-source Hermes Agent (MIT).
+>
+> `Python` `FastAPI` `Gemini Live` `OpenRouter` `SSE` `WebSockets` `Oracle` `Flutter` `Nginx`
+
+---
+
+### 🏨 Hotel Contract SaaS — `Worldsoft` *(Private — GitLab · in development)*
+
+> Multi-tenant B2B platform that turns hotel contracts (PDF / DOCX / XLSX) into a normalized **17-table Oracle schema** via an LLM extraction pipeline with OCR fallback, then prices any stay with a **deterministic pure-Python engine** — no LLM in the pricing path. **Hermes**, the in-app tool-calling assistant (12 tools), answers questions, finds missing fields and proposes edits behind a dry-run → confirm flow. **51 REST endpoints**, row-level tenant isolation, Oracle-backed async upload queue, audit log and per-event billing.
+>
+> `Python` `FastAPI` `Oracle` `React 18` `TypeScript` `Vite` `TailwindCSS` `Docker` `GitLab CI`
+
+---
 
 ### 🌍 Travel CRM & Analytics Platform — `Worldsoft` *(Private — GitLab)*
 
@@ -145,8 +161,33 @@ aziz = {
 
 ---
 
-[![Portfolio](https://img.shields.io/badge/Visit%20My%20Portfolio-benromdhaneaziz.github.io-4F46E5?style=for-the-badge&logo=vercel&logoColor=white)](https://benromdhaneaziz.github.io)
+[![Portfolio](https://img.shields.io/badge/Visit%20My%20Portfolio-Vercel-4F46E5?style=for-the-badge&logo=vercel&logoColor=white)](https://benromdhaneaziz-github-io.vercel.app)
 
 ![Profile Views](https://komarev.com/ghpvc/?username=benromdhaneaziz&style=flat-square&color=4F46E5)
 
-*Feel free to explore my repositories — and check out the [portfolio](https://benromdhaneaziz.github.io) for the full story!*
+*Feel free to explore my repositories — and check out the [portfolio](https://benromdhaneaziz-github-io.vercel.app) for the full story!*
+
+---
+
+## ⚙️ About this repo
+
+Static portfolio (`index.html` / `style.css` / `script.js`) plus two Vercel serverless functions.
+
+| File | What it does |
+|------|--------------|
+| `api/chat.js` | Proxies the portfolio assistant to OpenRouter. Origin allowlist, per-IP rate limit (12/min), 25 s timeout. The system prompt stays server-side. |
+| `api/contact.js` | Sends the contact form by email through Resend. Honeypot field, per-IP rate limit (4 / 10 min). Falls back to `mailto:` when unconfigured. |
+| `api/_persona.js` | The assistant's knowledge base — edit here when projects change. |
+| `api/_guard.js` | Shared origin check + in-memory rate limiter. |
+
+### Environment variables (Vercel → Settings → Environment Variables)
+
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `OPENROUTER_API_KEY` | yes, for the chatbot | OpenRouter key |
+| `RESEND_API_KEY` | yes, for the contact form | [resend.com](https://resend.com) API key — without it the form falls back to `mailto:` |
+| `CONTACT_TO` | no | Destination inbox (default `Benromdhane.Aziz@esprit.tn`) |
+| `CONTACT_FROM` | no | Verified sender (default `onboarding@resend.dev`) |
+| `ALLOWED_ORIGINS` | no | Extra comma-separated origins allowed to call the API |
+
+Local dev: `npx vercel dev` (the API routes need the Vercel runtime; opening `index.html` directly works for everything except the chatbot and the form).
