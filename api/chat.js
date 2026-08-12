@@ -1,7 +1,10 @@
 const { SYSTEM_PROMPT } = require('./_persona');
 const { checkOrigin, rateLimit } = require('./_guard');
 
-const MODEL = 'google/gemini-2.0-flash-001';
+// Models get retired without warning (gemini-2.0-flash-001 started 404ing),
+// so the primary is env-overridable and a fallback is tried on 404.
+const MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash-lite';
+const FALLBACK_MODEL = process.env.OPENROUTER_FALLBACK_MODEL || 'google/gemini-2.5-flash';
 const MAX_TURNS = 20;        // last 10 exchanges
 const MAX_CHARS = 1000;      // per message
 
@@ -45,8 +48,10 @@ module.exports = async function handler(req, res) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 25_000);
 
-  try {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  const messages = [{ role: 'system', content: SYSTEM_PROMPT }, ...history];
+
+  function ask(model) {
+    return fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       signal: controller.signal,
       headers: {
@@ -55,13 +60,19 @@ module.exports = async function handler(req, res) {
         'HTTP-Referer': req.headers.origin || 'https://benromdhaneaziz-github-io.vercel.app',
         'X-Title': 'Aziz Portfolio Chatbot',
       },
-      body: JSON.stringify({
-        model: MODEL,
-        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...history],
-        max_tokens: 600,
-        temperature: 0.7,
-      }),
+      body: JSON.stringify({ model, messages, max_tokens: 600, temperature: 0.7 }),
     });
+  }
+
+  try {
+    let response = await ask(MODEL);
+
+    // 404 means the model id is gone or unavailable to this account — retry once
+    // on the fallback rather than serving an error until someone notices.
+    if (response.status === 404 && FALLBACK_MODEL && FALLBACK_MODEL !== MODEL) {
+      console.error('OpenRouter 404 for', MODEL, await response.text());
+      response = await ask(FALLBACK_MODEL);
+    }
 
     if (!response.ok) {
       // Never echo the upstream body — it can leak account details.
