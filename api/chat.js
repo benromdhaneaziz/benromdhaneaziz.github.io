@@ -65,8 +65,12 @@ module.exports = async function handler(req, res) {
 
     if (!response.ok) {
       // Never echo the upstream body — it can leak account details.
+      // The status alone is safe and makes misconfiguration diagnosable.
       console.error('OpenRouter error', response.status, await response.text());
-      return res.status(502).json({ error: 'Assistant is unavailable right now.' });
+      return res.status(502).json({
+        error: 'Assistant is unavailable right now.',
+        upstream: response.status,
+      });
     }
 
     const data = await response.json();
