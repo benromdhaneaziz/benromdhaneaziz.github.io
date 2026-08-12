@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel CRM &amp; Analytics Platform — AI Multi-Agent System | Mohamed Aziz Ben Romdhane</title>
+  <meta name="description" content="An enterprise travel CRM where the reporting layer is a conversation. Instead of clicking through dashboards, a manager asks a question and an 8-agent system decides which speciali" />
+  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/travel-crm.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Travel CRM &amp; Analytics Platform — AI Multi-Agent System" />
+  <meta property="og:description" content="An enterprise travel CRM where the reporting layer is a conversation. Instead of clicking through dashboards, a manager asks a question and an 8-agent system decides which speciali" />
+  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/travel-crm.html" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Inter,Arial,sans-serif' font-size='32' font-weight='800' fill='%23fff' text-anchor='middle'%3EAZ%3C/text%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var CANONICAL_ORIGIN = 'https://benromdhaneaziz-github-io.vercel.app';
+      if (location.hostname.indexOf('github.io') !== -1) {
+        location.replace(CANONICAL_ORIGIN + location.pathname + location.search + location.hash);
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <header class="navbar page-nav">
+    <div class="nav-container">
+      <a href="../index.html#projects" class="back-link">&#8592; All projects</a>
+      <nav>
+        <a href="../index.html" class="nav-logo">AZ.</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <section class="project-hero">
+    <div class="container">
+      <div class="hero-badges">
+        <span class="project-badge company">Worldsoft</span>
+        <span class="project-badge wip">Delivered</span>
+      </div>
+      <p class="hero-meta">2025</p>
+      <h1><span class="hero-icon">🌍</span>Travel CRM &amp; Analytics Platform</h1>
+      <p class="tagline">AI Multi-Agent System</p>
+      <p class="shot-caption" style="text-align:left">Private repository — code is not public.</p>
+      <div class="metrics-strip">
+        <div class="metric-box"><b>8</b><span>AI agents</span></div>
+        <div class="metric-box"><b>52</b><span>REST endpoints</span></div>
+        <div class="metric-box"><b>SSE</b><span>Streaming responses</span></div>
+      </div>
+    </div>
+  </section>
+  <main class="project-body">
+    <div class="container">
+      <section class="project-section">
+        <h2>Overview</h2>
+        <p>An enterprise travel CRM where the reporting layer is a conversation. Instead of clicking through dashboards, a manager asks a question and an 8-agent system decides which specialist should answer it: SQL, Analyst, Forecast, Anomaly, Segmentation, Hotel, Flight, or the Orchestrator that routes between them.</p>
+        <p>The agents run on LangGraph with DeepSeek through OpenRouter, over an Oracle 11.2g database exposed by 52 FastAPI endpoints. Answers stream back over SSE so long analyses render progressively instead of blocking.</p>
+        <p>The Angular 17 dashboard renders the results as interactive charts and maps, and a separate ingestion path parses hotel contract PDFs with OCR.</p>
+      </section>
+      <section class="project-section">
+        <h2>What it does</h2>
+        <ul class="highlight-list">
+          <li>8 specialised agents coordinated by an orchestrator, each with its own tools and prompt</li>
+          <li>52 REST endpoints over Oracle 11.2g</li>
+          <li>SSE streaming so multi-step analyses appear as they are produced</li>
+          <li>Angular 17 dashboard with interactive charts and real-time route maps</li>
+          <li>Hotel contract PDF parsing with OCR</li>
+          <li>Amadeus API integration for flight and fare data</li>
+        </ul>
+      </section>
+      <section class="project-section">
+        <h2>Architecture</h2>
+        <div class="diagram"><pre class="mermaid">
+flowchart TD
+  A["Angular 17 dashboard"] --&gt;|SSE| B["FastAPI&lt;br/&gt;52 endpoints"]
+  B --&gt; C["Orchestrator agent"]
+  C --&gt; D["SQL agent"]
+  C --&gt; E["Analyst agent"]
+  C --&gt; F["Forecast agent"]
+  C --&gt; G["Anomaly agent"]
+  C --&gt; H["Segmentation agent"]
+  C --&gt; I["Hotel agent"]
+  C --&gt; J["Flight agent"]
+  D --&gt; K[("Oracle 11.2g")]
+  I --&gt; L["PDF + OCR parsing"]
+  J --&gt; M["Amadeus API"]
+  C --&gt; N["LangGraph + DeepSeek"]
+        </pre></div>
+        <p class="diagram-note">Diagram drawn from the actual codebase.</p>
+      </section>
+      <section class="project-section">
+        <h2>Tech stack</h2>
+        <div class="stack-groups">
+          <div class="stack-group">
+            <h3>Backend</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">FastAPI</span>
+              <span class="skill-tag">SSE</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h3>AI</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">LangGraph</span>
+              <span class="skill-tag">LangChain</span>
+              <span class="skill-tag">DeepSeek via OpenRouter</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h3>Frontend</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Angular 17</span>
+              <span class="skill-tag">ApexCharts</span>
+              <span class="skill-tag">MapLibre GL</span>
+              <span class="skill-tag">Streamlit test UI</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h3>Data</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Oracle 11.2g</span>
+              <span class="skill-tag">SQLite</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h3>Other</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Amadeus API</span>
+              <span class="skill-tag">OCR</span>
+              <span class="skill-tag">Docker</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="project-section">
+        <h2>Notes &amp; decisions</h2>
+        <div class="note-card">
+          <h3>Routing beats one big prompt</h3>
+          <p>A single agent holding every tool degrades as the toolset grows. Splitting the work into specialists behind an orchestrator keeps each prompt small and makes a wrong answer traceable to one agent.</p>
+        </div>
+      </section>
+      <nav class="project-footer-nav">
+        <a class="btn btn-secondary" href="hotel-contract-saas.html">&#8592; Hotel Contract SaaS</a>
+        <a class="btn btn-secondary" href="bvmt-analytics.html">BVMT Analytics Platform &#8594;</a>
+      </nav>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
+      <div class="footer-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:Benromdhane.Aziz@esprit.tn">Email</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

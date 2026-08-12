@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Contract SaaS — LLM Extraction &amp; Pricing Engine | Mohamed Aziz Ben Romdhane</title>
+  <meta name="description" content="Hotel contracts arrive as PDFs, Word files and spreadsheets, each laid out differently, and every rate in them has to be read by hand before a stay can be quoted. This platform rea" />
+  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/hotel-contract-saas.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Hotel Contract SaaS — LLM Extraction &amp; Pricing Engine" />
+  <meta property="og:description" content="Hotel contracts arrive as PDFs, Word files and spreadsheets, each laid out differently, and every rate in them has to be read by hand before a stay can be quoted. This platform rea" />
+  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/hotel-contract-saas.html" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Inter,Arial,sans-serif' font-size='32' font-weight='800' fill='%23fff' text-anchor='middle'%3EAZ%3C/text%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var CANONICAL_ORIGIN = 'https://benromdhaneaziz-github-io.vercel.app';
+      if (location.hostname.indexOf('github.io') !== -1) {
+        location.replace(CANONICAL_ORIGIN + location.pathname + location.search + location.hash);
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <header class="navbar page-nav">
+    <div class="nav-container">
+      <a href="../index.html#projects" class="back-link">&#8592; All projects</a>
+      <nav>
+        <a href="../index.html" class="nav-logo">AZ.</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <section class="project-hero">
+    <div class="container">
+      <div class="hero-badges">
+        <span class="project-badge company">Worldsoft</span>
+        <span class="project-badge wip">In development</span>
+      </div>
+      <p class="hero-meta">2026</p>
+      <h1><span class="hero-icon">🏨</span>Hotel Contract SaaS</h1>
+      <p class="tagline">LLM Extraction &amp; Pricing Engine</p>
+      <p class="shot-caption" style="text-align:left">Private repository — code is not public.</p>
+      <div class="metrics-strip">
+        <div class="metric-box"><b>51</b><span>REST endpoints</span></div>
+        <div class="metric-box"><b>12</b><span>Assistant tools</span></div>
+        <div class="metric-box"><b>17</b><span>Contract tables</span></div>
+        <div class="metric-box"><b>~24K</b><span>Lines of code</span></div>
+      </div>
+    </div>
+  </section>
+  <main class="project-body">
+    <div class="container">
+      <section class="project-section">
+        <h2>Overview</h2>
+        <p>Hotel contracts arrive as PDFs, Word files and spreadsheets, each laid out differently, and every rate in them has to be read by hand before a stay can be quoted. This platform reads them automatically: an LLM extraction pipeline with an OCR fallback turns a contract into a normalized Oracle schema of 17 tables — seasons, rooms, rates, supplements, reductions, taxes, offers, cancellation and payment rules.</p>
+        <p>Pricing is deliberately kept away from the model. A deterministic pure-Python engine prices any stay from the extracted tables and pre-builds a full pricing matrix per contract, so a quote is reproducible and auditable rather than something a language model guessed.</p>
+        <p>Hermes, the in-app assistant, sits on top with 12 tools. It answers questions about a contract, computes prices, finds gaps in the extracted data and proposes field edits — always behind a dry-run then confirm flow, so nothing is written to a contract without review.</p>
+      </section>
+      <section class="project-section">
+        <h2>What it does</h2>
+        <ul class="highlight-list">
+          <li>Dual-path extraction pipeline (V1 + V2) with an OCR fallback for scanned contracts, driven by a 45 KB JSON schema</li>
+          <li>Deterministic pricing engine — no LLM in the pricing path — with matrix build, Excel export and a per-stay breakdown</li>
+          <li>Assistant with 12 tools: price calculation, hotel lookup, contract sections, field descriptions, gap finding, autofill suggestions, rescan and matrix rebuild</li>
+          <li>Row-level multi-tenancy: the tenant id comes from the JWT and is injected into every Oracle query, with per-tenant document cabinets</li>
+          <li>Oracle-backed async upload queue using FOR UPDATE SKIP LOCKED with a worker pool, so batch ingests do not block the API</li>
+          <li>Parse-quality scoring, missing-field detection, audit log and per-event billing for uploads and rescans</li>
+          <li>Production guards: the app refuses to boot on a default JWT secret, and API docs are disabled outside development</li>
+        </ul>
+      </section>
+      <section class="project-section">
+        <h2>Architecture</h2>
+        <div class="diagram"><pre class="mermaid">
+flowchart TD
+  A["React 18 SPA&lt;br/&gt;5 pages, 15 contract tabs"] --&gt;|/api| B["nginx"]
+  B --&gt; C["FastAPI backend"]
+  C --&gt; D["Upload queue&lt;br/&gt;SKIP LOCKED + workers"]
+  D --&gt; E["Extraction pipeline&lt;br/&gt;LLM + OCR fallback"]
+  E --&gt; F[("Oracle&lt;br/&gt;17 contract tables")]
+  C --&gt; G["Pricing engine&lt;br/&gt;deterministic, no LLM"]
+  G --&gt; F
+  C --&gt; H["Hermes assistant&lt;br/&gt;12 tools"]
+  H --&gt; G
+  H --&gt; I["OpenRouter&lt;br/&gt;Gemini"]
+  C --&gt; J["Mayan EDMS&lt;br/&gt;per-tenant cabinets"]
+  C --&gt; K["Spring SSO bridge"]
+        </pre></div>
+        <p class="diagram-note">Diagram drawn from the actual codebase.</p>
+      </section>
+      <section class="project-section">
+        <h2>Tech stack</h2>
+        <div class="stack-groups">
+          <div class="stack-group">
+            <h3>Backend</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Python 3.11</span>
+              <span class="skill-tag">FastAPI</span>
+              <span class="skill-tag">Pydantic</span>
+              <span class="skill-tag">PyJWT</span>
+              <span class="skill-tag">bcrypt</span>
+              <span class="skill-tag">pytest</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h3>AI</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">OpenRouter</span>
+              <span class="skill-tag">Gemini 2.5 Flash</span>
+              <span class="skill-tag">LangChain</span>
+              <span class="skill-tag">LangGraph</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h3>Documents</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">PyMuPDF</span>
+              <span class="skill-tag">python-docx</span>
+              <span class="skill-tag">openpyxl</span>
+              <span class="skill-tag">Tesseract</span>
+              <span class="skill-tag">EasyOCR</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h3>Frontend</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">React 18</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">Vite</span>
+              <span class="skill-tag">TailwindCSS</span>
+              <span class="skill-tag">shadcn/ui</span>
+              <span class="skill-tag">Radix UI</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h3>Data</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Oracle (thick mode)</span>
+              <span class="skill-tag">connection pooling</span>
+              <span class="skill-tag">Mayan EDMS</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h3>Infra</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">docker compose</span>
+              <span class="skill-tag">nginx</span>
+              <span class="skill-tag">GitLab CI/CD</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="project-section">
+        <h2>Notes &amp; decisions</h2>
+        <div class="note-card">
+          <h3>Why pricing never calls the model</h3>
+          <p>A quote that cannot be reproduced cannot be sold. The LLM's job ends once the contract is structured; every price after that comes from plain Python over the extracted tables, which makes each figure traceable to a rule and a row.</p>
+        </div>
+        <div class="note-card">
+          <h3>Tenant isolation by construction</h3>
+          <p>Rather than filtering in the service layer, the tenant id from the JWT is threaded into the data layer and applied to every query — around 370 call sites — so a missing filter is a compile-time-visible omission, not a silent leak.</p>
+        </div>
+      </section>
+      <nav class="project-footer-nav">
+        <a class="btn btn-secondary" href="curvatrip.html">&#8592; CurvaTrip</a>
+        <a class="btn btn-secondary" href="travel-crm.html">Travel CRM &amp; Analytics Platform &#8594;</a>
+      </nav>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
+      <div class="footer-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:Benromdhane.Aziz@esprit.tn">Email</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

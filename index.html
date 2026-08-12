@@ -255,11 +255,6 @@
             <span class="skill-tag">Graph Neural Networks</span>
             <span class="skill-tag">Vector DBs (FAISS / Chroma / Pinecone)</span>
             <span class="skill-tag">Scikit-learn</span>
-            <span class="skill-tag">Pandas</span>
-            <span class="skill-tag">NumPy</span>
-            <span class="skill-tag">Matplotlib</span>
-            <span class="skill-tag">Time Series</span>
-            <span class="skill-tag">Anomaly Detection</span>
           </div>
         </div>
         <div class="skill-category">
@@ -316,10 +311,15 @@
         <div class="skill-category">
           <h3 class="skill-category-title"><span class="skill-icon">&#x1F4CA;</span> Data &amp; Analytics</h3>
           <div class="skill-tags">
-            <span class="skill-tag">Knowledge Graphs</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Time Series</span>
+            <span class="skill-tag">Anomaly Detection</span>
             <span class="skill-tag">Customer Segmentation</span>
+            <span class="skill-tag">Knowledge Graphs</span>
             <span class="skill-tag">Z-score Analysis</span>
             <span class="skill-tag">Amadeus API</span>
+            <span class="skill-tag">Matplotlib</span>
             <span class="skill-tag">Plotly</span>
             <span class="skill-tag">Jupyter</span>
           </div>
@@ -334,18 +334,30 @@
       <h2 class="section-title">My <span class="highlight">Projects</span></h2>
       <p class="section-subtitle">A selection of work that showcases my skills</p>
 
-      <div class="projects-filter" id="projectsFilter" role="group" aria-label="Filter projects by category">
-        <button class="filter-btn active" type="button" data-filter="all">All</button>
-        <button class="filter-btn" type="button" data-filter="ai">AI &amp; Agents</button>
-        <button class="filter-btn" type="button" data-filter="data">Data &amp; ML</button>
-        <button class="filter-btn" type="button" data-filter="web">Full-Stack</button>
-        <button class="filter-btn" type="button" data-filter="devops">DevOps</button>
+      <div class="projects-filters" id="projectsFilter">
+        <div class="filter-row" role="group" aria-label="Filter projects by type">
+          <span class="filter-label">Type</span>
+          <button class="filter-btn active" type="button" data-axis="type" data-filter="all">All</button>
+          <button class="filter-btn" type="button" data-axis="type" data-filter="company">Company</button>
+          <button class="filter-btn" type="button" data-axis="type" data-filter="internship">Internship</button>
+          <button class="filter-btn" type="button" data-axis="type" data-filter="school">University</button>
+          <button class="filter-btn" type="button" data-axis="type" data-filter="personal">Personal</button>
+        </div>
+        <div class="filter-row" role="group" aria-label="Filter projects by domain">
+          <span class="filter-label">Domain</span>
+          <button class="filter-btn active" type="button" data-axis="cat" data-filter="all">All</button>
+          <button class="filter-btn" type="button" data-axis="cat" data-filter="ai">AI &amp; Agents</button>
+          <button class="filter-btn" type="button" data-axis="cat" data-filter="data">Data &amp; ML</button>
+          <button class="filter-btn" type="button" data-axis="cat" data-filter="web">Full-Stack</button>
+          <button class="filter-btn" type="button" data-axis="cat" data-filter="devops">DevOps</button>
+        </div>
+        <p class="filter-empty" id="filterEmpty" hidden>No projects match both filters. <button type="button" class="filter-reset" id="filterReset">Reset</button></p>
       </div>
 
       <div class="projects-grid" id="projectsGrid">
 
         <!-- CURVATRIP (FLAGSHIP) -->
-        <div class="project-card featured flagship" data-cat="ai web">
+        <div class="project-card featured flagship" data-cat="ai web" data-type="company" data-slug="curvatrip">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -378,11 +390,12 @@
               <span>SSE</span><span>WebSockets</span><span>Oracle</span><span>SQLite</span>
               <span>Flutter</span><span>Nginx</span><span>JWT</span><span>Voice AI</span>
             </div>
+            <a class="project-more" href="projects/curvatrip.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- HOTEL CONTRACT SAAS (FLAGSHIP) -->
-        <div class="project-card featured flagship" data-cat="ai web">
+        <div class="project-card featured flagship" data-cat="ai web" data-type="company" data-slug="hotel-contract-saas">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -414,11 +427,12 @@
               <span>TypeScript</span><span>Vite</span><span>TailwindCSS</span><span>LangGraph</span>
               <span>OCR</span><span>Docker</span><span>GitLab CI</span><span>Multi-tenant</span>
             </div>
+            <a class="project-more" href="projects/hotel-contract-saas.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- COMPANY PROJECT (FEATURED) -->
-        <div class="project-card featured" data-cat="ai data">
+        <div class="project-card featured" data-cat="ai data" data-type="company" data-slug="travel-crm">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -443,11 +457,12 @@
               <span>Oracle DB</span><span>SQLite</span><span>Docker</span>
               <span>Amadeus API</span><span>OCR</span><span>SSE</span>
             </div>
+            <a class="project-more" href="projects/travel-crm.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- BVMT ANALYTICS (FEATURED) -->
-        <div class="project-card featured" data-cat="data ai">
+        <div class="project-card featured" data-cat="data ai" data-type="school" data-slug="bvmt-analytics">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -474,11 +489,12 @@
               <span>Llama2</span><span>FAISS</span><span>MongoDB</span><span>Prophet</span>
               <span>DBSCAN</span><span>UMAP</span><span>Plotly</span><span>Selenium</span>
             </div>
+            <a class="project-more" href="projects/bvmt-analytics.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- ANOMALY DETECTION -->
-        <div class="project-card" data-cat="data">
+        <div class="project-card" data-cat="data" data-type="school" data-slug="anomaly-detection">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -502,11 +518,12 @@
             <div class="project-tags">
               <span>Python</span><span>Scikit-learn</span><span>GMM</span><span>Decision Tree</span><span>KNN</span><span>NSL-KDD</span><span>Jupyter</span>
             </div>
+            <a class="project-more" href="projects/anomaly-detection.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- TIME SERIES -->
-        <div class="project-card" data-cat="data">
+        <div class="project-card" data-cat="data" data-type="school" data-slug="time-series-fred">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -531,11 +548,12 @@
             <div class="project-tags">
               <span>Python</span><span>StatsModels</span><span>ARIMA</span><span>SARIMA</span><span>ADF Test</span><span>FRED</span><span>HTML</span><span>Jupyter</span>
             </div>
+            <a class="project-more" href="projects/time-series-fred.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- KNOWLEDGE GRAPH -->
-        <div class="project-card" data-cat="data ai">
+        <div class="project-card" data-cat="data ai" data-type="school" data-slug="knowledge-graph">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -561,11 +579,12 @@
             <div class="project-tags">
               <span>Python</span><span>PyTorch</span><span>RGCN</span><span>BERT</span><span>GPT-4 Mini</span><span>Pinecone</span><span>GNN</span><span>Jupyter</span>
             </div>
+            <a class="project-more" href="projects/knowledge-graph.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- DEVOPS PROJECT -->
-        <div class="project-card" data-cat="devops">
+        <div class="project-card" data-cat="devops" data-type="school" data-slug="devops-project">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -587,11 +606,12 @@
             <div class="project-tags">
               <span>Java</span><span>Spring Boot</span><span>Maven</span><span>JUnit</span><span>Log4j</span><span>Docker</span><span>Prometheus</span><span>Grafana</span><span>Angular 16</span>
             </div>
+            <a class="project-more" href="projects/devops-project.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- SIMPLE API LOGGER -->
-        <div class="project-card" data-cat="web">
+        <div class="project-card" data-cat="web" data-type="personal" data-slug="simple-api-logger">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -614,11 +634,12 @@
             <div class="project-tags">
               <span>Python</span><span>FastAPI</span><span>SQLite</span><span>Bootstrap 5</span><span>Jinja2</span><span>Middleware</span><span>REST API</span>
             </div>
+            <a class="project-more" href="projects/simple-api-logger.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- SMART REAL ESTATE -->
-        <div class="project-card" data-cat="web">
+        <div class="project-card" data-cat="web" data-type="school" data-slug="smart-real-estate">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -642,11 +663,12 @@
             <div class="project-tags">
               <span>C++</span><span>.NET</span><span>OOP</span><span>Database</span><span>Team Project</span>
             </div>
+            <a class="project-more" href="projects/smart-real-estate.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- PIDEV -->
-        <div class="project-card" data-cat="web">
+        <div class="project-card" data-cat="web" data-type="school" data-slug="pidev">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -670,11 +692,12 @@
             <div class="project-tags">
               <span>PHP</span><span>Symfony</span><span>Twig</span><span>CSS</span><span>SCSS</span><span>JavaScript</span><span>Docker</span>
             </div>
+            <a class="project-more" href="projects/pidev.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- ESCHOOL / GESTION DE COURS -->
-        <div class="project-card" data-cat="web">
+        <div class="project-card" data-cat="web" data-type="school" data-slug="eschool">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -696,11 +719,12 @@
             <div class="project-tags">
               <span>PHP</span><span>HTML</span><span>Bootstrap 4</span><span>MySQL</span><span>CRUD</span>
             </div>
+            <a class="project-more" href="projects/eschool.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- PHARMA REPORT -->
-        <div class="project-card" data-cat="web">
+        <div class="project-card" data-cat="web" data-type="internship" data-slug="pharmareport">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -724,11 +748,12 @@
             <div class="project-tags">
               <span>C#</span><span>ASP.NET Core</span><span>Razor Pages</span><span>EF Core</span><span>MVC</span>
             </div>
+            <a class="project-more" href="projects/pharmareport.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- .NET CORE TRAINING PROJECT -->
-        <div class="project-card" data-cat="web">
+        <div class="project-card" data-cat="web" data-type="internship" data-slug="dotnet-core-training">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -748,11 +773,12 @@
             <div class="project-tags">
               <span>C#</span><span>.NET Core</span><span>Visual Studio</span><span>OOP</span>
             </div>
+            <a class="project-more" href="projects/dotnet-core-training.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- JAVAFX SUSTAINABLE DEVELOPMENT -->
-        <div class="project-card" data-cat="web">
+        <div class="project-card" data-cat="web" data-type="school" data-slug="javafx-sustainable">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -775,11 +801,12 @@
             <div class="project-tags">
               <span>Java</span><span>JavaFX</span><span>OOP</span><span>Desktop App</span>
             </div>
+            <a class="project-more" href="projects/javafx-sustainable.html">Read the case study &#8594;</a>
           </div>
         </div>
 
       <!-- Hotel Nearest Places -->
-        <div class="project-card" data-cat="ai web">
+        <div class="project-card" data-cat="ai web" data-type="personal" data-slug="hotel-nearest-places">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -802,11 +829,12 @@
             <div class="project-tags">
               <span>Python</span><span>Flask</span><span>Groq API</span><span>Llama 3</span><span>OpenRouteService</span><span>OpenWeatherMap</span><span>Overpy</span>
             </div>
+            <a class="project-more" href="projects/hotel-nearest-places.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- Flight Invoice RAG Chatbot -->
-        <div class="project-card" data-cat="ai">
+        <div class="project-card" data-cat="ai" data-type="personal" data-slug="flight-rag-chatbot">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -829,11 +857,12 @@
             <div class="project-tags">
               <span>Python</span><span>Streamlit</span><span>LangChain</span><span>ChromaDB</span><span>HuggingFace</span><span>Groq Llama 3</span><span>RAG</span>
             </div>
+            <a class="project-more" href="projects/flight-rag-chatbot.html">Read the case study &#8594;</a>
           </div>
         </div>
 
         <!-- Minecraft LLM Bot -->
-        <div class="project-card" data-cat="ai">
+        <div class="project-card" data-cat="ai" data-type="personal" data-slug="minecraft-llm-bot">
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
@@ -856,6 +885,7 @@
             <div class="project-tags">
               <span>Python</span><span>OpenRouter</span><span>Gemini 2.5 Flash</span><span>RCON</span><span>Minecraft</span><span>Chat Moderation</span>
             </div>
+            <a class="project-more" href="projects/minecraft-llm-bot.html">Read the case study &#8594;</a>
           </div>
         </div>
 

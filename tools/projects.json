@@ -1,0 +1,634 @@
+{
+  "curvatrip": {
+    "title": "CurvaTrip",
+    "tagline": "AI Travel Concierge",
+    "icon": "🧭",
+    "type": "company",
+    "typeLabel": "Worldsoft",
+    "domain": ["ai", "web"],
+    "status": "In development",
+    "period": "2026",
+    "summary": [
+      "CurvaTrip is the conversational AI behind the chat and voice screens of the CurvaTrip flight-booking app. A visitor can type or speak a request in plain language — “cheapest flight to Paris next weekend for two” — and the agent searches a live GDS, filters by learned preferences, prices the fare, and walks the user to payment.",
+      "The agent exposes 32 tools over flights, bookings, trip planning and notifications. Language handling is a first-class concern: an LLM classifier picks the reply language between English, French, Arabic and Tunisian Derja, with Derja written from a real phrasebook rather than machine-translated Modern Standard Arabic.",
+      "Voice runs through a Gemini Live bridge with barge-in, so a caller can interrupt mid-sentence. Voice replies carry the same flight cards and trip plans as the chat and persist to the same history."
+    ],
+    "highlights": [
+      "32 agent tools: flight search and refinement, fare rules, branded fares, cheapest-dates, booking, cancellation, price alerts, trip planning, weather, currency and support",
+      "Booking is gated behind payment — the API emits a checkout event so the app opens the SATIM gateway, and a booking that cannot be ticketed degrades to a held PNR instead of failing outright",
+      "Day-by-day trip plans with photos, price bands, distances and tips, built from disk-cached catalogs to keep plan generation responsive",
+      "Realtime voice over a Gemini Live bridge (PCM16, 16 kHz in / 24 kHz out) with barge-in support",
+      "SQLite for development, Oracle 11g in production, bridged by a hand-written dialect-translating data layer",
+      "17 golden behaviour scenarios run as an eval harness — language choice, payment gating, guest isolation, round-trip legs, multi-city and more"
+    ],
+    "metrics": [
+      { "value": "32", "label": "Agent tools" },
+      { "value": "28", "label": "API routes" },
+      { "value": "~26K", "label": "Lines of Python" },
+      { "value": "16", "label": "Autoscaled instances" }
+    ],
+    "stack": {
+      "Backend": ["Python 3.11", "FastAPI", "Uvicorn", "Pydantic", "WebSockets", "SSE"],
+      "AI": ["OpenRouter", "Gemini 2.5 Flash Lite", "Gemini Live (native audio)", "Edge TTS"],
+      "Data": ["Oracle 11g", "SQLite", "Custom dialect-translating DAL"],
+      "Mobile": ["Flutter", "Riverpod", "go_router", "Dio", "Hive"],
+      "Infra": ["nginx load balancer", "systemd template units", "custom autoscaler"]
+    },
+    "architecture": "flowchart TD\n  A[\"Flutter app<br/>chat + voice screens\"] -->|HTTPS / SSE| B[\"nginx<br/>sticky routing\"]\n  A -->|WebSocket| B\n  B --> C[\"FastAPI instances<br/>2-16, autoscaled\"]\n  C --> D[\"Chat handler<br/>intent + language routing\"]\n  D --> E[\"Agent runtime<br/>32 tools\"]\n  E --> F[\"WorldSoft GDS<br/>flights + fares\"]\n  E --> G[\"Trip planner<br/>catalogs + photos\"]\n  E --> H[\"OpenRouter<br/>Gemini\"]\n  D --> I[\"Voice bridge<br/>Gemini Live\"]\n  C --> J[(\"Oracle 11g<br/>SQLite in dev\")]\n  E --> K[\"SATIM<br/>payment checkout\"]",
+    "notes": [
+      {
+        "title": "Sticky routing was not optional",
+        "body": "Flight catalogs live in RAM between turns, so a request that lands on a different instance loses the user's context. nginx hashes on user id plus remote address to keep a session pinned. An early config capped failover retries at 3 while running 16 instances — users hashed to a stopped port failed until the retry count matched the pool size."
+      },
+      {
+        "title": "Derja is a dialect, not a translation",
+        "body": "Machine-translating Modern Standard Arabic produces text Tunisians do not speak. The reply language is chosen by an LLM classifier and Derja responses are written from a dedicated phrasebook, in both chat and voice."
+      },
+      {
+        "title": "Built on an open-source runtime",
+        "body": "The agent loop, tool registry and memory come from Hermes Agent (NousResearch, MIT). The travel product — tools, planner, language stack, voice bridge, server and app — is my own code on top of it."
+      }
+    ],
+    "links": []
+  },
+
+  "hotel-contract-saas": {
+    "title": "Hotel Contract SaaS",
+    "tagline": "LLM Extraction & Pricing Engine",
+    "icon": "🏨",
+    "type": "company",
+    "typeLabel": "Worldsoft",
+    "domain": ["ai", "web"],
+    "status": "In development",
+    "period": "2026",
+    "summary": [
+      "Hotel contracts arrive as PDFs, Word files and spreadsheets, each laid out differently, and every rate in them has to be read by hand before a stay can be quoted. This platform reads them automatically: an LLM extraction pipeline with an OCR fallback turns a contract into a normalized Oracle schema of 17 tables — seasons, rooms, rates, supplements, reductions, taxes, offers, cancellation and payment rules.",
+      "Pricing is deliberately kept away from the model. A deterministic pure-Python engine prices any stay from the extracted tables and pre-builds a full pricing matrix per contract, so a quote is reproducible and auditable rather than something a language model guessed.",
+      "Hermes, the in-app assistant, sits on top with 12 tools. It answers questions about a contract, computes prices, finds gaps in the extracted data and proposes field edits — always behind a dry-run then confirm flow, so nothing is written to a contract without review."
+    ],
+    "highlights": [
+      "Dual-path extraction pipeline (V1 + V2) with an OCR fallback for scanned contracts, driven by a 45 KB JSON schema",
+      "Deterministic pricing engine — no LLM in the pricing path — with matrix build, Excel export and a per-stay breakdown",
+      "Assistant with 12 tools: price calculation, hotel lookup, contract sections, field descriptions, gap finding, autofill suggestions, rescan and matrix rebuild",
+      "Row-level multi-tenancy: the tenant id comes from the JWT and is injected into every Oracle query, with per-tenant document cabinets",
+      "Oracle-backed async upload queue using FOR UPDATE SKIP LOCKED with a worker pool, so batch ingests do not block the API",
+      "Parse-quality scoring, missing-field detection, audit log and per-event billing for uploads and rescans",
+      "Production guards: the app refuses to boot on a default JWT secret, and API docs are disabled outside development"
+    ],
+    "metrics": [
+      { "value": "51", "label": "REST endpoints" },
+      { "value": "12", "label": "Assistant tools" },
+      { "value": "17", "label": "Contract tables" },
+      { "value": "~24K", "label": "Lines of code" }
+    ],
+    "stack": {
+      "Backend": ["Python 3.11", "FastAPI", "Pydantic", "PyJWT", "bcrypt", "pytest"],
+      "AI": ["OpenRouter", "Gemini 2.5 Flash", "LangChain", "LangGraph"],
+      "Documents": ["PyMuPDF", "python-docx", "openpyxl", "Tesseract", "EasyOCR"],
+      "Frontend": ["React 18", "TypeScript", "Vite", "TailwindCSS", "shadcn/ui", "Radix UI"],
+      "Data": ["Oracle (thick mode)", "connection pooling", "Mayan EDMS"],
+      "Infra": ["Docker", "docker compose", "nginx", "GitLab CI/CD"]
+    },
+    "architecture": "flowchart TD\n  A[\"React 18 SPA<br/>5 pages, 15 contract tabs\"] -->|/api| B[\"nginx\"]\n  B --> C[\"FastAPI backend\"]\n  C --> D[\"Upload queue<br/>SKIP LOCKED + workers\"]\n  D --> E[\"Extraction pipeline<br/>LLM + OCR fallback\"]\n  E --> F[(\"Oracle<br/>17 contract tables\")]\n  C --> G[\"Pricing engine<br/>deterministic, no LLM\"]\n  G --> F\n  C --> H[\"Hermes assistant<br/>12 tools\"]\n  H --> G\n  H --> I[\"OpenRouter<br/>Gemini\"]\n  C --> J[\"Mayan EDMS<br/>per-tenant cabinets\"]\n  C --> K[\"Spring SSO bridge\"]",
+    "notes": [
+      {
+        "title": "Why pricing never calls the model",
+        "body": "A quote that cannot be reproduced cannot be sold. The LLM's job ends once the contract is structured; every price after that comes from plain Python over the extracted tables, which makes each figure traceable to a rule and a row."
+      },
+      {
+        "title": "Tenant isolation by construction",
+        "body": "Rather than filtering in the service layer, the tenant id from the JWT is threaded into the data layer and applied to every query — around 370 call sites — so a missing filter is a compile-time-visible omission, not a silent leak."
+      }
+    ],
+    "links": []
+  },
+
+  "travel-crm": {
+    "title": "Travel CRM & Analytics Platform",
+    "tagline": "AI Multi-Agent System",
+    "icon": "🌍",
+    "type": "company",
+    "typeLabel": "Worldsoft",
+    "domain": ["ai", "data"],
+    "status": "Delivered",
+    "period": "2025",
+    "summary": [
+      "An enterprise travel CRM where the reporting layer is a conversation. Instead of clicking through dashboards, a manager asks a question and an 8-agent system decides which specialist should answer it: SQL, Analyst, Forecast, Anomaly, Segmentation, Hotel, Flight, or the Orchestrator that routes between them.",
+      "The agents run on LangGraph with DeepSeek through OpenRouter, over an Oracle 11.2g database exposed by 52 FastAPI endpoints. Answers stream back over SSE so long analyses render progressively instead of blocking.",
+      "The Angular 17 dashboard renders the results as interactive charts and maps, and a separate ingestion path parses hotel contract PDFs with OCR."
+    ],
+    "highlights": [
+      "8 specialised agents coordinated by an orchestrator, each with its own tools and prompt",
+      "52 REST endpoints over Oracle 11.2g",
+      "SSE streaming so multi-step analyses appear as they are produced",
+      "Angular 17 dashboard with interactive charts and real-time route maps",
+      "Hotel contract PDF parsing with OCR",
+      "Amadeus API integration for flight and fare data"
+    ],
+    "metrics": [
+      { "value": "8", "label": "AI agents" },
+      { "value": "52", "label": "REST endpoints" },
+      { "value": "SSE", "label": "Streaming responses" }
+    ],
+    "stack": {
+      "Backend": ["Python", "FastAPI", "SSE"],
+      "AI": ["LangGraph", "LangChain", "DeepSeek via OpenRouter"],
+      "Frontend": ["Angular 17", "ApexCharts", "MapLibre GL", "Streamlit test UI"],
+      "Data": ["Oracle 11.2g", "SQLite"],
+      "Other": ["Amadeus API", "OCR", "Docker"]
+    },
+    "architecture": "flowchart TD\n  A[\"Angular 17 dashboard\"] -->|SSE| B[\"FastAPI<br/>52 endpoints\"]\n  B --> C[\"Orchestrator agent\"]\n  C --> D[\"SQL agent\"]\n  C --> E[\"Analyst agent\"]\n  C --> F[\"Forecast agent\"]\n  C --> G[\"Anomaly agent\"]\n  C --> H[\"Segmentation agent\"]\n  C --> I[\"Hotel agent\"]\n  C --> J[\"Flight agent\"]\n  D --> K[(\"Oracle 11.2g\")]\n  I --> L[\"PDF + OCR parsing\"]\n  J --> M[\"Amadeus API\"]\n  C --> N[\"LangGraph + DeepSeek\"]",
+    "notes": [
+      {
+        "title": "Routing beats one big prompt",
+        "body": "A single agent holding every tool degrades as the toolset grows. Splitting the work into specialists behind an orchestrator keeps each prompt small and makes a wrong answer traceable to one agent."
+      }
+    ],
+    "links": []
+  },
+
+  "bvmt-analytics": {
+    "title": "BVMT Analytics Platform",
+    "tagline": "Tunisian Stock Market",
+    "icon": "📈",
+    "type": "school",
+    "typeLabel": "ESPRIT team project",
+    "domain": ["data", "ai"],
+    "status": "Complete",
+    "period": "2025",
+    "summary": [
+      "A multi-page Streamlit application for analysing and predicting stock performance on the Bourse des Valeurs Mobilières de Tunis. Built as a Data Science engineering project at ESPRIT with the Company Value team.",
+      "Ten modules cover the market end to end: historical quotations, TUNINDEX and sector indices, dividend forecasting, risk classification, price-direction prediction, clustering, news sentiment, and a RAG chatbot that answers questions about an uploaded PDF."
+    ],
+    "highlights": [
+      "Price-direction prediction per sector using AdaBoost and Gradient Boosting",
+      "Stock risk classification into low and high risk bands",
+      "Dividend forecasting with Prophet",
+      "Market clustering with DBSCAN over UMAP-reduced features",
+      "RAG chatbot: upload a PDF and ask questions, backed by LangChain, FAISS and Llama 2 through Ollama",
+      "Market sentiment from scraped Tunisian financial news",
+      "Historical data 2016–2023 stored in MongoDB Atlas, collected with Selenium and BeautifulSoup"
+    ],
+    "metrics": [
+      { "value": "10", "label": "Analysis modules" },
+      { "value": "2016–23", "label": "Data coverage" }
+    ],
+    "stack": {
+      "App": ["Streamlit", "Plotly", "streamlit-shadcn-ui"],
+      "ML": ["Scikit-learn", "AdaBoost", "Gradient Boosting", "KMeans", "DBSCAN", "UMAP", "Prophet"],
+      "AI": ["LangChain", "FAISS", "HuggingFace embeddings", "Llama 2 via Ollama"],
+      "Data": ["MongoDB Atlas", "Selenium", "BeautifulSoup"]
+    },
+    "architecture": "flowchart LR\n  A[\"BVMT site + news\"] -->|Selenium / BS4| B[\"Scrapers\"]\n  B --> C[(\"MongoDB Atlas<br/>2016-2023\")]\n  C --> D[\"Streamlit app<br/>10 modules\"]\n  D --> E[\"Prediction<br/>AdaBoost / GBM\"]\n  D --> F[\"Clustering<br/>DBSCAN + UMAP\"]\n  D --> G[\"Dividends<br/>Prophet\"]\n  D --> H[\"RAG chatbot\"]\n  H --> I[(\"FAISS index\")]\n  H --> J[\"Llama 2 / Ollama\"]",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/bvmt-analytics-platform" }]
+  },
+
+  "anomaly-detection": {
+    "title": "Anomaly & Intrusion Detection",
+    "tagline": "GMM + Decision Tree / KNN on NSL-KDD",
+    "icon": "🔍",
+    "type": "school",
+    "typeLabel": "ESPRIT team project",
+    "domain": ["data"],
+    "status": "Complete",
+    "period": "2024",
+    "summary": [
+      "Two complementary approaches to network security on the NSL-KDD dataset. Gaussian Mixture Models learn what normal traffic looks like and flag deviations, which catches novel behaviour without labelled examples of it.",
+      "A supervised layer then classifies known intrusions with Decision Tree and K-Nearest Neighbors across four attack families: DoS, User-to-Root, Remote-to-Local and Probe."
+    ],
+    "highlights": [
+      "Unsupervised anomaly detection with Gaussian Mixture Models over normal-traffic distributions",
+      "Supervised intrusion classification into DoS, U2R, R2L and Probe",
+      "Decision Tree and KNN compared on the same preprocessed feature set",
+      "Full preprocessing pipeline: cleaning, encoding and scaling of NSL-KDD"
+    ],
+    "metrics": [{ "value": "4", "label": "Attack classes" }],
+    "stack": {
+      "ML": ["Scikit-learn", "Gaussian Mixture Models", "Decision Tree", "KNN"],
+      "Data": ["NSL-KDD", "Pandas", "NumPy"],
+      "Tools": ["Jupyter"]
+    },
+    "architecture": "flowchart LR\n  A[(\"NSL-KDD dataset\")] --> B[\"Preprocessing<br/>clean / encode / scale\"]\n  B --> C[\"GMM<br/>models normal traffic\"]\n  B --> D[\"Decision Tree\"]\n  B --> E[\"KNN\"]\n  C --> F[\"Anomaly score<br/>deviation from normal\"]\n  D --> G[\"Attack class<br/>DoS / U2R / R2L / Probe\"]\n  E --> G",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/Anomaly-Detection-and-Intrusion-Detection-System" }]
+  },
+
+  "time-series-fred": {
+    "title": "Time Series — Federal Reserve (FRED)",
+    "tagline": "ARIMA / SARIMA in three phases",
+    "icon": "📊",
+    "type": "school",
+    "typeLabel": "ESPRIT project",
+    "domain": ["data"],
+    "status": "Complete",
+    "period": "2024",
+    "summary": [
+      "A three-phase study of two economic series from the Federal Reserve Economic Data archive: retail sales for book stores (MRTSSM451211USN) and new privately-owned housing units started in the Northeast (HOUSTNENSA).",
+      "Phase one argues a modelling strategy from statistical and graphical analysis — structural breaks, random walk versus polynomial trend, seasonality. Phase two fits the series through differencing and functional forms and compares candidate models. Phase three analyses the residuals to confirm the fit holds."
+    ],
+    "highlights": [
+      "Stationarity testing with ADF and KPSS",
+      "Trend and seasonality decomposition, including structural-break detection",
+      "Variance-stabilising transformations before modelling",
+      "ARIMA and SARIMA candidates compared on the same series",
+      "Residual diagnostics as an explicit third phase rather than an afterthought"
+    ],
+    "metrics": [
+      { "value": "2", "label": "FRED series" },
+      { "value": "3", "label": "Analysis phases" }
+    ],
+    "stack": {
+      "Analysis": ["Python", "StatsModels", "ARIMA", "SARIMA", "ADF / KPSS"],
+      "Data": ["FRED", "Pandas"],
+      "Tools": ["Jupyter"]
+    },
+    "architecture": "flowchart LR\n  A[(\"FRED series\")] --> B[\"Phase 1<br/>statistical + graphical analysis\"]\n  B --> C[\"Transformations<br/>stabilise variance\"]\n  C --> D[\"Phase 2<br/>differencing + model fit\"]\n  D --> E[\"ARIMA / SARIMA<br/>candidate comparison\"]\n  E --> F[\"Phase 3<br/>residual diagnostics\"]",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/Time-Series-Project-Federal-Reserve-Economic-Data-FRED-" }]
+  },
+
+  "knowledge-graph": {
+    "title": "Knowledge Graph for Project Management",
+    "tagline": "BERT + RGCN link prediction",
+    "icon": "🧠",
+    "type": "school",
+    "typeLabel": "ESPRIT team project",
+    "domain": ["data", "ai"],
+    "status": "Complete",
+    "period": "2025",
+    "summary": [
+      "A graph-based recommendation system for project risk management. The knowledge graph is built from PMI standards, PMBOK 6 and 7, a risk-management glossary and real case studies, so recommendations are grounded in the discipline's own literature.",
+      "Two recommenders were built and compared: one using BERT embeddings with a custom link predictor, and one combining BERT embeddings with a Relational Graph Convolutional Network for richer structural context before the same predictor."
+    ],
+    "highlights": [
+      "Knowledge graph assembled from PMI standards, PMBOK 6 & 7 and case studies",
+      "BERT embeddings for semantic representation of graph entities",
+      "RGCN over the relational graph for structure-aware embeddings",
+      "Custom link-prediction head driving the recommendations",
+      "Pinecone vector index for similarity search",
+      "GPT-4 Mini for natural-language question answering over the graph"
+    ],
+    "metrics": [{ "value": "2", "label": "Recommender variants" }],
+    "stack": {
+      "ML": ["PyTorch", "RGCN", "BERT", "Link prediction"],
+      "AI": ["GPT-4 Mini", "Pinecone"],
+      "Tools": ["Jupyter", "NetworkX"]
+    },
+    "architecture": "flowchart TD\n  A[\"PMI standards<br/>PMBOK 6 & 7, case studies\"] --> B[\"Entity + relation extraction\"]\n  B --> C[(\"Knowledge graph\")]\n  C --> D[\"BERT embeddings\"]\n  D --> E[\"RGCN<br/>relational message passing\"]\n  D --> F[\"Link predictor<br/>BERT only\"]\n  E --> G[\"Link predictor<br/>BERT + RGCN\"]\n  F --> H[\"Recommendations\"]\n  G --> H\n  C --> I[(\"Pinecone index\")]\n  I --> J[\"GPT-4 Mini Q&A\"]",
+    "notes": [
+      {
+        "title": "Team project",
+        "body": "Built with Saif Zribi, Houssem Eddine Mars and Jasser Chtourou as a collective effort."
+      }
+    ],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/A_knowledge_graph_system_for_Project_Management" }]
+  },
+
+  "devops-project": {
+    "title": "DevOps Project",
+    "tagline": "Spring Boot service with a full pipeline",
+    "icon": "⚙️",
+    "type": "school",
+    "typeLabel": "ESPRIT project",
+    "domain": ["devops"],
+    "status": "Complete",
+    "period": "2024",
+    "summary": [
+      "A Spring Boot microservice built to carry a complete DevOps pipeline rather than to be a large application. The point of the exercise was everything around the code: tests, logging, containers, metrics and dashboards.",
+      "The service is packaged with a Dockerfile and docker-compose, instrumented for Prometheus scraping, and visualised in Grafana. An Angular 16 frontend consumes the API."
+    ],
+    "highlights": [
+      "Spring Boot service (tn.esprit.devops_project) built with Maven",
+      "Unit tests with JUnit and Mockito",
+      "Log4j logging configuration",
+      "Dockerfile plus docker-compose for the full stack",
+      "Prometheus metrics scraping with a Grafana dashboard",
+      "OpenAPI specification checked into the repository",
+      "Angular 16 frontend, built in a two-person collaboration"
+    ],
+    "metrics": [],
+    "stack": {
+      "Backend": ["Java", "Spring Boot", "Maven"],
+      "Testing": ["JUnit", "Mockito"],
+      "Ops": ["Docker", "docker compose", "Prometheus", "Grafana", "Log4j"],
+      "Frontend": ["Angular 16"]
+    },
+    "architecture": "flowchart LR\n  A[\"Angular 16\"] --> B[\"Spring Boot API\"]\n  B --> C[(\"Database\")]\n  B --> D[\"/actuator metrics\"]\n  D --> E[\"Prometheus\"]\n  E --> F[\"Grafana dashboards\"]\n  G[\"Maven build\"] --> H[\"JUnit + Mockito\"]\n  H --> I[\"Docker image\"]\n  I --> J[\"docker compose stack\"]",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/Devops-Project" }]
+  },
+
+  "simple-api-logger": {
+    "title": "Simple API Logger",
+    "tagline": "FastAPI request logging with a live dashboard",
+    "icon": "🔌",
+    "type": "personal",
+    "typeLabel": "Personal project",
+    "domain": ["web"],
+    "status": "Complete",
+    "period": "2025",
+    "summary": [
+      "A lightweight REST service that logs every request passing through it and renders the results on a live dashboard. Custom middleware captures the method, URL, body, status code and response time of each call, storing them in SQLite.",
+      "It includes a deliberate failure switch: posting a message of trigger500 causes a division by zero, so error handling and error logging can be exercised on demand rather than hoped about."
+    ],
+    "highlights": [
+      "POST /api/log to record an entry, GET /api/logs with status and limit filters, GET /api/stats for analytics",
+      "Statistics cover total requests, 2xx versus error counts, average response time and most-hit endpoints",
+      "Custom ASGI middleware captures every request including failures",
+      "Bootstrap 5 and Jinja2 dashboard that auto-refreshes every 5 seconds",
+      "trigger500 mechanism for testing error paths on purpose"
+    ],
+    "metrics": [
+      { "value": "3", "label": "API endpoints" },
+      { "value": "5s", "label": "Dashboard refresh" }
+    ],
+    "stack": {
+      "Backend": ["Python", "FastAPI", "Uvicorn", "SQLite"],
+      "Frontend": ["Jinja2", "Bootstrap 5"],
+      "Patterns": ["ASGI middleware", "REST"]
+    },
+    "architecture": "flowchart LR\n  A[\"Client request\"] --> B[\"Logging middleware<br/>method, URL, body, status, time\"]\n  B --> C[\"FastAPI routes\"]\n  B --> D[(\"SQLite\")]\n  D --> E[\"GET /api/logs\"]\n  D --> F[\"GET /api/stats\"]\n  E --> G[\"Jinja2 dashboard<br/>auto-refresh 5s\"]\n  F --> G",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/Simple-Api-Logger" }]
+  },
+
+  "smart-real-estate": {
+    "title": "Smart Real Estate Agency",
+    "tagline": "Second-year team project",
+    "icon": "🏠",
+    "type": "school",
+    "typeLabel": "ESPRIT team project",
+    "domain": ["web"],
+    "status": "Archived",
+    "period": "2022",
+    "summary": [
+      "A second-year team project for managing a real estate agency: property listings, agency administration and client tracking, built with team Armi64bit.",
+      "The public repository under my account holds the project description only — the implementation lived in the team's own repository, so there is no source to browse here."
+    ],
+    "highlights": [
+      "Property listing and agency management features",
+      "Client tracking",
+      "Collaborative second-year team project"
+    ],
+    "metrics": [],
+    "stack": { "Focus": ["OOP", "Team collaboration", "Database design"] },
+    "architecture": "",
+    "notes": [
+      {
+        "title": "Repository contents",
+        "body": "This fork contains the project description, not the codebase. It is listed here for completeness of my academic record rather than as a code sample."
+      }
+    ],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/Smart_Real_Estate_Agency_2A8" }]
+  },
+
+  "pidev": {
+    "title": "PiDev Full-Stack Web App",
+    "tagline": "Symfony integrative project",
+    "icon": "💻",
+    "type": "school",
+    "typeLabel": "ESPRIT integrative project",
+    "domain": ["web"],
+    "status": "Complete",
+    "period": "2022–2023",
+    "summary": [
+      "The ESPRIT integrative project for 2022–2023: a full-stack web application built on Symfony with Twig templates and SCSS styling, containerised with Docker Compose.",
+      "The repository carries the full Symfony skeleton — Doctrine ORM with migrations, security, mailer, messenger and monolog configuration — alongside the application code and PHPUnit setup."
+    ],
+    "highlights": [
+      "Symfony application with Doctrine ORM and database migrations",
+      "Twig templating with SCSS-compiled styling",
+      "Security, mailer, messenger and monolog configuration",
+      "PHPUnit test setup",
+      "Docker Compose for local orchestration"
+    ],
+    "metrics": [],
+    "stack": {
+      "Backend": ["PHP", "Symfony", "Doctrine ORM"],
+      "Frontend": ["Twig", "SCSS", "JavaScript"],
+      "Ops": ["Docker Compose", "PHPUnit", "Composer"]
+    },
+    "architecture": "flowchart LR\n  A[\"Browser\"] --> B[\"Symfony controllers\"]\n  B --> C[\"Twig templates\"]\n  B --> D[\"Doctrine ORM\"]\n  D --> E[(\"MySQL\")]\n  F[\"Migrations\"] --> E\n  G[\"Docker Compose\"] --> B\n  G --> E",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/PiDev-2022-2023" }]
+  },
+
+  "eschool": {
+    "title": "eSchool",
+    "tagline": "School management system",
+    "icon": "🏫",
+    "type": "school",
+    "typeLabel": "University project",
+    "domain": ["web"],
+    "status": "Complete",
+    "period": "2021",
+    "summary": [
+      "A school management web application covering the daily administration of a school: students, attendance, homework, marks, online exams with a question bank, and class schedules.",
+      "The backend is hand-written PHP CRUD over MySQL; the interface is built on the open-source Stream Bootstrap 4 dashboard kit rather than styled from scratch."
+    ],
+    "highlights": [
+      "Student records and class management",
+      "Attendance tracking and homework assignment",
+      "Marks and grade management",
+      "Online exams with a reusable question bank",
+      "Class schedule and routine management",
+      "Custom PHP CRUD over MySQL"
+    ],
+    "metrics": [],
+    "stack": {
+      "Backend": ["PHP", "MySQL"],
+      "Frontend": ["Bootstrap 4", "HTML", "JavaScript"],
+      "Base": ["Stream dashboard UI kit (MIT)"]
+    },
+    "architecture": "flowchart LR\n  A[\"Browser\"] --> B[\"PHP pages\"]\n  B --> C[\"CRUD layer\"]\n  C --> D[(\"MySQL\")]\n  B --> E[\"Modules<br/>students / attendance / marks\"]\n  E --> F[\"Exams + question bank\"]",
+    "notes": [],
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/benromdhaneaziz/eSchool" },
+      { "label": "v2 — gestion-de-cours", "url": "https://github.com/benromdhaneaziz/gestion-de-cours" }
+    ]
+  },
+
+  "pharmareport": {
+    "title": "PharmaReport",
+    "tagline": "Pharmacy reporting system",
+    "icon": "💊",
+    "type": "internship",
+    "typeLabel": "Prosper Us internship",
+    "domain": ["web"],
+    "status": "Delivered",
+    "period": "2023",
+    "summary": [
+      "An ASP.NET Core application for pharmacy reporting, built during my internship at Prosper Us. It follows the MVC and Razor Pages pattern with Entity Framework Core for persistence and migrations.",
+      "The solution is split into three projects: the main web application plus two dedicated modules, MedicalReport and ReportSheet, that generate the structured documents pharmacists file."
+    ],
+    "highlights": [
+      "ASP.NET Core MVC with Razor Pages",
+      "Entity Framework Core with code-first migrations",
+      "MedicalReport module for structured medical documents",
+      "ReportSheet module for pharmacy report sheets",
+      "Three-project Visual Studio solution"
+    ],
+    "metrics": [{ "value": "3", "label": "Solution projects" }],
+    "stack": {
+      "Backend": ["C#", "ASP.NET Core", "EF Core"],
+      "Frontend": ["Razor Pages", "JavaScript", "CSS"],
+      "Patterns": ["MVC", "Code-first migrations"]
+    },
+    "architecture": "flowchart LR\n  A[\"Browser\"] --> B[\"ASP.NET Core MVC<br/>controllers + Razor Pages\"]\n  B --> C[\"MedicalReport module\"]\n  B --> D[\"ReportSheet module\"]\n  B --> E[\"EF Core\"]\n  E --> F[(\"Database\")]\n  G[\"Migrations\"] --> F",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/PharmaReport" }]
+  },
+
+  "dotnet-core-training": {
+    "title": ".NET Core Training Project",
+    "tagline": "Internship training solution",
+    "icon": "🖥️",
+    "type": "internship",
+    "typeLabel": "Internship training",
+    "domain": ["web"],
+    "status": "Archived",
+    "period": "2023",
+    "summary": [
+      "A C# .NET Core training solution (ProjectForStage) written during a professional development internship, used to work through .NET Core application structure and the Visual Studio solution layout before moving on to the production codebase."
+    ],
+    "highlights": [
+      "C# .NET Core solution structure",
+      "Visual Studio project organisation",
+      "Written as internship groundwork rather than a shipped product"
+    ],
+    "metrics": [],
+    "stack": { "Stack": ["C#", ".NET Core", "Visual Studio", "OOP"] },
+    "architecture": "",
+    "notes": [
+      {
+        "title": "Scope",
+        "body": "This was a learning exercise during an internship, kept public for transparency about how I ramped up on .NET."
+      }
+    ],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/.NetCore-Project-" }]
+  },
+
+  "javafx-sustainable": {
+    "title": "Sustainable Development App",
+    "tagline": "JavaFX desktop application",
+    "icon": "🌿",
+    "type": "school",
+    "typeLabel": "ESPRIT team project",
+    "domain": ["web"],
+    "status": "Archived",
+    "period": "2023",
+    "summary": [
+      "A JavaFX desktop application built as an ESPRIT team project around sustainable development habits, with a desktop GUI for tracking and raising awareness of eco-friendly goals.",
+      "The public repository under my account holds the project description only — the implementation lived in the team's repository, so there is no source to browse here."
+    ],
+    "highlights": [
+      "JavaFX desktop GUI",
+      "Sustainability tracking and awareness features",
+      "Team project"
+    ],
+    "metrics": [],
+    "stack": { "Stack": ["Java", "JavaFX", "OOP", "Desktop UI"] },
+    "architecture": "",
+    "notes": [
+      {
+        "title": "Repository contents",
+        "body": "This fork contains the project description, not the codebase. It is listed for completeness of my academic record rather than as a code sample."
+      }
+    ],
+    "links": [{ "label": "GitHub", "url": "https://github.com/benromdhaneaziz/JavaFxSustainableDevelopment" }]
+  },
+
+  "hotel-nearest-places": {
+    "title": "Hotel Nearest Places",
+    "tagline": "LLM geocoding + routing + weather",
+    "icon": "🏨",
+    "type": "personal",
+    "typeLabel": "Personal project",
+    "domain": ["ai", "web"],
+    "status": "Complete",
+    "period": "2025",
+    "summary": [
+      "A Flask REST API that takes a hotel name and returns the ten nearest points of interest, each with a road distance, a route and current weather.",
+      "The interesting part is the front of the pipeline: instead of a geocoding service, an LLM extracts the hotel's coordinates and candidate nearby places from natural language, and OpenStreetMap data is used to enrich and verify what comes back."
+    ],
+    "highlights": [
+      "LLM-powered geocoding with Groq running Llama 3 8B",
+      "Road distances and directions from OpenRouteService",
+      "Current conditions per point of interest from OpenWeatherMap",
+      "POI enrichment through Overpass and OpenStreetMap",
+      "CORS-enabled Flask REST API"
+    ],
+    "metrics": [{ "value": "10", "label": "POIs returned" }],
+    "stack": {
+      "Backend": ["Python", "Flask", "Geopy"],
+      "AI": ["Groq API", "Llama 3 8B"],
+      "Geo": ["OpenRouteService", "OpenWeatherMap", "Overpy / OpenStreetMap"]
+    },
+    "architecture": "flowchart LR\n  A[\"Hotel name\"] --> B[\"Flask API\"]\n  B --> C[\"Groq / Llama 3<br/>coordinates + candidate POIs\"]\n  C --> D[\"Overpass / OSM<br/>enrichment\"]\n  D --> E[\"OpenRouteService<br/>routes + distances\"]\n  D --> F[\"OpenWeatherMap<br/>conditions\"]\n  E --> G[\"10 nearest places\"]\n  F --> G",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/DefNotScreaMy/hotel-nearest-places" }]
+  },
+
+  "flight-rag-chatbot": {
+    "title": "Flight Invoice RAG Chatbot",
+    "tagline": "Retrieval-augmented Q&A over invoice data",
+    "icon": "✈️",
+    "type": "personal",
+    "typeLabel": "Personal project",
+    "domain": ["ai"],
+    "status": "Complete",
+    "period": "2025",
+    "summary": [
+      "A Streamlit chatbot that answers questions about flight invoices and profit figures. Invoice CSV data is embedded into a local ChromaDB collection, retrieved semantically per question, and passed to the model as context.",
+      "Keeping the vector store local means the data never leaves the machine — only the retrieved snippets reach the LLM."
+    ],
+    "highlights": [
+      "RAG pipeline over ChromaDB with all-MiniLM-L6-v2 HuggingFace embeddings",
+      "Groq running Llama 3 8B for fast contextual answers",
+      "Flight invoice CSV data ingested into the vector store",
+      "Streamlit interface"
+    ],
+    "metrics": [],
+    "stack": {
+      "App": ["Python", "Streamlit"],
+      "AI": ["LangChain", "ChromaDB", "HuggingFace embeddings", "Groq / Llama 3"],
+      "Data": ["Pandas", "CSV ingestion"]
+    },
+    "architecture": "flowchart LR\n  A[\"Invoice CSV\"] --> B[\"Embedding<br/>all-MiniLM-L6-v2\"]\n  B --> C[(\"ChromaDB\")]\n  D[\"User question\"] --> E[\"Semantic retrieval\"]\n  C --> E\n  E --> F[\"Groq / Llama 3\"]\n  F --> G[\"Answer in Streamlit\"]",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/DefNotScreaMy/flight-rag-chatbot" }]
+  },
+
+  "minecraft-llm-bot": {
+    "title": "Minecraft LLM Bot",
+    "tagline": "Natural-language server operation",
+    "icon": "🎮",
+    "type": "personal",
+    "typeLabel": "Personal project",
+    "domain": ["ai"],
+    "status": "Complete",
+    "period": "2025",
+    "summary": [
+      "An LLM connected to a Minecraft server over RCON. It moderates chat, answers player questions in-game, and turns operator instructions written in plain English into the right server commands.",
+      "Commands are never executed blind: the model proposes the command, the operator confirms it, and only then does it run. A raw prefix bypasses the model entirely when you already know the exact syntax."
+    ],
+    "highlights": [
+      "Chat moderation: every message is analysed, with escalation from warning to kick to ban",
+      "Players ask questions with ?bot and get an in-game reply",
+      "Natural language to server command, with an explicit confirmation step before execution",
+      "!raw prefix to send a command directly, bypassing the model",
+      "RCON connection to a standard Minecraft server",
+      "Provider switchable between OpenRouter and a local Ollama model"
+    ],
+    "metrics": [],
+    "stack": {
+      "Bot": ["Python", "RCON", "CLI"],
+      "AI": ["OpenRouter", "Gemini 2.5 Flash", "Ollama (local option)"],
+      "Features": ["Chat moderation", "Event engine", "Structure building"]
+    },
+    "architecture": "flowchart LR\n  A[\"Minecraft server\"] -->|chat events| B[\"Bot listener\"]\n  B --> C[\"LLM<br/>OpenRouter / Ollama\"]\n  C --> D{\"Intent\"}\n  D -->|bad language| E[\"Warn / kick / ban\"]\n  D -->|question| F[\"In-game answer\"]\n  G[\"Operator CLI<br/>plain English\"] --> C\n  C --> H[\"Proposed command<br/>awaiting confirmation\"]\n  H -->|confirmed| I[\"RCON execute\"]\n  E --> I\n  F --> I",
+    "notes": [],
+    "links": [{ "label": "GitHub", "url": "https://github.com/DefNotScreaMy/minecraft-llm-bot" }]
+  }
+}

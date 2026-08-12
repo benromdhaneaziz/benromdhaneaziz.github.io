@@ -127,42 +127,83 @@ const revealCard = (() => {
   return card => observer.observe(card);
 })();
 
-/* ===== PROJECT FILTERS ===== */
+/* ===== PROJECT FILTERS (two axes: type + domain) ===== */
 (function () {
   const bar = document.getElementById('projectsFilter');
   const grid = document.getElementById('projectsGrid');
+  const empty = document.getElementById('filterEmpty');
+  const reset = document.getElementById('filterReset');
   if (!bar || !grid) return;
 
   const cards = Array.from(grid.querySelectorAll('.project-card'));
+  const buttons = Array.from(bar.querySelectorAll('.filter-btn'));
+  const active = { type: 'all', cat: 'all' };
 
-  // Show how many projects sit behind each filter.
-  bar.querySelectorAll('.filter-btn').forEach(btn => {
-    const filter = btn.dataset.filter;
-    const count = filter === 'all'
-      ? cards.length
-      : cards.filter(c => (c.dataset.cat || '').split(' ').includes(filter)).length;
-    const label = document.createElement('span');
-    label.className = 'count';
-    label.textContent = count;
-    btn.appendChild(document.createTextNode(' '));
-    btn.appendChild(label);
-  });
+  const matches = (card, axis, value) =>
+    value === 'all' ||
+    (axis === 'type'
+      ? card.dataset.type === value
+      : (card.dataset.cat || '').split(' ').includes(value));
+
+  const visibleWith = (type, cat) =>
+    cards.filter(c => matches(c, 'type', type) && matches(c, 'cat', cat));
+
+  // Counts are relative to the other axis, so a button never promises results
+  // the combination cannot deliver.
+  function refreshCounts() {
+    buttons.forEach(btn => {
+      const { axis, filter } = btn.dataset;
+      const n = axis === 'type'
+        ? visibleWith(filter, active.cat).length
+        : visibleWith(active.type, filter).length;
+
+      let label = btn.querySelector('.count');
+      if (!label) {
+        label = document.createElement('span');
+        label.className = 'count';
+        btn.appendChild(document.createTextNode(' '));
+        btn.appendChild(label);
+      }
+      label.textContent = n;
+      btn.classList.toggle('is-empty', n === 0);
+    });
+  }
+
+  function apply() {
+    let shown = 0;
+    cards.forEach(card => {
+      const show = matches(card, 'type', active.type) && matches(card, 'cat', active.cat);
+      card.classList.toggle('hidden', !show);
+      if (show) {
+        shown++;
+        // A card revealed by a filter change may never have crossed the observer.
+        if (!card.classList.contains('visible')) revealCard(card);
+      }
+    });
+    if (empty) empty.hidden = shown > 0;
+    refreshCounts();
+  }
 
   bar.addEventListener('click', e => {
     const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-
-    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === btn));
-
-    const filter = btn.dataset.filter;
-    cards.forEach(card => {
-      const cats = (card.dataset.cat || '').split(' ');
-      const show = filter === 'all' || cats.includes(filter);
-      card.classList.toggle('hidden', !show);
-      // A card revealed by a filter change may never have crossed the observer.
-      if (show && !card.classList.contains('visible')) revealCard(card);
-    });
+    if (btn) {
+      const { axis, filter } = btn.dataset;
+      active[axis] = filter;
+      buttons
+        .filter(b => b.dataset.axis === axis)
+        .forEach(b => b.classList.toggle('active', b === btn));
+      apply();
+      return;
+    }
+    if (reset && e.target === reset) {
+      active.type = 'all';
+      active.cat = 'all';
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+      apply();
+    }
   });
+
+  apply();
 })();
 
 /* ===== CONTACT FORM ===== */
