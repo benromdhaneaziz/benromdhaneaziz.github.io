@@ -105,14 +105,7 @@ body.dark .metric-box b{color:#a5b4fc}
 .note-card h3{font-size:1rem;font-weight:700;margin-bottom:var(--sp-2)}
 .note-card p{margin:0;font-size:.93rem}
 
-/* ---- Screenshot ---- */
-.project-shot{
-  border:1px solid var(--border);border-radius:var(--radius);
-  overflow:hidden;box-shadow:var(--shadow-card);
-  margin-bottom:var(--sp-4);
-}
-.project-shot img{width:100%;height:auto;display:block}
-.shot-caption{font-size:.8rem;color:var(--text-muted);text-align:center}
+.repo-note{font-size:.85rem;color:var(--text-muted)}
 
 /* ---- Architecture diagram ---- */
 .diagram{

@@ -4,8 +4,7 @@
 Run from the repo root:   python tools/build_pages.py
 
 Editing a page by hand will be overwritten on the next run — change
-tools/projects.json instead. A screenshot dropped at
-assets/screenshots/<slug>.png (or .jpg/.webp) is picked up automatically.
+tools/projects.json instead.
 """
 
 import html
@@ -16,7 +15,6 @@ import re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "tools", "projects.json")
 OUT_DIR = os.path.join(ROOT, "projects")
-SHOTS_DIR = os.path.join(ROOT, "assets", "screenshots")
 SITE = "https://benromdhaneaziz-github-io.vercel.app"
 
 TYPE_LABELS = {
@@ -40,21 +38,6 @@ def e(text):
     return html.escape(str(text), quote=False)
 
 
-CAPTIONS_FILE = os.path.join(SHOTS_DIR, "captions.json")
-CAPTIONS = {}
-if os.path.exists(CAPTIONS_FILE):
-    with open(CAPTIONS_FILE, encoding="utf-8") as _fh:
-        CAPTIONS = json.load(_fh)
-
-
-def find_screenshot(slug):
-    for ext in (".png", ".jpg", ".jpeg", ".webp"):
-        rel = f"assets/screenshots/{slug}{ext}"
-        if os.path.exists(os.path.join(ROOT, rel.replace("/", os.sep))):
-            return "../" + rel
-    return None
-
-
 def plain(text):
     """First sentence, tag-free, for meta descriptions."""
     text = re.sub(r"\s+", " ", text).strip()
@@ -65,7 +48,6 @@ def build(slug, p, order):
     badge_class, _ = TYPE_LABELS.get(p["type"], ("", ""))
     title = f'{p["title"]} — {p["tagline"]}'
     desc = plain(p["summary"][0])
-    shot = find_screenshot(slug)
 
     idx = order.index(slug)
     prev_slug = order[idx - 1] if idx > 0 else None
@@ -138,7 +120,7 @@ def build(slug, p, order):
             add(f'        <a class="btn btn-secondary" href="{e(ln["url"])}" target="_blank" rel="noopener">{e(ln["label"])} &#8599;</a>')
         add("      </div>")
     else:
-        add('      <p class="shot-caption" style="text-align:left">Private repository — code is not public.</p>')
+        add('      <p class="repo-note">Private repository — code is not public.</p>')
 
     metrics = p.get("metrics") or []
     if metrics:
@@ -153,14 +135,6 @@ def build(slug, p, order):
     add('  <main class="project-body">')
     add('    <div class="container">')
 
-    if shot:
-        caption = CAPTIONS.get(slug, "From the project.")
-        add('      <section class="project-section">')
-        add('        <div class="project-shot">')
-        add(f'          <img src="{shot}" alt="{e(p["title"])} — {e(caption)}" loading="lazy" />')
-        add("        </div>")
-        add(f'        <p class="shot-caption">{e(caption)}</p>')
-        add("      </section>")
 
     add('      <section class="project-section">')
     add("        <h2>Overview</h2>")
@@ -254,7 +228,6 @@ for slug, project in DATA_CACHE.items():
     with open(path, "w", encoding="utf-8") as fh:
         fh.write(build(slug, project, order))
     written += 1
-    shot = find_screenshot(slug)
-    print(f"  {slug:24} {'[screenshot]' if shot else ''}")
+    print(f"  {slug}")
 
 print(f"\n{written} pages written to projects/")

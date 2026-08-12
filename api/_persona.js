@@ -87,7 +87,7 @@ PHP + Bootstrap 4 school management: students, attendance, marks, online exams, 
 **☕ PiDev / JavaFX Projects** — Symfony/PHP web app and JavaFX desktop apps (ESPRIT projects)
 
 **🏨 Hotel Nearest Places** — github.com/DefNotScreaMy/hotel-nearest-places
-Flask web app • Groq Llama 3 for NLP • OpenRouteService routing • OpenWeatherMap • Overpy/OSM
+Flask REST API • Groq Llama 3 for NLP • OpenRouteService routing • OpenWeatherMap • Overpy/OSM
 
 **✈️ Flight Invoice RAG Chatbot** — github.com/DefNotScreaMy/flight-rag-chatbot
 Streamlit RAG chatbot for flight invoices • LangChain + ChromaDB + HuggingFace embeddings + Groq Llama 3
