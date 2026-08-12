@@ -40,6 +40,13 @@ def e(text):
     return html.escape(str(text), quote=False)
 
 
+CAPTIONS_FILE = os.path.join(SHOTS_DIR, "captions.json")
+CAPTIONS = {}
+if os.path.exists(CAPTIONS_FILE):
+    with open(CAPTIONS_FILE, encoding="utf-8") as _fh:
+        CAPTIONS = json.load(_fh)
+
+
 def find_screenshot(slug):
     for ext in (".png", ".jpg", ".jpeg", ".webp"):
         rel = f"assets/screenshots/{slug}{ext}"
@@ -147,11 +154,12 @@ def build(slug, p, order):
     add('    <div class="container">')
 
     if shot:
+        caption = CAPTIONS.get(slug, "From the project.")
         add('      <section class="project-section">')
         add('        <div class="project-shot">')
-        add(f'          <img src="{shot}" alt="{e(p["title"])} interface" loading="lazy" />')
+        add(f'          <img src="{shot}" alt="{e(p["title"])} — {e(caption)}" loading="lazy" />')
         add("        </div>")
-        add('        <p class="shot-caption">The application in use.</p>')
+        add(f'        <p class="shot-caption">{e(caption)}</p>')
         add("      </section>")
 
     add('      <section class="project-section">')

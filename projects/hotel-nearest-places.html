@@ -59,6 +59,12 @@
   <main class="project-body">
     <div class="container">
       <section class="project-section">
+        <div class="project-shot">
+          <img src="../assets/screenshots/hotel-nearest-places.png" alt="Hotel Nearest Places — Flask entry point — LLM geocoding then routing and weather." loading="lazy" />
+        </div>
+        <p class="shot-caption">Flask entry point — LLM geocoding then routing and weather.</p>
+      </section>
+      <section class="project-section">
         <h2>Overview</h2>
         <p>A Flask REST API that takes a hotel name and returns the ten nearest points of interest, each with a road distance, a route and current weather.</p>
         <p>The interesting part is the front of the pipeline: instead of a geocoding service, an LLM extracts the hotel's coordinates and candidate nearby places from natural language, and OpenStreetMap data is used to enrich and verify what comes back.</p>

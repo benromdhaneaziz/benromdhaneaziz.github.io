@@ -56,6 +56,12 @@
   <main class="project-body">
     <div class="container">
       <section class="project-section">
+        <div class="project-shot">
+          <img src="../assets/screenshots/flight-rag-chatbot.png" alt="Flight Invoice RAG Chatbot — The retrieval chain: ChromaDB lookup feeding the Groq model." loading="lazy" />
+        </div>
+        <p class="shot-caption">The retrieval chain: ChromaDB lookup feeding the Groq model.</p>
+      </section>
+      <section class="project-section">
         <h2>Overview</h2>
         <p>A Streamlit chatbot that answers questions about flight invoices and profit figures. Invoice CSV data is embedded into a local ChromaDB collection, retrieved semantically per question, and passed to the model as context.</p>
         <p>Keeping the vector store local means the data never leaves the machine — only the retrieved snippets reach the LLM.</p>

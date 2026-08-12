@@ -239,9 +239,9 @@
       { "value": "3", "label": "Analysis phases" }
     ],
     "stack": {
-      "Analysis": ["Python", "StatsModels", "ARIMA", "SARIMA", "ADF / KPSS"],
-      "Data": ["FRED", "Pandas"],
-      "Tools": ["Jupyter"]
+      "Analysis": ["R", "R Markdown", "forecast", "astsa", "tseries", "lmtest", "ARIMA", "SARIMA", "ADF / KPSS"],
+      "Data": ["FRED"],
+      "Tools": ["RStudio", "knitr"]
     },
     "architecture": "flowchart LR\n  A[(\"FRED series\")] --> B[\"Phase 1<br/>statistical + graphical analysis\"]\n  B --> C[\"Transformations<br/>stabilise variance\"]\n  C --> D[\"Phase 2<br/>differencing + model fit\"]\n  D --> E[\"ARIMA / SARIMA<br/>candidate comparison\"]\n  E --> F[\"Phase 3<br/>residual diagnostics\"]",
     "notes": [],

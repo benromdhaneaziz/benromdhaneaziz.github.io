@@ -64,7 +64,7 @@ Streamlit app for Tunisian Stock Market • AdaBoost & Gradient Boosting for pri
 GMM anomaly detection + Decision Tree / KNN intrusion detection on NSL-KDD dataset • classifies DoS, U2R, R2L, Probe attacks
 
 **📊 Time Series — Federal Reserve (FRED)** — github.com/benromdhaneaziz/Time-Series-Project-Federal-Reserve-Economic-Data-FRED-
-ARIMA / SARIMA modelling, stationarity tests (ADF / KPSS), residual diagnostics • Python, StatsModels, Jupyter
+ARIMA / SARIMA modelling, stationarity tests (ADF / KPSS), residual diagnostics • written in R (R Markdown, forecast, astsa, tseries)
 
 **🧠 Knowledge Graph for Project Management** — github.com/benromdhaneaziz/A_knowledge_graph_system_for_Project_Management
 PyTorch + RGCN link prediction • BERT embeddings • Pinecone vector DB • GPT-4 Mini Q&A over project knowledge graphs
