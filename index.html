@@ -3,6 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- The repo is named *.github.io, so GitHub Pages publishes it automatically.
+       Pages cannot run the /api functions, so the chatbot and contact form only
+       work on Vercel — send Pages visitors to the canonical host before paint.
+       If the Vercel URL changes, update it here AND in the canonical/og:url tags
+       below, sitemap.xml, robots.txt, and DEFAULT_ORIGINS in api/_guard.js. -->
+  <script>
+    (function () {
+      var CANONICAL_ORIGIN = 'https://benromdhaneaziz-github-io.vercel.app';
+      if (location.hostname.indexOf('github.io') !== -1) {
+        location.replace(CANONICAL_ORIGIN + location.pathname + location.search + location.hash);
+      }
+    })();
+  </script>
   <title>Mohamed Aziz Ben Romdhane | AI &amp; Backend Engineer</title>
   <meta name="description" content="Software Engineer at Worldsoft and Data Science engineering student at ESPRIT. I build multi-agent AI systems, LLM pipelines and production backends — CurvaTrip, Hotel SaaS, Travel CRM." />
   <meta name="author" content="Mohamed Aziz Ben Romdhane" />
