@@ -19,6 +19,7 @@ const FR = {
   'hero.greeting': 'Bonjour, je suis',
   'hero.cta.work': 'Voir mes projets',
   'hero.cta.contact': 'Me contacter',
+  'hero.cta.cv': 'Télécharger le CV',
 
   /* --- section headings --- */
   'sec.about.title': 'À propos de <span class="highlight">moi</span>',
@@ -326,6 +327,13 @@ function apply(lang) {
     const isActive = b.dataset.lang === lang;
     b.classList.toggle('active', isActive);
     b.setAttribute('aria-pressed', String(isActive));
+  });
+
+  // The CV exists in both languages; serve the one matching the interface.
+  document.querySelectorAll('a.cv-link').forEach(a => {
+    a.href = lang === 'fr'
+      ? 'assets/cv/Mohamed_Aziz_Ben_Romdhane_CV_FR.pdf'
+      : 'assets/cv/Mohamed_Aziz_Ben_Romdhane_CV.pdf';
   });
 
   // Case studies are separate files per language, so the links move too.
