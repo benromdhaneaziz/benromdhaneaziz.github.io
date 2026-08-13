@@ -67,7 +67,7 @@
     'Multi-Agent AI Systems Builder',
     'LLM Pipelines · RAG · Voice Agents',
     'FastAPI + LangGraph Developer',
-    'Data Science Engineering Student @ ESPRIT',
+    'Data Science Engineer — ESPRIT Graduate',
     'Python · Java · C# Developer',
   ];
   // window.T comes from i18n.js and falls back to English when it is absent.

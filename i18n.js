@@ -34,7 +34,7 @@ const FR = {
   'sec.contact.sub': 'Ouvert aux opportunités, collaborations et stages',
 
   /* --- about --- */
-  'about.p1': 'Je suis élève ingénieur spécialisé en <strong>Data Science</strong> à <strong>ESPRIT</strong> ' +
+  'about.p1': 'Je suis ingénieur diplômé en <strong>Data Science</strong> de l’<strong>ESPRIT</strong> ' +
     '(École Supérieure Privée d’Ingénierie et de Technologies), en Tunisie. Je conçois des systèmes ' +
     'intelligents qui transforment des données brutes en valeur métier concrète.',
   'about.p2': 'Mon expérience couvre les <strong>architectures d’IA multi-agents</strong>, les ' +
@@ -52,7 +52,7 @@ const FR = {
   'info.label.location': 'Localisation',
   'info.label.status': 'Statut',
   'info.label.languages': 'Langues',
-  'info.value.0': 'Cycle ingénieur &#8212; Data Science, ESPRIT',
+  'info.value.0': 'Diplôme d’ingénieur, Data Science &#8212; ESPRIT (2025)',
   'info.value.1': 'Tunisie &#x1F1F9;&#x1F1F3;',
   'info.value.2': 'Ingénieur logiciel @ Worldsoft',
   'info.value.3': 'Arabe &middot; Français &middot; Anglais',
@@ -241,7 +241,7 @@ const FR_DYN = {
   'type.1': 'Concepteur de systèmes IA multi-agents',
   'type.2': 'Pipelines LLM · RAG · Agents vocaux',
   'type.3': 'Développeur FastAPI + LangGraph',
-  'type.4': 'Élève ingénieur Data Science @ ESPRIT',
+  'type.4': 'Ingénieur Data Science — diplômé ESPRIT',
   'type.5': 'Développeur Python · Java · C#',
   'form.invalid': 'Merci de remplir correctement tous les champs.',
   'form.sending': 'Envoi en cours…',
@@ -261,11 +261,11 @@ const FR_DYN = {
 const META = {
   en: {
     title: 'Mohamed Aziz Ben Romdhane | AI & Backend Engineer',
-    desc: 'Software Engineer at Worldsoft and Data Science engineering student at ESPRIT. I build multi-agent AI systems, LLM pipelines and production backends.',
+    desc: 'AI & Software Engineer at Worldsoft, Data Science engineering graduate of ESPRIT. I build multi-agent AI systems, LLM pipelines and production backends.',
   },
   fr: {
     title: 'Mohamed Aziz Ben Romdhane | Ingénieur IA & Backend',
-    desc: 'Ingénieur logiciel chez Worldsoft et élève ingénieur en Data Science à ESPRIT. Je conçois des systèmes IA multi-agents, des pipelines LLM et des backends de production.',
+    desc: 'Ingénieur IA & logiciel chez Worldsoft, diplômé ingénieur en Data Science de l’ESPRIT. Je conçois des systèmes IA multi-agents, des pipelines LLM et des backends de production.',
   },
 };
 
