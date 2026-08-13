@@ -207,8 +207,9 @@ nav{display:flex;align-items:center;gap:8px}
   backdrop-filter:blur(8px);
   letter-spacing:.3px;
 }
-.hero-tag span{
-  display:inline-block;width:7px;height:7px;
+/* Only the leading pulse dot — the label next to it is a span too. */
+.hero-tag > span:first-child{
+  display:inline-block;width:7px;height:7px;flex-shrink:0;
   background:#22d3ee;border-radius:50%;
   animation:pulse-dot 2s infinite;
 }
