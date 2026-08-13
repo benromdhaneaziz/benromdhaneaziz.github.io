@@ -1,9 +1,263 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://benromdhaneaziz-github-io.vercel.app/</loc>
-    <lastmod>2026-08-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/" />
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/curvatrip.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/curvatrip.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/curvatrip.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/curvatrip.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/curvatrip.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/curvatrip.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/hotel-contract-saas.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/hotel-contract-saas.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/hotel-contract-saas.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/hotel-contract-saas.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/hotel-contract-saas.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/hotel-contract-saas.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/travel-crm.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/travel-crm.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/travel-crm.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/travel-crm.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/travel-crm.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/travel-crm.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/bvmt-analytics.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/bvmt-analytics.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/bvmt-analytics.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/bvmt-analytics.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/bvmt-analytics.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/bvmt-analytics.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/anomaly-detection.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/anomaly-detection.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/anomaly-detection.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/anomaly-detection.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/anomaly-detection.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/anomaly-detection.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/time-series-fred.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/time-series-fred.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/time-series-fred.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/time-series-fred.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/time-series-fred.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/time-series-fred.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/knowledge-graph.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/knowledge-graph.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/knowledge-graph.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/knowledge-graph.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/knowledge-graph.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/knowledge-graph.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/devops-project.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/devops-project.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/devops-project.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/devops-project.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/devops-project.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/devops-project.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/simple-api-logger.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/simple-api-logger.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/simple-api-logger.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/simple-api-logger.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/simple-api-logger.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/simple-api-logger.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/smart-real-estate.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/smart-real-estate.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/smart-real-estate.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/smart-real-estate.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/smart-real-estate.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/smart-real-estate.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/pidev.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/pidev.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/pidev.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/pidev.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/pidev.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/pidev.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/eschool.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/eschool.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/eschool.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/eschool.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/eschool.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/eschool.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/pharmareport.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/pharmareport.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/pharmareport.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/pharmareport.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/pharmareport.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/pharmareport.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/dotnet-core-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/dotnet-core-training.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/dotnet-core-training.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/dotnet-core-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/dotnet-core-training.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/dotnet-core-training.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/javafx-sustainable.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/javafx-sustainable.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/javafx-sustainable.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/javafx-sustainable.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/javafx-sustainable.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/javafx-sustainable.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/hotel-nearest-places.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/hotel-nearest-places.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/hotel-nearest-places.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/hotel-nearest-places.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/hotel-nearest-places.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/hotel-nearest-places.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/flight-rag-chatbot.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/flight-rag-chatbot.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/flight-rag-chatbot.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/flight-rag-chatbot.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/flight-rag-chatbot.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/flight-rag-chatbot.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/minecraft-llm-bot.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/minecraft-llm-bot.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/minecraft-llm-bot.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benromdhaneaziz-github-io.vercel.app/projects/fr/minecraft-llm-bot.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/minecraft-llm-bot.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/minecraft-llm-bot.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

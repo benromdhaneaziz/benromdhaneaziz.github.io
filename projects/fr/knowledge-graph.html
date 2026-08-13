@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Knowledge Graph for Project Management — BERT + RGCN link prediction | Mohamed Aziz Ben Romdhane</title>
-  <meta name="description" content="A graph-based recommendation system for project risk management. The knowledge graph is built from PMI standards, PMBOK 6 and 7, a risk-management glossary and real case studies, s" />
-  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/knowledge-graph.html" />
+  <title>Knowledge Graph for Project Management — Prédiction de liens BERT + RGCN | Mohamed Aziz Ben Romdhane</title>
+  <meta name="description" content="Système de recommandation par graphe pour la gestion des risques projet. Le graphe de connaissances est construit à partir des standards PMI, du PMBOK 6 et 7, d'un glossaire de ges" />
+  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/knowledge-graph.html" />
   <link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/knowledge-graph.html" />
   <link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/knowledge-graph.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Knowledge Graph for Project Management — BERT + RGCN link prediction" />
-  <meta property="og:description" content="A graph-based recommendation system for project risk management. The knowledge graph is built from PMI standards, PMBOK 6 and 7, a risk-management glossary and real case studies, s" />
-  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/knowledge-graph.html" />
+  <meta property="og:title" content="Knowledge Graph for Project Management — Prédiction de liens BERT + RGCN" />
+  <meta property="og:description" content="Système de recommandation par graphe pour la gestion des risques projet. Le graphe de connaissances est construit à partir des standards PMI, du PMBOK 6 et 7, d'un glossaire de ges" />
+  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/fr/knowledge-graph.html" />
   <meta name="theme-color" content="#4f46e5" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Inter,Arial,sans-serif' font-size='32' font-weight='800' fill='%23fff' text-anchor='middle'%3EAZ%3C/text%3E%3C/svg%3E" />
   <script>
@@ -25,18 +25,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../projects/project.css" />
 </head>
 <body>
   <header class="navbar page-nav">
     <div class="nav-container">
-      <a href="../index.html#projects" class="back-link">&#8592; All projects</a>
+      <a href="../../index.html#projects" class="back-link">&#8592; Tous les projets</a>
       <nav>
-        <a href="../index.html" class="nav-logo">AZ.</a>
+        <a href="../../index.html" class="nav-logo">AZ.</a>
         <div class="lang-switch" role="group" aria-label="Language / Langue">
-          <a class="lang-btn active" href="knowledge-graph.html" hreflang="en">EN</a>
-          <a class="lang-btn" href="fr/knowledge-graph.html" hreflang="fr">FR</a>
+          <a class="lang-btn" href="../knowledge-graph.html" hreflang="en">EN</a>
+          <a class="lang-btn active" href="knowledge-graph.html" hreflang="fr">FR</a>
         </div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -48,36 +48,36 @@
   <section class="project-hero">
     <div class="container">
       <div class="hero-badges">
-        <span class="project-badge contrib">ESPRIT team project</span>
-        <span class="project-badge wip">Complete</span>
+        <span class="project-badge contrib">Université</span>
+        <span class="project-badge wip">Terminé</span>
       </div>
       <p class="hero-meta">2025</p>
       <h1><span class="hero-icon">🧠</span>Knowledge Graph for Project Management</h1>
-      <p class="tagline">BERT + RGCN link prediction</p>
+      <p class="tagline">Prédiction de liens BERT + RGCN</p>
       <div class="hero-links">
         <a class="btn btn-secondary" href="https://github.com/benromdhaneaziz/A_knowledge_graph_system_for_Project_Management" target="_blank" rel="noopener">GitHub &#8599;</a>
       </div>
       <div class="metrics-strip">
-        <div class="metric-box"><b>2</b><span>Recommender variants</span></div>
+        <div class="metric-box"><b>2</b><span>Variantes de recommandation</span></div>
       </div>
     </div>
   </section>
   <main class="project-body">
     <div class="container">
       <section class="project-section">
-        <h2>Overview</h2>
-        <p>A graph-based recommendation system for project risk management. The knowledge graph is built from PMI standards, PMBOK 6 and 7, a risk-management glossary and real case studies, so recommendations are grounded in the discipline's own literature.</p>
-        <p>Two recommenders were built and compared: one using BERT embeddings with a custom link predictor, and one combining BERT embeddings with a Relational Graph Convolutional Network for richer structural context before the same predictor.</p>
+        <h2>Aperçu</h2>
+        <p>Système de recommandation par graphe pour la gestion des risques projet. Le graphe de connaissances est construit à partir des standards PMI, du PMBOK 6 et 7, d'un glossaire de gestion des risques et d'études de cas réelles : les recommandations s'appuient donc sur la littérature de la discipline elle-même.</p>
+        <p>Deux moteurs de recommandation ont été construits et comparés : l'un avec des embeddings BERT et un prédicteur de liens sur mesure, l'autre combinant les embeddings BERT et un réseau convolutif de graphes relationnels (RGCN) pour enrichir le contexte structurel avant le même prédicteur.</p>
       </section>
       <section class="project-section">
-        <h2>What it does</h2>
+        <h2>Ce que ça fait</h2>
         <ul class="highlight-list">
-          <li>Knowledge graph assembled from PMI standards, PMBOK 6 &amp; 7 and case studies</li>
-          <li>BERT embeddings for semantic representation of graph entities</li>
-          <li>RGCN over the relational graph for structure-aware embeddings</li>
-          <li>Custom link-prediction head driving the recommendations</li>
-          <li>Pinecone vector index for similarity search</li>
-          <li>GPT-4 Mini for natural-language question answering over the graph</li>
+          <li>Graphe de connaissances assemblé à partir des standards PMI, du PMBOK 6 &amp; 7 et d'études de cas</li>
+          <li>Embeddings BERT pour la représentation sémantique des entités du graphe</li>
+          <li>RGCN sur le graphe relationnel pour des embeddings sensibles à la structure</li>
+          <li>Tête de prédiction de liens sur mesure au cœur des recommandations</li>
+          <li>Index vectoriel Pinecone pour la recherche par similarité</li>
+          <li>GPT-4 Mini pour les questions-réponses en langage naturel sur le graphe</li>
         </ul>
       </section>
       <section class="project-section">
@@ -95,13 +95,13 @@ flowchart TD
   C --&gt; I[("Pinecone index")]
   I --&gt; J["GPT-4 Mini Q&amp;A"]
         </pre></div>
-        <p class="diagram-note">Diagram drawn from the actual codebase.</p>
+        <p class="diagram-note">Diagramme établi à partir du code source réel.</p>
       </section>
       <section class="project-section">
-        <h2>Tech stack</h2>
+        <h2>Stack technique</h2>
         <div class="stack-groups">
           <div class="stack-group">
-            <h3>ML</h3>
+            <h3>Machine Learning</h3>
             <div class="skill-tags">
               <span class="skill-tag">PyTorch</span>
               <span class="skill-tag">RGCN</span>
@@ -110,14 +110,14 @@ flowchart TD
             </div>
           </div>
           <div class="stack-group">
-            <h3>AI</h3>
+            <h3>IA</h3>
             <div class="skill-tags">
               <span class="skill-tag">GPT-4 Mini</span>
               <span class="skill-tag">Pinecone</span>
             </div>
           </div>
           <div class="stack-group">
-            <h3>Tools</h3>
+            <h3>Outils</h3>
             <div class="skill-tags">
               <span class="skill-tag">Jupyter</span>
               <span class="skill-tag">NetworkX</span>
@@ -126,10 +126,10 @@ flowchart TD
         </div>
       </section>
       <section class="project-section">
-        <h2>Notes &amp; decisions</h2>
+        <h2>Notes &amp; décisions</h2>
         <div class="note-card">
-          <h3>Team project</h3>
-          <p>Built with Saif Zribi, Houssem Eddine Mars and Jasser Chtourou as a collective effort.</p>
+          <h3>Projet d'équipe</h3>
+          <p>Réalisé avec Saif Zribi, Houssem Eddine Mars et Jasser Chtourou dans le cadre d'un effort collectif.</p>
         </div>
       </section>
       <nav class="project-footer-nav">
@@ -140,15 +140,15 @@ flowchart TD
   </main>
   <footer class="footer">
     <div class="container">
-      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
+      <p>Conçu &amp; développé par <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
       <div class="footer-links">
-        <a href="../index.html">Portfolio</a>
+        <a href="../../index.html">Portfolio</a>
         <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:Benromdhane.Aziz@esprit.tn">Email</a>
       </div>
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="project.js"></script>
+  <script src="../../projects/project.js"></script>
 </body>
 </html>

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DevOps Project — Spring Boot service with a full pipeline | Mohamed Aziz Ben Romdhane</title>
-  <meta name="description" content="A Spring Boot microservice built to carry a complete DevOps pipeline rather than to be a large application. The point of the exercise was everything around the code: tests, logging" />
-  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/devops-project.html" />
+  <title>DevOps Project — Service Spring Boot avec chaîne complète | Mohamed Aziz Ben Romdhane</title>
+  <meta name="description" content="Un microservice Spring Boot conçu pour porter une chaîne DevOps complète plutôt que pour être une grosse application. Tout l'intérêt de l'exercice tient à ce qui entoure le code : " />
+  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/devops-project.html" />
   <link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/devops-project.html" />
   <link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/devops-project.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="DevOps Project — Spring Boot service with a full pipeline" />
-  <meta property="og:description" content="A Spring Boot microservice built to carry a complete DevOps pipeline rather than to be a large application. The point of the exercise was everything around the code: tests, logging" />
-  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/devops-project.html" />
+  <meta property="og:title" content="DevOps Project — Service Spring Boot avec chaîne complète" />
+  <meta property="og:description" content="Un microservice Spring Boot conçu pour porter une chaîne DevOps complète plutôt que pour être une grosse application. Tout l'intérêt de l'exercice tient à ce qui entoure le code : " />
+  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/fr/devops-project.html" />
   <meta name="theme-color" content="#4f46e5" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Inter,Arial,sans-serif' font-size='32' font-weight='800' fill='%23fff' text-anchor='middle'%3EAZ%3C/text%3E%3C/svg%3E" />
   <script>
@@ -25,18 +25,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../projects/project.css" />
 </head>
 <body>
   <header class="navbar page-nav">
     <div class="nav-container">
-      <a href="../index.html#projects" class="back-link">&#8592; All projects</a>
+      <a href="../../index.html#projects" class="back-link">&#8592; Tous les projets</a>
       <nav>
-        <a href="../index.html" class="nav-logo">AZ.</a>
+        <a href="../../index.html" class="nav-logo">AZ.</a>
         <div class="lang-switch" role="group" aria-label="Language / Langue">
-          <a class="lang-btn active" href="devops-project.html" hreflang="en">EN</a>
-          <a class="lang-btn" href="fr/devops-project.html" hreflang="fr">FR</a>
+          <a class="lang-btn" href="../devops-project.html" hreflang="en">EN</a>
+          <a class="lang-btn active" href="devops-project.html" hreflang="fr">FR</a>
         </div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -48,12 +48,12 @@
   <section class="project-hero">
     <div class="container">
       <div class="hero-badges">
-        <span class="project-badge contrib">ESPRIT project</span>
-        <span class="project-badge wip">Complete</span>
+        <span class="project-badge contrib">Université</span>
+        <span class="project-badge wip">Terminé</span>
       </div>
       <p class="hero-meta">2024</p>
       <h1><span class="hero-icon">⚙️</span>DevOps Project</h1>
-      <p class="tagline">Spring Boot service with a full pipeline</p>
+      <p class="tagline">Service Spring Boot avec chaîne complète</p>
       <div class="hero-links">
         <a class="btn btn-secondary" href="https://github.com/benromdhaneaziz/Devops-Project" target="_blank" rel="noopener">GitHub &#8599;</a>
       </div>
@@ -62,20 +62,20 @@
   <main class="project-body">
     <div class="container">
       <section class="project-section">
-        <h2>Overview</h2>
-        <p>A Spring Boot microservice built to carry a complete DevOps pipeline rather than to be a large application. The point of the exercise was everything around the code: tests, logging, containers, metrics and dashboards.</p>
-        <p>The service is packaged with a Dockerfile and docker-compose, instrumented for Prometheus scraping, and visualised in Grafana. An Angular 16 frontend consumes the API.</p>
+        <h2>Aperçu</h2>
+        <p>Un microservice Spring Boot conçu pour porter une chaîne DevOps complète plutôt que pour être une grosse application. Tout l'intérêt de l'exercice tient à ce qui entoure le code : tests, journalisation, conteneurs, métriques et tableaux de bord.</p>
+        <p>Le service est packagé avec un Dockerfile et docker-compose, instrumenté pour être scrapé par Prometheus et visualisé dans Grafana. Un frontend Angular 16 consomme l'API.</p>
       </section>
       <section class="project-section">
-        <h2>What it does</h2>
+        <h2>Ce que ça fait</h2>
         <ul class="highlight-list">
-          <li>Spring Boot service (tn.esprit.devops_project) built with Maven</li>
-          <li>Unit tests with JUnit and Mockito</li>
-          <li>Log4j logging configuration</li>
-          <li>Dockerfile plus docker-compose for the full stack</li>
-          <li>Prometheus metrics scraping with a Grafana dashboard</li>
-          <li>OpenAPI specification checked into the repository</li>
-          <li>Angular 16 frontend, built in a two-person collaboration</li>
+          <li>Service Spring Boot (tn.esprit.devops_project) construit avec Maven</li>
+          <li>Tests unitaires avec JUnit et Mockito</li>
+          <li>Configuration de journalisation Log4j</li>
+          <li>Dockerfile et docker-compose pour l'ensemble de la stack</li>
+          <li>Collecte de métriques Prometheus avec tableau de bord Grafana</li>
+          <li>Spécification OpenAPI versionnée dans le dépôt</li>
+          <li>Frontend Angular 16, en collaboration à deux</li>
         </ul>
       </section>
       <section class="project-section">
@@ -91,10 +91,10 @@ flowchart LR
   H --&gt; I["Docker image"]
   I --&gt; J["docker compose stack"]
         </pre></div>
-        <p class="diagram-note">Diagram drawn from the actual codebase.</p>
+        <p class="diagram-note">Diagramme établi à partir du code source réel.</p>
       </section>
       <section class="project-section">
-        <h2>Tech stack</h2>
+        <h2>Stack technique</h2>
         <div class="stack-groups">
           <div class="stack-group">
             <h3>Backend</h3>
@@ -105,7 +105,7 @@ flowchart LR
             </div>
           </div>
           <div class="stack-group">
-            <h3>Testing</h3>
+            <h3>Tests</h3>
             <div class="skill-tags">
               <span class="skill-tag">JUnit</span>
               <span class="skill-tag">Mockito</span>
@@ -137,15 +137,15 @@ flowchart LR
   </main>
   <footer class="footer">
     <div class="container">
-      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
+      <p>Conçu &amp; développé par <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
       <div class="footer-links">
-        <a href="../index.html">Portfolio</a>
+        <a href="../../index.html">Portfolio</a>
         <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:Benromdhane.Aziz@esprit.tn">Email</a>
       </div>
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="project.js"></script>
+  <script src="../../projects/project.js"></script>
 </body>
 </html>

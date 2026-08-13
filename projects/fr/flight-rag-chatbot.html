@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flight Invoice RAG Chatbot — Retrieval-augmented Q&amp;A over invoice data | Mohamed Aziz Ben Romdhane</title>
-  <meta name="description" content="A Streamlit chatbot that answers questions about flight invoices and profit figures. Invoice CSV data is embedded into a local ChromaDB collection, retrieved semantically per quest" />
-  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/flight-rag-chatbot.html" />
+  <title>Flight Invoice RAG Chatbot — Questions-réponses augmentées par récupération | Mohamed Aziz Ben Romdhane</title>
+  <meta name="description" content="Un chatbot Streamlit qui répond aux questions sur des factures de vols et des chiffres de marge. Les données de facturation en CSV sont vectorisées dans une collection ChromaDB loc" />
+  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/flight-rag-chatbot.html" />
   <link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/flight-rag-chatbot.html" />
   <link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/flight-rag-chatbot.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Flight Invoice RAG Chatbot — Retrieval-augmented Q&amp;A over invoice data" />
-  <meta property="og:description" content="A Streamlit chatbot that answers questions about flight invoices and profit figures. Invoice CSV data is embedded into a local ChromaDB collection, retrieved semantically per quest" />
-  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/flight-rag-chatbot.html" />
+  <meta property="og:title" content="Flight Invoice RAG Chatbot — Questions-réponses augmentées par récupération" />
+  <meta property="og:description" content="Un chatbot Streamlit qui répond aux questions sur des factures de vols et des chiffres de marge. Les données de facturation en CSV sont vectorisées dans une collection ChromaDB loc" />
+  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/fr/flight-rag-chatbot.html" />
   <meta name="theme-color" content="#4f46e5" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Inter,Arial,sans-serif' font-size='32' font-weight='800' fill='%23fff' text-anchor='middle'%3EAZ%3C/text%3E%3C/svg%3E" />
   <script>
@@ -25,18 +25,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../projects/project.css" />
 </head>
 <body>
   <header class="navbar page-nav">
     <div class="nav-container">
-      <a href="../index.html#projects" class="back-link">&#8592; All projects</a>
+      <a href="../../index.html#projects" class="back-link">&#8592; Tous les projets</a>
       <nav>
-        <a href="../index.html" class="nav-logo">AZ.</a>
+        <a href="../../index.html" class="nav-logo">AZ.</a>
         <div class="lang-switch" role="group" aria-label="Language / Langue">
-          <a class="lang-btn active" href="flight-rag-chatbot.html" hreflang="en">EN</a>
-          <a class="lang-btn" href="fr/flight-rag-chatbot.html" hreflang="fr">FR</a>
+          <a class="lang-btn" href="../flight-rag-chatbot.html" hreflang="en">EN</a>
+          <a class="lang-btn active" href="flight-rag-chatbot.html" hreflang="fr">FR</a>
         </div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -48,12 +48,12 @@
   <section class="project-hero">
     <div class="container">
       <div class="hero-badges">
-        <span class="project-badge ">Personal project</span>
-        <span class="project-badge wip">Complete</span>
+        <span class="project-badge ">Personnel</span>
+        <span class="project-badge wip">Terminé</span>
       </div>
       <p class="hero-meta">2025</p>
       <h1><span class="hero-icon">✈️</span>Flight Invoice RAG Chatbot</h1>
-      <p class="tagline">Retrieval-augmented Q&amp;A over invoice data</p>
+      <p class="tagline">Questions-réponses augmentées par récupération</p>
       <div class="hero-links">
         <a class="btn btn-secondary" href="https://github.com/DefNotScreaMy/flight-rag-chatbot" target="_blank" rel="noopener">GitHub &#8599;</a>
       </div>
@@ -62,17 +62,17 @@
   <main class="project-body">
     <div class="container">
       <section class="project-section">
-        <h2>Overview</h2>
-        <p>A Streamlit chatbot that answers questions about flight invoices and profit figures. Invoice CSV data is embedded into a local ChromaDB collection, retrieved semantically per question, and passed to the model as context.</p>
-        <p>Keeping the vector store local means the data never leaves the machine — only the retrieved snippets reach the LLM.</p>
+        <h2>Aperçu</h2>
+        <p>Un chatbot Streamlit qui répond aux questions sur des factures de vols et des chiffres de marge. Les données de facturation en CSV sont vectorisées dans une collection ChromaDB locale, récupérées sémantiquement à chaque question et transmises au modèle comme contexte.</p>
+        <p>Garder le magasin vectoriel en local signifie que les données ne quittent jamais la machine : seuls les extraits récupérés atteignent le LLM.</p>
       </section>
       <section class="project-section">
-        <h2>What it does</h2>
+        <h2>Ce que ça fait</h2>
         <ul class="highlight-list">
-          <li>RAG pipeline over ChromaDB with all-MiniLM-L6-v2 HuggingFace embeddings</li>
-          <li>Groq running Llama 3 8B for fast contextual answers</li>
-          <li>Flight invoice CSV data ingested into the vector store</li>
-          <li>Streamlit interface</li>
+          <li>Chaîne RAG sur ChromaDB avec les embeddings HuggingFace all-MiniLM-L6-v2</li>
+          <li>Groq exécutant Llama 3 8B pour des réponses contextuelles rapides</li>
+          <li>Données de factures de vols en CSV ingérées dans le magasin vectoriel</li>
+          <li>Interface Streamlit</li>
         </ul>
       </section>
       <section class="project-section">
@@ -86,20 +86,20 @@ flowchart LR
   E --&gt; F["Groq / Llama 3"]
   F --&gt; G["Answer in Streamlit"]
         </pre></div>
-        <p class="diagram-note">Diagram drawn from the actual codebase.</p>
+        <p class="diagram-note">Diagramme établi à partir du code source réel.</p>
       </section>
       <section class="project-section">
-        <h2>Tech stack</h2>
+        <h2>Stack technique</h2>
         <div class="stack-groups">
           <div class="stack-group">
-            <h3>App</h3>
+            <h3>Application</h3>
             <div class="skill-tags">
               <span class="skill-tag">Python</span>
               <span class="skill-tag">Streamlit</span>
             </div>
           </div>
           <div class="stack-group">
-            <h3>AI</h3>
+            <h3>IA</h3>
             <div class="skill-tags">
               <span class="skill-tag">LangChain</span>
               <span class="skill-tag">ChromaDB</span>
@@ -108,7 +108,7 @@ flowchart LR
             </div>
           </div>
           <div class="stack-group">
-            <h3>Data</h3>
+            <h3>Données</h3>
             <div class="skill-tags">
               <span class="skill-tag">Pandas</span>
               <span class="skill-tag">CSV ingestion</span>
@@ -124,15 +124,15 @@ flowchart LR
   </main>
   <footer class="footer">
     <div class="container">
-      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
+      <p>Conçu &amp; développé par <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
       <div class="footer-links">
-        <a href="../index.html">Portfolio</a>
+        <a href="../../index.html">Portfolio</a>
         <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:Benromdhane.Aziz@esprit.tn">Email</a>
       </div>
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="project.js"></script>
+  <script src="../../projects/project.js"></script>
 </body>
 </html>

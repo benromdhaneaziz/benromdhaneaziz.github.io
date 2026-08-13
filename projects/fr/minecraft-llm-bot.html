@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minecraft LLM Bot — Natural-language server operation | Mohamed Aziz Ben Romdhane</title>
-  <meta name="description" content="An LLM connected to a Minecraft server over RCON. It moderates chat, answers player questions in-game, and turns operator instructions written in plain English into the right serve" />
-  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/minecraft-llm-bot.html" />
+  <title>Minecraft LLM Bot — Administration serveur en langage naturel | Mohamed Aziz Ben Romdhane</title>
+  <meta name="description" content="Un LLM connecté à un serveur Minecraft via RCON. Il modère le chat, répond aux questions des joueurs en jeu, et transforme les instructions de l'opérateur écrites en anglais couran" />
+  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/minecraft-llm-bot.html" />
   <link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/minecraft-llm-bot.html" />
   <link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/minecraft-llm-bot.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Minecraft LLM Bot — Natural-language server operation" />
-  <meta property="og:description" content="An LLM connected to a Minecraft server over RCON. It moderates chat, answers player questions in-game, and turns operator instructions written in plain English into the right serve" />
-  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/minecraft-llm-bot.html" />
+  <meta property="og:title" content="Minecraft LLM Bot — Administration serveur en langage naturel" />
+  <meta property="og:description" content="Un LLM connecté à un serveur Minecraft via RCON. Il modère le chat, répond aux questions des joueurs en jeu, et transforme les instructions de l'opérateur écrites en anglais couran" />
+  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/fr/minecraft-llm-bot.html" />
   <meta name="theme-color" content="#4f46e5" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Inter,Arial,sans-serif' font-size='32' font-weight='800' fill='%23fff' text-anchor='middle'%3EAZ%3C/text%3E%3C/svg%3E" />
   <script>
@@ -25,18 +25,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../projects/project.css" />
 </head>
 <body>
   <header class="navbar page-nav">
     <div class="nav-container">
-      <a href="../index.html#projects" class="back-link">&#8592; All projects</a>
+      <a href="../../index.html#projects" class="back-link">&#8592; Tous les projets</a>
       <nav>
-        <a href="../index.html" class="nav-logo">AZ.</a>
+        <a href="../../index.html" class="nav-logo">AZ.</a>
         <div class="lang-switch" role="group" aria-label="Language / Langue">
-          <a class="lang-btn active" href="minecraft-llm-bot.html" hreflang="en">EN</a>
-          <a class="lang-btn" href="fr/minecraft-llm-bot.html" hreflang="fr">FR</a>
+          <a class="lang-btn" href="../minecraft-llm-bot.html" hreflang="en">EN</a>
+          <a class="lang-btn active" href="minecraft-llm-bot.html" hreflang="fr">FR</a>
         </div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -48,12 +48,12 @@
   <section class="project-hero">
     <div class="container">
       <div class="hero-badges">
-        <span class="project-badge ">Personal project</span>
-        <span class="project-badge wip">Complete</span>
+        <span class="project-badge ">Personnel</span>
+        <span class="project-badge wip">Terminé</span>
       </div>
       <p class="hero-meta">2025</p>
       <h1><span class="hero-icon">🎮</span>Minecraft LLM Bot</h1>
-      <p class="tagline">Natural-language server operation</p>
+      <p class="tagline">Administration serveur en langage naturel</p>
       <div class="hero-links">
         <a class="btn btn-secondary" href="https://github.com/DefNotScreaMy/minecraft-llm-bot" target="_blank" rel="noopener">GitHub &#8599;</a>
       </div>
@@ -62,19 +62,19 @@
   <main class="project-body">
     <div class="container">
       <section class="project-section">
-        <h2>Overview</h2>
-        <p>An LLM connected to a Minecraft server over RCON. It moderates chat, answers player questions in-game, and turns operator instructions written in plain English into the right server commands.</p>
-        <p>Commands are never executed blind: the model proposes the command, the operator confirms it, and only then does it run. A raw prefix bypasses the model entirely when you already know the exact syntax.</p>
+        <h2>Aperçu</h2>
+        <p>Un LLM connecté à un serveur Minecraft via RCON. Il modère le chat, répond aux questions des joueurs en jeu, et transforme les instructions de l'opérateur écrites en anglais courant en commandes serveur correctes.</p>
+        <p>Les commandes ne sont jamais exécutées à l'aveugle : le modèle propose la commande, l'opérateur confirme, et seulement ensuite elle part. Un préfixe raw court-circuite entièrement le modèle quand la syntaxe exacte est déjà connue.</p>
       </section>
       <section class="project-section">
-        <h2>What it does</h2>
+        <h2>Ce que ça fait</h2>
         <ul class="highlight-list">
-          <li>Chat moderation: every message is analysed, with escalation from warning to kick to ban</li>
-          <li>Players ask questions with ?bot and get an in-game reply</li>
-          <li>Natural language to server command, with an explicit confirmation step before execution</li>
-          <li>!raw prefix to send a command directly, bypassing the model</li>
-          <li>RCON connection to a standard Minecraft server</li>
-          <li>Provider switchable between OpenRouter and a local Ollama model</li>
+          <li>Modération du chat : chaque message est analysé, avec escalade de l'avertissement à l'expulsion puis au bannissement</li>
+          <li>Les joueurs posent une question avec ?bot et reçoivent une réponse en jeu</li>
+          <li>Langage naturel converti en commande serveur, avec une étape de confirmation explicite avant exécution</li>
+          <li>Préfixe !raw pour envoyer une commande directement, sans passer par le modèle</li>
+          <li>Connexion RCON à un serveur Minecraft standard</li>
+          <li>Fournisseur commutable entre OpenRouter et un modèle Ollama local</li>
         </ul>
       </section>
       <section class="project-section">
@@ -92,10 +92,10 @@ flowchart LR
   E --&gt; I
   F --&gt; I
         </pre></div>
-        <p class="diagram-note">Diagram drawn from the actual codebase.</p>
+        <p class="diagram-note">Diagramme établi à partir du code source réel.</p>
       </section>
       <section class="project-section">
-        <h2>Tech stack</h2>
+        <h2>Stack technique</h2>
         <div class="stack-groups">
           <div class="stack-group">
             <h3>Bot</h3>
@@ -106,7 +106,7 @@ flowchart LR
             </div>
           </div>
           <div class="stack-group">
-            <h3>AI</h3>
+            <h3>IA</h3>
             <div class="skill-tags">
               <span class="skill-tag">OpenRouter</span>
               <span class="skill-tag">Gemini 2.5 Flash</span>
@@ -114,7 +114,7 @@ flowchart LR
             </div>
           </div>
           <div class="stack-group">
-            <h3>Features</h3>
+            <h3>Fonctionnalités</h3>
             <div class="skill-tags">
               <span class="skill-tag">Chat moderation</span>
               <span class="skill-tag">Event engine</span>
@@ -130,15 +130,15 @@ flowchart LR
   </main>
   <footer class="footer">
     <div class="container">
-      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
+      <p>Conçu &amp; développé par <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
       <div class="footer-links">
-        <a href="../index.html">Portfolio</a>
+        <a href="../../index.html">Portfolio</a>
         <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:Benromdhane.Aziz@esprit.tn">Email</a>
       </div>
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="project.js"></script>
+  <script src="../../projects/project.js"></script>
 </body>
 </html>

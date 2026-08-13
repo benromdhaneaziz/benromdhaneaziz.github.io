@@ -1114,3 +1114,4 @@ body.dark .lang-switch{background:transparent;border-color:var(--border)}
 @media(max-width:640px){
   .lang-switch{margin-left:auto;margin-right:var(--sp-2)}
 }
+.lang-btn{display:inline-flex;align-items:center;justify-content:center}

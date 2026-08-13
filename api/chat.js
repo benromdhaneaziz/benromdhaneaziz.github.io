@@ -1,4 +1,4 @@
-const { SYSTEM_PROMPT } = require('./_persona');
+const { buildPrompt } = require('./_persona');
 const { checkOrigin, rateLimit } = require('./_guard');
 
 // Models get retired without warning (gemini-2.0-flash-001 started 404ing),
@@ -48,7 +48,10 @@ module.exports = async function handler(req, res) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 25_000);
 
-  const messages = [{ role: 'system', content: SYSTEM_PROMPT }, ...history];
+  // The UI language is a hint for replies like "ok" or "merci" that carry no
+  // language signal of their own.
+  const lang = body.lang === 'fr' ? 'fr' : 'en';
+  const messages = [{ role: 'system', content: buildPrompt(lang) }, ...history];
 
   function ask(model) {
     return fetch('https://openrouter.ai/api/v1/chat/completions', {

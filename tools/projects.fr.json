@@ -1,0 +1,407 @@
+{
+  "_ui": {
+    "back": "&#8592; Tous les projets",
+    "overview": "Aperçu",
+    "what": "Ce que ça fait",
+    "architecture": "Architecture",
+    "stack": "Stack technique",
+    "notes": "Notes &amp; décisions",
+    "diagramNote": "Diagramme établi à partir du code source réel.",
+    "privateNote": "Dépôt privé — le code n'est pas public.",
+    "portfolio": "Portfolio",
+    "footer": "Conçu &amp; développé par <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id=\"footerYear\">2026</span>",
+    "stackGroups": {
+      "Backend": "Backend",
+      "AI": "IA",
+      "Data": "Données",
+      "Mobile": "Mobile",
+      "Infra": "Infrastructure",
+      "Documents": "Documents",
+      "Frontend": "Frontend",
+      "App": "Application",
+      "ML": "Machine Learning",
+      "Analysis": "Analyse",
+      "Tools": "Outils",
+      "Testing": "Tests",
+      "Ops": "Ops",
+      "Geo": "Géo",
+      "Bot": "Bot",
+      "Features": "Fonctionnalités",
+      "Patterns": "Patrons",
+      "Base": "Base",
+      "Focus": "Axes",
+      "Stack": "Stack"
+    },
+    "types": {
+      "company": "Entreprise",
+      "internship": "Stage",
+      "school": "Université",
+      "personal": "Personnel"
+    },
+    "status": {
+      "In development": "En développement",
+      "Delivered": "Livré",
+      "Complete": "Terminé",
+      "Archived": "Archivé"
+    }
+  },
+
+  "curvatrip": {
+    "tagline": "Concierge de voyage IA",
+    "summary": [
+      "CurvaTrip est l'IA conversationnelle derrière les écrans de chat et de voix de l'application de réservation de vols CurvaTrip. Un visiteur formule sa demande en langage naturel — « le vol le moins cher pour Paris le week-end prochain, pour deux » — et l'agent interroge un GDS en direct, filtre selon les préférences apprises, calcule le tarif et accompagne l'utilisateur jusqu'au paiement.",
+      "L'agent expose 32 outils couvrant les vols, les réservations, la planification de voyage et les notifications. La gestion des langues est un enjeu de premier plan : un classifieur LLM choisit la langue de réponse entre anglais, français, arabe et derja tunisien, ce dernier étant rédigé à partir d'un vrai lexique plutôt que traduit automatiquement depuis l'arabe standard.",
+      "La voix passe par un pont Gemini Live avec interruption possible : l'utilisateur peut couper la parole à l'assistant. Les réponses vocales portent les mêmes cartes de vol et plans de voyage que le chat et sont enregistrées dans le même historique."
+    ],
+    "highlights": [
+      "32 outils d'agent : recherche et affinage de vols, conditions tarifaires, tarifs de marque, dates les moins chères, réservation, annulation, alertes de prix, planification, météo, devises et support",
+      "La réservation est conditionnée au paiement — l'API émet un événement de checkout pour que l'application ouvre la passerelle SATIM, et une réservation non émise se dégrade en PNR maintenu plutôt que d'échouer",
+      "Plans de voyage jour par jour avec photos, gammes de prix, distances et conseils, construits à partir de catalogues mis en cache sur disque pour rester réactifs",
+      "Voix en temps réel via un pont Gemini Live (PCM16, 16 kHz en entrée / 24 kHz en sortie) avec interruption",
+      "SQLite en développement, Oracle 11g en production, reliés par une couche de données qui traduit les dialectes SQL à la main",
+      "17 scénarios de référence exécutés comme banc d'essai — choix de langue, conditionnement au paiement, isolation des invités, allers-retours, multi-destinations et plus"
+    ],
+    "metrics": ["Outils d'agent", "Routes API", "Lignes de Python", "Instances autoscalées"],
+    "notes": [
+      {
+        "title": "Le routage persistant n'était pas optionnel",
+        "body": "Les catalogues de vols vivent en RAM entre deux tours : une requête qui atterrit sur une autre instance perd le contexte de l'utilisateur. nginx applique un hachage sur l'identifiant utilisateur et l'adresse distante pour épingler la session. Une première configuration limitait les reprises à 3 alors que 16 instances tournaient — les utilisateurs dirigés vers un port arrêté échouaient tant que ce nombre ne correspondait pas à la taille du pool."
+      },
+      {
+        "title": "Le derja est un dialecte, pas une traduction",
+        "body": "Traduire automatiquement l'arabe standard produit un texte que les Tunisiens ne parlent pas. La langue de réponse est choisie par un classifieur LLM et les réponses en derja s'appuient sur un lexique dédié, aussi bien à l'écrit qu'à l'oral."
+      },
+      {
+        "title": "Bâti sur un runtime open-source",
+        "body": "La boucle d'agent, le registre d'outils et la mémoire viennent de Hermes Agent (NousResearch, MIT). Le produit voyage — outils, planificateur, couche linguistique, pont vocal, serveur et application — est mon propre code par-dessus."
+      }
+    ]
+  },
+
+  "hotel-contract-saas": {
+    "tagline": "Extraction LLM &amp; moteur tarifaire",
+    "summary": [
+      "Les contrats hôteliers arrivent en PDF, en Word ou en tableur, chacun avec sa mise en page, et chaque tarif doit être lu à la main avant de pouvoir chiffrer un séjour. Cette plateforme les lit automatiquement : un pipeline d'extraction LLM avec repli OCR transforme un contrat en un schéma Oracle normalisé de 17 tables — saisons, chambres, tarifs, suppléments, réductions, taxes, offres, règles d'annulation et de paiement.",
+      "La tarification est délibérément tenue à l'écart du modèle. Un moteur déterministe en Python pur calcule le prix de n'importe quel séjour à partir des tables extraites et pré-construit une matrice tarifaire complète par contrat : un devis est reproductible et auditable, pas le fruit d'une supposition d'un modèle de langage.",
+      "Hermes, l'assistant intégré, s'appuie dessus avec 12 outils. Il répond aux questions sur un contrat, calcule des prix, repère les lacunes dans les données extraites et propose des corrections — toujours derrière un flux simulation puis confirmation, pour que rien ne soit écrit sans relecture."
+    ],
+    "highlights": [
+      "Pipeline d'extraction à deux voies (V1 + V2) avec repli OCR pour les contrats scannés, piloté par un schéma JSON de 45 Ko",
+      "Moteur tarifaire déterministe — aucun LLM dans le calcul du prix — avec construction de matrice, export Excel et détail par séjour",
+      "Assistant à 12 outils : calcul de prix, recherche d'hôtel, sections de contrat, description des champs, détection de lacunes, suggestions de remplissage, re-scan et reconstruction de matrice",
+      "Multi-location au niveau ligne : l'identifiant du locataire vient du JWT et est injecté dans chaque requête Oracle, avec des armoires documentaires par locataire",
+      "File d'import asynchrone adossée à Oracle utilisant FOR UPDATE SKIP LOCKED avec un pool de workers, pour que les imports en lot ne bloquent pas l'API",
+      "Score de qualité d'extraction, détection des champs manquants, journal d'audit et facturation à l'événement pour les imports et re-scans",
+      "Garde-fous de production : l'application refuse de démarrer avec un secret JWT par défaut, et la documentation d'API est désactivée hors développement"
+    ],
+    "metrics": ["Endpoints REST", "Outils de l'assistant", "Tables de contrat", "Lignes de code"],
+    "notes": [
+      {
+        "title": "Pourquoi la tarification n'appelle jamais le modèle",
+        "body": "Un devis que l'on ne peut pas reproduire ne peut pas être vendu. Le rôle du LLM s'arrête une fois le contrat structuré ; tous les prix ensuite sortent de Python pur appliqué aux tables extraites, ce qui rend chaque montant traçable jusqu'à une règle et une ligne."
+      },
+      {
+        "title": "Isolation des locataires par construction",
+        "body": "Plutôt que de filtrer dans la couche service, l'identifiant du locataire issu du JWT est propagé jusqu'à la couche de données et appliqué à chaque requête — environ 370 points d'appel — pour qu'un filtre oublié soit une omission visible, pas une fuite silencieuse."
+      }
+    ]
+  },
+
+  "travel-crm": {
+    "tagline": "Système IA multi-agents",
+    "summary": [
+      "Un CRM voyage d'entreprise où la couche de reporting est une conversation. Au lieu de naviguer dans des tableaux de bord, un manager pose sa question et un système à 8 agents décide quel spécialiste doit y répondre : SQL, Analyste, Prévision, Anomalie, Segmentation, Hôtel, Vol, ou l'Orchestrateur qui arbitre entre eux.",
+      "Les agents tournent sur LangGraph avec DeepSeek via OpenRouter, au-dessus d'une base Oracle 11.2g exposée par 52 endpoints FastAPI. Les réponses arrivent en streaming SSE, si bien que les analyses longues s'affichent progressivement au lieu de bloquer.",
+      "Le tableau de bord Angular 17 restitue les résultats en graphiques et cartes interactives, et une chaîne d'ingestion séparée analyse les contrats hôteliers en PDF avec OCR."
+    ],
+    "highlights": [
+      "8 agents spécialisés coordonnés par un orchestrateur, chacun avec ses propres outils et son prompt",
+      "52 endpoints REST sur Oracle 11.2g",
+      "Streaming SSE pour que les analyses en plusieurs étapes s'affichent au fil de l'eau",
+      "Tableau de bord Angular 17 avec graphiques interactifs et cartes d'itinéraires en temps réel",
+      "Analyse des contrats hôteliers en PDF avec OCR",
+      "Intégration de l'API Amadeus pour les données de vols et de tarifs"
+    ],
+    "metrics": ["Agents IA", "Endpoints REST", "Réponses en streaming"],
+    "notes": [
+      {
+        "title": "Mieux vaut router qu'un seul gros prompt",
+        "body": "Un agent unique portant tous les outils se dégrade à mesure que la boîte à outils grandit. Découper le travail en spécialistes derrière un orchestrateur garde chaque prompt court et rend une mauvaise réponse imputable à un seul agent."
+      }
+    ]
+  },
+
+  "bvmt-analytics": {
+    "tagline": "Bourse de Tunis",
+    "summary": [
+      "Application Streamlit multi-pages pour analyser et prédire les performances des valeurs de la Bourse des Valeurs Mobilières de Tunis. Réalisée comme projet d'ingénierie Data Science à ESPRIT avec l'équipe Company Value.",
+      "Dix modules couvrent le marché de bout en bout : cotations historiques, TUNINDEX et indices sectoriels, prévision des dividendes, classification du risque, prédiction du sens de variation, clustering, sentiment de presse, et un chatbot RAG qui répond aux questions sur un PDF déposé."
+    ],
+    "highlights": [
+      "Prédiction du sens de variation par secteur avec AdaBoost et Gradient Boosting",
+      "Classification du risque des actions en niveaux faible et élevé",
+      "Prévision des dividendes avec Prophet",
+      "Clustering du marché avec DBSCAN sur des variables réduites par UMAP",
+      "Chatbot RAG : dépôt d'un PDF puis questions, appuyé sur LangChain, FAISS et Llama 2 via Ollama",
+      "Sentiment de marché à partir de la presse financière tunisienne scrapée",
+      "Historique 2016–2023 stocké dans MongoDB Atlas, collecté avec Selenium et BeautifulSoup"
+    ],
+    "metrics": ["Modules d'analyse", "Couverture des données"],
+    "notes": []
+  },
+
+  "anomaly-detection": {
+    "tagline": "GMM + arbre de décision / KNN sur NSL-KDD",
+    "summary": [
+      "Deux approches complémentaires de la sécurité réseau sur le jeu de données NSL-KDD. Les modèles de mélange gaussien apprennent à quoi ressemble un trafic normal et signalent les écarts, ce qui permet de détecter des comportements inédits sans en avoir d'exemples étiquetés.",
+      "Une couche supervisée classe ensuite les intrusions connues avec un arbre de décision et les K plus proches voisins, réparties en quatre familles d'attaques : DoS, User-to-Root, Remote-to-Local et Probe."
+    ],
+    "highlights": [
+      "Détection d'anomalies non supervisée par modèles de mélange gaussien sur la distribution du trafic normal",
+      "Classification supervisée des intrusions en DoS, U2R, R2L et Probe",
+      "Arbre de décision et KNN comparés sur le même jeu de variables prétraitées",
+      "Chaîne de prétraitement complète : nettoyage, encodage et normalisation de NSL-KDD"
+    ],
+    "metrics": ["Classes d'attaques"],
+    "notes": []
+  },
+
+  "time-series-fred": {
+    "tagline": "ARIMA / SARIMA en trois phases",
+    "summary": [
+      "Étude en trois phases de deux séries économiques issues de la Federal Reserve Economic Data : les ventes au détail des librairies (MRTSSM451211USN) et les mises en chantier de logements neufs dans le Nord-Est (HOUSTNENSA).",
+      "La première phase argumente une stratégie de modélisation à partir d'analyses statistiques et graphiques — ruptures structurelles, marche aléatoire ou tendance polynomiale, saisonnalité. La deuxième ajuste les séries par différenciation et formes fonctionnelles puis compare les modèles candidats. La troisième analyse les résidus pour confirmer la qualité de l'ajustement."
+    ],
+    "highlights": [
+      "Tests de stationnarité ADF et KPSS",
+      "Décomposition de la tendance et de la saisonnalité, avec détection des ruptures structurelles",
+      "Transformations stabilisatrices de variance avant modélisation",
+      "Modèles ARIMA et SARIMA comparés sur la même série",
+      "Diagnostic des résidus traité comme une troisième phase à part entière"
+    ],
+    "metrics": ["Séries FRED", "Phases d'analyse"],
+    "notes": []
+  },
+
+  "knowledge-graph": {
+    "tagline": "Prédiction de liens BERT + RGCN",
+    "summary": [
+      "Système de recommandation par graphe pour la gestion des risques projet. Le graphe de connaissances est construit à partir des standards PMI, du PMBOK 6 et 7, d'un glossaire de gestion des risques et d'études de cas réelles : les recommandations s'appuient donc sur la littérature de la discipline elle-même.",
+      "Deux moteurs de recommandation ont été construits et comparés : l'un avec des embeddings BERT et un prédicteur de liens sur mesure, l'autre combinant les embeddings BERT et un réseau convolutif de graphes relationnels (RGCN) pour enrichir le contexte structurel avant le même prédicteur."
+    ],
+    "highlights": [
+      "Graphe de connaissances assemblé à partir des standards PMI, du PMBOK 6 & 7 et d'études de cas",
+      "Embeddings BERT pour la représentation sémantique des entités du graphe",
+      "RGCN sur le graphe relationnel pour des embeddings sensibles à la structure",
+      "Tête de prédiction de liens sur mesure au cœur des recommandations",
+      "Index vectoriel Pinecone pour la recherche par similarité",
+      "GPT-4 Mini pour les questions-réponses en langage naturel sur le graphe"
+    ],
+    "metrics": ["Variantes de recommandation"],
+    "notes": [
+      {
+        "title": "Projet d'équipe",
+        "body": "Réalisé avec Saif Zribi, Houssem Eddine Mars et Jasser Chtourou dans le cadre d'un effort collectif."
+      }
+    ]
+  },
+
+  "devops-project": {
+    "tagline": "Service Spring Boot avec chaîne complète",
+    "summary": [
+      "Un microservice Spring Boot conçu pour porter une chaîne DevOps complète plutôt que pour être une grosse application. Tout l'intérêt de l'exercice tient à ce qui entoure le code : tests, journalisation, conteneurs, métriques et tableaux de bord.",
+      "Le service est packagé avec un Dockerfile et docker-compose, instrumenté pour être scrapé par Prometheus et visualisé dans Grafana. Un frontend Angular 16 consomme l'API."
+    ],
+    "highlights": [
+      "Service Spring Boot (tn.esprit.devops_project) construit avec Maven",
+      "Tests unitaires avec JUnit et Mockito",
+      "Configuration de journalisation Log4j",
+      "Dockerfile et docker-compose pour l'ensemble de la stack",
+      "Collecte de métriques Prometheus avec tableau de bord Grafana",
+      "Spécification OpenAPI versionnée dans le dépôt",
+      "Frontend Angular 16, en collaboration à deux"
+    ],
+    "metrics": [],
+    "notes": []
+  },
+
+  "simple-api-logger": {
+    "tagline": "Journalisation FastAPI avec tableau de bord",
+    "summary": [
+      "Un service REST léger qui journalise chaque requête qui le traverse et affiche le résultat sur un tableau de bord en direct. Un middleware maison capture la méthode, l'URL, le corps, le code de statut et le temps de réponse de chaque appel et les stocke dans SQLite.",
+      "Il embarque un interrupteur de panne volontaire : envoyer un message « trigger500 » provoque une division par zéro, ce qui permet d'éprouver la gestion et la journalisation des erreurs à la demande plutôt que de l'espérer."
+    ],
+    "highlights": [
+      "POST /api/log pour enregistrer une entrée, GET /api/logs avec filtres de statut et de limite, GET /api/stats pour les statistiques",
+      "Statistiques : total des requêtes, succès contre erreurs, temps de réponse moyen et endpoints les plus sollicités",
+      "Middleware ASGI maison qui capture chaque requête, y compris les échecs",
+      "Tableau de bord Bootstrap 5 / Jinja2 rafraîchi toutes les 5 secondes",
+      "Mécanisme trigger500 pour tester volontairement les chemins d'erreur"
+    ],
+    "metrics": ["Endpoints d'API", "Rafraîchissement"],
+    "notes": []
+  },
+
+  "smart-real-estate": {
+    "tagline": "Projet d'équipe de deuxième année",
+    "summary": [
+      "Un projet d'équipe de deuxième année pour gérer une agence immobilière : annonces de biens, administration de l'agence et suivi des clients, réalisé avec l'équipe Armi64bit.",
+      "Le dépôt public sous mon compte ne contient que la description du projet — l'implémentation vivait dans le dépôt de l'équipe, il n'y a donc pas de code à parcourir ici."
+    ],
+    "highlights": [
+      "Fonctionnalités d'annonces et de gestion d'agence",
+      "Suivi des clients",
+      "Projet d'équipe collaboratif de deuxième année"
+    ],
+    "metrics": [],
+    "notes": [
+      {
+        "title": "Contenu du dépôt",
+        "body": "Ce fork contient la description du projet, pas la base de code. Il figure ici par souci d'exhaustivité de mon parcours académique, et non comme échantillon de code."
+      }
+    ]
+  },
+
+  "pidev": {
+    "tagline": "ChariTeam — plateforme caritative Symfony",
+    "summary": [
+      "Le projet intégratif ESPRIT 2022–2023 : ChariTeam, une plateforme de dons et de causes caritatives construite sur Symfony, avec des templates Twig, un style SCSS et une orchestration Docker Compose.",
+      "Le dépôt embarque tout le squelette Symfony — Doctrine ORM avec migrations, sécurité, mailer, messenger et monolog — aux côtés du code applicatif et de la configuration PHPUnit."
+    ],
+    "highlights": [
+      "Site caritatif avec causes, dons et formulaires de contact",
+      "Application Symfony avec Doctrine ORM et migrations de base de données",
+      "Templates Twig et styles compilés depuis SCSS",
+      "Configuration sécurité, mailer, messenger et monolog",
+      "Configuration de tests PHPUnit",
+      "Docker Compose pour l'orchestration locale"
+    ],
+    "metrics": [],
+    "notes": []
+  },
+
+  "eschool": {
+    "tagline": "Système de gestion scolaire",
+    "summary": [
+      "Une application web de gestion scolaire couvrant l'administration quotidienne d'un établissement : élèves, présences, devoirs, notes, examens en ligne avec banque de questions et emplois du temps.",
+      "Le backend repose sur du CRUD PHP écrit à la main au-dessus de MySQL ; l'interface s'appuie sur le kit de tableau de bord open-source Stream (Bootstrap 4) plutôt que sur un style créé de zéro."
+    ],
+    "highlights": [
+      "Dossiers élèves et gestion des classes",
+      "Suivi des présences et attribution des devoirs",
+      "Gestion des notes et des bulletins",
+      "Examens en ligne avec banque de questions réutilisable",
+      "Gestion des emplois du temps",
+      "CRUD PHP sur MySQL"
+    ],
+    "metrics": [],
+    "notes": []
+  },
+
+  "pharmareport": {
+    "tagline": "Système de reporting pharmaceutique",
+    "summary": [
+      "Une application ASP.NET Core de reporting pharmaceutique, développée pendant mon stage chez Prosper Us. Elle suit le patron MVC et Razor Pages avec Entity Framework Core pour la persistance et les migrations.",
+      "La solution se découpe en trois projets : l'application web principale et deux modules dédiés, MedicalReport et ReportSheet, qui génèrent les documents structurés que les pharmaciens déposent."
+    ],
+    "highlights": [
+      "ASP.NET Core MVC avec Razor Pages",
+      "Entity Framework Core avec migrations code-first",
+      "Module MedicalReport pour les documents médicaux structurés",
+      "Module ReportSheet pour les feuilles de rapport pharmaceutique",
+      "Solution Visual Studio en trois projets"
+    ],
+    "metrics": ["Projets de la solution"],
+    "notes": []
+  },
+
+  "dotnet-core-training": {
+    "tagline": "Solution de formation en stage",
+    "summary": [
+      "Une solution de formation en C# .NET Core (ProjectForStage) écrite pendant un stage de perfectionnement, utilisée pour explorer la structure d'une application .NET Core et l'organisation d'une solution Visual Studio avant de passer au code de production."
+    ],
+    "highlights": [
+      "Structure d'une solution C# .NET Core",
+      "Organisation d'un projet Visual Studio",
+      "Écrit comme travail préparatoire de stage, pas comme produit livré"
+    ],
+    "metrics": [],
+    "notes": [
+      {
+        "title": "Portée",
+        "body": "Il s'agissait d'un exercice d'apprentissage pendant un stage, laissé public par transparence sur ma montée en compétence sur .NET."
+      }
+    ]
+  },
+
+  "javafx-sustainable": {
+    "tagline": "Application de bureau JavaFX",
+    "summary": [
+      "Une application de bureau JavaFX réalisée comme projet d'équipe ESPRIT autour des habitudes de développement durable, avec une interface de bureau pour suivre et sensibiliser à des objectifs écoresponsables.",
+      "Le dépôt public sous mon compte ne contient que la description du projet — l'implémentation vivait dans le dépôt de l'équipe, il n'y a donc pas de code à parcourir ici."
+    ],
+    "highlights": [
+      "Interface de bureau JavaFX",
+      "Suivi et sensibilisation au développement durable",
+      "Projet d'équipe"
+    ],
+    "metrics": [],
+    "notes": [
+      {
+        "title": "Contenu du dépôt",
+        "body": "Ce fork contient la description du projet, pas la base de code. Il figure ici par souci d'exhaustivité de mon parcours académique, et non comme échantillon de code."
+      }
+    ]
+  },
+
+  "hotel-nearest-places": {
+    "tagline": "Géocodage LLM + itinéraires + météo",
+    "summary": [
+      "Une API REST Flask qui prend un nom d'hôtel et renvoie les dix points d'intérêt les plus proches, chacun avec une distance routière, un itinéraire et la météo du moment.",
+      "L'intérêt tient au début de la chaîne : au lieu d'un service de géocodage, un LLM extrait les coordonnées de l'hôtel et les lieux candidats à partir du langage naturel, puis les données OpenStreetMap enrichissent et vérifient les résultats."
+    ],
+    "highlights": [
+      "Géocodage par LLM avec Groq exécutant Llama 3 8B",
+      "Distances routières et itinéraires via OpenRouteService",
+      "Conditions météo par point d'intérêt via OpenWeatherMap",
+      "Enrichissement des lieux par Overpass et OpenStreetMap",
+      "API REST Flask compatible CORS"
+    ],
+    "metrics": ["Lieux renvoyés"],
+    "notes": []
+  },
+
+  "flight-rag-chatbot": {
+    "tagline": "Questions-réponses augmentées par récupération",
+    "summary": [
+      "Un chatbot Streamlit qui répond aux questions sur des factures de vols et des chiffres de marge. Les données de facturation en CSV sont vectorisées dans une collection ChromaDB locale, récupérées sémantiquement à chaque question et transmises au modèle comme contexte.",
+      "Garder le magasin vectoriel en local signifie que les données ne quittent jamais la machine : seuls les extraits récupérés atteignent le LLM."
+    ],
+    "highlights": [
+      "Chaîne RAG sur ChromaDB avec les embeddings HuggingFace all-MiniLM-L6-v2",
+      "Groq exécutant Llama 3 8B pour des réponses contextuelles rapides",
+      "Données de factures de vols en CSV ingérées dans le magasin vectoriel",
+      "Interface Streamlit"
+    ],
+    "metrics": [],
+    "notes": []
+  },
+
+  "minecraft-llm-bot": {
+    "tagline": "Administration serveur en langage naturel",
+    "summary": [
+      "Un LLM connecté à un serveur Minecraft via RCON. Il modère le chat, répond aux questions des joueurs en jeu, et transforme les instructions de l'opérateur écrites en anglais courant en commandes serveur correctes.",
+      "Les commandes ne sont jamais exécutées à l'aveugle : le modèle propose la commande, l'opérateur confirme, et seulement ensuite elle part. Un préfixe raw court-circuite entièrement le modèle quand la syntaxe exacte est déjà connue."
+    ],
+    "highlights": [
+      "Modération du chat : chaque message est analysé, avec escalade de l'avertissement à l'expulsion puis au bannissement",
+      "Les joueurs posent une question avec ?bot et reçoivent une réponse en jeu",
+      "Langage naturel converti en commande serveur, avec une étape de confirmation explicite avant exécution",
+      "Préfixe !raw pour envoyer une commande directement, sans passer par le modèle",
+      "Connexion RCON à un serveur Minecraft standard",
+      "Fournisseur commutable entre OpenRouter et un modèle Ollama local"
+    ],
+    "metrics": [],
+    "notes": []
+  }
+}

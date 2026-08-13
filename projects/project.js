@@ -1,6 +1,14 @@
 /* Case-study page behaviour: theme toggle, footer year, and mermaid diagrams
    that re-render when the theme changes. */
 
+/* ===== LANGUAGE ===== */
+// These pages are static per language; record which one the visitor is reading
+// so the landing page agrees with them on the way back.
+(function () {
+  const lang = document.documentElement.lang === 'fr' ? 'fr' : 'en';
+  localStorage.setItem('lang', lang);
+})();
+
 /* ===== DARK MODE ===== */
 (function () {
   const btn = document.getElementById('themeToggle');

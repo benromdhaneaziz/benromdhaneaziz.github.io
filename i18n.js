@@ -94,7 +94,7 @@ const FR = {
   'badge.personal': '&#x1F9EA; Projet personnel',
 
   /* --- project cards --- */
-  'proj.more': 'Lire l’étude de cas (en anglais) &#8594;',
+  'proj.more': 'Lire l’étude de cas &#8594;',
   'projects.cta': 'Voir tout sur GitHub &#x2192;',
 
   'proj.curvatrip.title': 'CurvaTrip &#x2014; Concierge de voyage IA',
@@ -326,6 +326,12 @@ function apply(lang) {
     const isActive = b.dataset.lang === lang;
     b.classList.toggle('active', isActive);
     b.setAttribute('aria-pressed', String(isActive));
+  });
+
+  // Case studies are separate files per language, so the links move too.
+  document.querySelectorAll('a.project-more').forEach(a => {
+    const slug = a.closest('[data-slug]')?.dataset.slug;
+    if (slug) a.href = lang === 'fr' ? `projects/fr/${slug}.html` : `projects/${slug}.html`;
   });
 
   // The footer year is injected by script.js; re-rendering the footer wipes it.

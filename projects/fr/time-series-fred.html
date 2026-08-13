@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time Series — Federal Reserve (FRED) — ARIMA / SARIMA in three phases | Mohamed Aziz Ben Romdhane</title>
-  <meta name="description" content="A three-phase study of two economic series from the Federal Reserve Economic Data archive: retail sales for book stores (MRTSSM451211USN) and new privately-owned housing units star" />
-  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/time-series-fred.html" />
+  <title>Time Series — Federal Reserve (FRED) — ARIMA / SARIMA en trois phases | Mohamed Aziz Ben Romdhane</title>
+  <meta name="description" content="Étude en trois phases de deux séries économiques issues de la Federal Reserve Economic Data : les ventes au détail des librairies (MRTSSM451211USN) et les mises en chantier de loge" />
+  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/time-series-fred.html" />
   <link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/time-series-fred.html" />
   <link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/time-series-fred.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Time Series — Federal Reserve (FRED) — ARIMA / SARIMA in three phases" />
-  <meta property="og:description" content="A three-phase study of two economic series from the Federal Reserve Economic Data archive: retail sales for book stores (MRTSSM451211USN) and new privately-owned housing units star" />
-  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/time-series-fred.html" />
+  <meta property="og:title" content="Time Series — Federal Reserve (FRED) — ARIMA / SARIMA en trois phases" />
+  <meta property="og:description" content="Étude en trois phases de deux séries économiques issues de la Federal Reserve Economic Data : les ventes au détail des librairies (MRTSSM451211USN) et les mises en chantier de loge" />
+  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/fr/time-series-fred.html" />
   <meta name="theme-color" content="#4f46e5" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Inter,Arial,sans-serif' font-size='32' font-weight='800' fill='%23fff' text-anchor='middle'%3EAZ%3C/text%3E%3C/svg%3E" />
   <script>
@@ -25,18 +25,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../projects/project.css" />
 </head>
 <body>
   <header class="navbar page-nav">
     <div class="nav-container">
-      <a href="../index.html#projects" class="back-link">&#8592; All projects</a>
+      <a href="../../index.html#projects" class="back-link">&#8592; Tous les projets</a>
       <nav>
-        <a href="../index.html" class="nav-logo">AZ.</a>
+        <a href="../../index.html" class="nav-logo">AZ.</a>
         <div class="lang-switch" role="group" aria-label="Language / Langue">
-          <a class="lang-btn active" href="time-series-fred.html" hreflang="en">EN</a>
-          <a class="lang-btn" href="fr/time-series-fred.html" hreflang="fr">FR</a>
+          <a class="lang-btn" href="../time-series-fred.html" hreflang="en">EN</a>
+          <a class="lang-btn active" href="time-series-fred.html" hreflang="fr">FR</a>
         </div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -48,36 +48,36 @@
   <section class="project-hero">
     <div class="container">
       <div class="hero-badges">
-        <span class="project-badge contrib">ESPRIT project</span>
-        <span class="project-badge wip">Complete</span>
+        <span class="project-badge contrib">Université</span>
+        <span class="project-badge wip">Terminé</span>
       </div>
       <p class="hero-meta">2024</p>
       <h1><span class="hero-icon">📊</span>Time Series — Federal Reserve (FRED)</h1>
-      <p class="tagline">ARIMA / SARIMA in three phases</p>
+      <p class="tagline">ARIMA / SARIMA en trois phases</p>
       <div class="hero-links">
         <a class="btn btn-secondary" href="https://github.com/benromdhaneaziz/Time-Series-Project-Federal-Reserve-Economic-Data-FRED-" target="_blank" rel="noopener">GitHub &#8599;</a>
       </div>
       <div class="metrics-strip">
-        <div class="metric-box"><b>2</b><span>FRED series</span></div>
-        <div class="metric-box"><b>3</b><span>Analysis phases</span></div>
+        <div class="metric-box"><b>2</b><span>Séries FRED</span></div>
+        <div class="metric-box"><b>3</b><span>Phases d'analyse</span></div>
       </div>
     </div>
   </section>
   <main class="project-body">
     <div class="container">
       <section class="project-section">
-        <h2>Overview</h2>
-        <p>A three-phase study of two economic series from the Federal Reserve Economic Data archive: retail sales for book stores (MRTSSM451211USN) and new privately-owned housing units started in the Northeast (HOUSTNENSA).</p>
-        <p>Phase one argues a modelling strategy from statistical and graphical analysis — structural breaks, random walk versus polynomial trend, seasonality. Phase two fits the series through differencing and functional forms and compares candidate models. Phase three analyses the residuals to confirm the fit holds.</p>
+        <h2>Aperçu</h2>
+        <p>Étude en trois phases de deux séries économiques issues de la Federal Reserve Economic Data : les ventes au détail des librairies (MRTSSM451211USN) et les mises en chantier de logements neufs dans le Nord-Est (HOUSTNENSA).</p>
+        <p>La première phase argumente une stratégie de modélisation à partir d'analyses statistiques et graphiques — ruptures structurelles, marche aléatoire ou tendance polynomiale, saisonnalité. La deuxième ajuste les séries par différenciation et formes fonctionnelles puis compare les modèles candidats. La troisième analyse les résidus pour confirmer la qualité de l'ajustement.</p>
       </section>
       <section class="project-section">
-        <h2>What it does</h2>
+        <h2>Ce que ça fait</h2>
         <ul class="highlight-list">
-          <li>Stationarity testing with ADF and KPSS</li>
-          <li>Trend and seasonality decomposition, including structural-break detection</li>
-          <li>Variance-stabilising transformations before modelling</li>
-          <li>ARIMA and SARIMA candidates compared on the same series</li>
-          <li>Residual diagnostics as an explicit third phase rather than an afterthought</li>
+          <li>Tests de stationnarité ADF et KPSS</li>
+          <li>Décomposition de la tendance et de la saisonnalité, avec détection des ruptures structurelles</li>
+          <li>Transformations stabilisatrices de variance avant modélisation</li>
+          <li>Modèles ARIMA et SARIMA comparés sur la même série</li>
+          <li>Diagnostic des résidus traité comme une troisième phase à part entière</li>
         </ul>
       </section>
       <section class="project-section">
@@ -90,13 +90,13 @@ flowchart LR
   D --&gt; E["ARIMA / SARIMA&lt;br/&gt;candidate comparison"]
   E --&gt; F["Phase 3&lt;br/&gt;residual diagnostics"]
         </pre></div>
-        <p class="diagram-note">Diagram drawn from the actual codebase.</p>
+        <p class="diagram-note">Diagramme établi à partir du code source réel.</p>
       </section>
       <section class="project-section">
-        <h2>Tech stack</h2>
+        <h2>Stack technique</h2>
         <div class="stack-groups">
           <div class="stack-group">
-            <h3>Analysis</h3>
+            <h3>Analyse</h3>
             <div class="skill-tags">
               <span class="skill-tag">R</span>
               <span class="skill-tag">R Markdown</span>
@@ -110,13 +110,13 @@ flowchart LR
             </div>
           </div>
           <div class="stack-group">
-            <h3>Data</h3>
+            <h3>Données</h3>
             <div class="skill-tags">
               <span class="skill-tag">FRED</span>
             </div>
           </div>
           <div class="stack-group">
-            <h3>Tools</h3>
+            <h3>Outils</h3>
             <div class="skill-tags">
               <span class="skill-tag">RStudio</span>
               <span class="skill-tag">knitr</span>
@@ -132,15 +132,15 @@ flowchart LR
   </main>
   <footer class="footer">
     <div class="container">
-      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
+      <p>Conçu &amp; développé par <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
       <div class="footer-links">
-        <a href="../index.html">Portfolio</a>
+        <a href="../../index.html">Portfolio</a>
         <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:Benromdhane.Aziz@esprit.tn">Email</a>
       </div>
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="project.js"></script>
+  <script src="../../projects/project.js"></script>
 </body>
 </html>

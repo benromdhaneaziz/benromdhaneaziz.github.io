@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BVMT Analytics Platform — Tunisian Stock Market | Mohamed Aziz Ben Romdhane</title>
-  <meta name="description" content="A multi-page Streamlit application for analysing and predicting stock performance on the Bourse des Valeurs Mobilières de Tunis. Built as a Data Science engineering project at ESPR" />
-  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/bvmt-analytics.html" />
+  <title>BVMT Analytics Platform — Bourse de Tunis | Mohamed Aziz Ben Romdhane</title>
+  <meta name="description" content="Application Streamlit multi-pages pour analyser et prédire les performances des valeurs de la Bourse des Valeurs Mobilières de Tunis. Réalisée comme projet d'ingénierie Data Scienc" />
+  <link rel="canonical" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/bvmt-analytics.html" />
   <link rel="alternate" hreflang="en" href="https://benromdhaneaziz-github-io.vercel.app/projects/bvmt-analytics.html" />
   <link rel="alternate" hreflang="fr" href="https://benromdhaneaziz-github-io.vercel.app/projects/fr/bvmt-analytics.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="BVMT Analytics Platform — Tunisian Stock Market" />
-  <meta property="og:description" content="A multi-page Streamlit application for analysing and predicting stock performance on the Bourse des Valeurs Mobilières de Tunis. Built as a Data Science engineering project at ESPR" />
-  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/bvmt-analytics.html" />
+  <meta property="og:title" content="BVMT Analytics Platform — Bourse de Tunis" />
+  <meta property="og:description" content="Application Streamlit multi-pages pour analyser et prédire les performances des valeurs de la Bourse des Valeurs Mobilières de Tunis. Réalisée comme projet d'ingénierie Data Scienc" />
+  <meta property="og:url" content="https://benromdhaneaziz-github-io.vercel.app/projects/fr/bvmt-analytics.html" />
   <meta name="theme-color" content="#4f46e5" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Inter,Arial,sans-serif' font-size='32' font-weight='800' fill='%23fff' text-anchor='middle'%3EAZ%3C/text%3E%3C/svg%3E" />
   <script>
@@ -25,18 +25,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../projects/project.css" />
 </head>
 <body>
   <header class="navbar page-nav">
     <div class="nav-container">
-      <a href="../index.html#projects" class="back-link">&#8592; All projects</a>
+      <a href="../../index.html#projects" class="back-link">&#8592; Tous les projets</a>
       <nav>
-        <a href="../index.html" class="nav-logo">AZ.</a>
+        <a href="../../index.html" class="nav-logo">AZ.</a>
         <div class="lang-switch" role="group" aria-label="Language / Langue">
-          <a class="lang-btn active" href="bvmt-analytics.html" hreflang="en">EN</a>
-          <a class="lang-btn" href="fr/bvmt-analytics.html" hreflang="fr">FR</a>
+          <a class="lang-btn" href="../bvmt-analytics.html" hreflang="en">EN</a>
+          <a class="lang-btn active" href="bvmt-analytics.html" hreflang="fr">FR</a>
         </div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -48,38 +48,38 @@
   <section class="project-hero">
     <div class="container">
       <div class="hero-badges">
-        <span class="project-badge contrib">ESPRIT team project</span>
-        <span class="project-badge wip">Complete</span>
+        <span class="project-badge contrib">Université</span>
+        <span class="project-badge wip">Terminé</span>
       </div>
       <p class="hero-meta">2025</p>
       <h1><span class="hero-icon">📈</span>BVMT Analytics Platform</h1>
-      <p class="tagline">Tunisian Stock Market</p>
+      <p class="tagline">Bourse de Tunis</p>
       <div class="hero-links">
         <a class="btn btn-secondary" href="https://github.com/benromdhaneaziz/bvmt-analytics-platform" target="_blank" rel="noopener">GitHub &#8599;</a>
       </div>
       <div class="metrics-strip">
-        <div class="metric-box"><b>10</b><span>Analysis modules</span></div>
-        <div class="metric-box"><b>2016–23</b><span>Data coverage</span></div>
+        <div class="metric-box"><b>10</b><span>Modules d'analyse</span></div>
+        <div class="metric-box"><b>2016–23</b><span>Couverture des données</span></div>
       </div>
     </div>
   </section>
   <main class="project-body">
     <div class="container">
       <section class="project-section">
-        <h2>Overview</h2>
-        <p>A multi-page Streamlit application for analysing and predicting stock performance on the Bourse des Valeurs Mobilières de Tunis. Built as a Data Science engineering project at ESPRIT with the Company Value team.</p>
-        <p>Ten modules cover the market end to end: historical quotations, TUNINDEX and sector indices, dividend forecasting, risk classification, price-direction prediction, clustering, news sentiment, and a RAG chatbot that answers questions about an uploaded PDF.</p>
+        <h2>Aperçu</h2>
+        <p>Application Streamlit multi-pages pour analyser et prédire les performances des valeurs de la Bourse des Valeurs Mobilières de Tunis. Réalisée comme projet d'ingénierie Data Science à ESPRIT avec l'équipe Company Value.</p>
+        <p>Dix modules couvrent le marché de bout en bout : cotations historiques, TUNINDEX et indices sectoriels, prévision des dividendes, classification du risque, prédiction du sens de variation, clustering, sentiment de presse, et un chatbot RAG qui répond aux questions sur un PDF déposé.</p>
       </section>
       <section class="project-section">
-        <h2>What it does</h2>
+        <h2>Ce que ça fait</h2>
         <ul class="highlight-list">
-          <li>Price-direction prediction per sector using AdaBoost and Gradient Boosting</li>
-          <li>Stock risk classification into low and high risk bands</li>
-          <li>Dividend forecasting with Prophet</li>
-          <li>Market clustering with DBSCAN over UMAP-reduced features</li>
-          <li>RAG chatbot: upload a PDF and ask questions, backed by LangChain, FAISS and Llama 2 through Ollama</li>
-          <li>Market sentiment from scraped Tunisian financial news</li>
-          <li>Historical data 2016–2023 stored in MongoDB Atlas, collected with Selenium and BeautifulSoup</li>
+          <li>Prédiction du sens de variation par secteur avec AdaBoost et Gradient Boosting</li>
+          <li>Classification du risque des actions en niveaux faible et élevé</li>
+          <li>Prévision des dividendes avec Prophet</li>
+          <li>Clustering du marché avec DBSCAN sur des variables réduites par UMAP</li>
+          <li>Chatbot RAG : dépôt d'un PDF puis questions, appuyé sur LangChain, FAISS et Llama 2 via Ollama</li>
+          <li>Sentiment de marché à partir de la presse financière tunisienne scrapée</li>
+          <li>Historique 2016–2023 stocké dans MongoDB Atlas, collecté avec Selenium et BeautifulSoup</li>
         </ul>
       </section>
       <section class="project-section">
@@ -96,13 +96,13 @@ flowchart LR
   H --&gt; I[("FAISS index")]
   H --&gt; J["Llama 2 / Ollama"]
         </pre></div>
-        <p class="diagram-note">Diagram drawn from the actual codebase.</p>
+        <p class="diagram-note">Diagramme établi à partir du code source réel.</p>
       </section>
       <section class="project-section">
-        <h2>Tech stack</h2>
+        <h2>Stack technique</h2>
         <div class="stack-groups">
           <div class="stack-group">
-            <h3>App</h3>
+            <h3>Application</h3>
             <div class="skill-tags">
               <span class="skill-tag">Streamlit</span>
               <span class="skill-tag">Plotly</span>
@@ -110,7 +110,7 @@ flowchart LR
             </div>
           </div>
           <div class="stack-group">
-            <h3>ML</h3>
+            <h3>Machine Learning</h3>
             <div class="skill-tags">
               <span class="skill-tag">Scikit-learn</span>
               <span class="skill-tag">AdaBoost</span>
@@ -122,7 +122,7 @@ flowchart LR
             </div>
           </div>
           <div class="stack-group">
-            <h3>AI</h3>
+            <h3>IA</h3>
             <div class="skill-tags">
               <span class="skill-tag">LangChain</span>
               <span class="skill-tag">FAISS</span>
@@ -131,7 +131,7 @@ flowchart LR
             </div>
           </div>
           <div class="stack-group">
-            <h3>Data</h3>
+            <h3>Données</h3>
             <div class="skill-tags">
               <span class="skill-tag">MongoDB Atlas</span>
               <span class="skill-tag">Selenium</span>
@@ -148,15 +148,15 @@ flowchart LR
   </main>
   <footer class="footer">
     <div class="container">
-      <p>Designed &amp; built by <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
+      <p>Conçu &amp; développé par <strong>Mohamed Aziz Ben Romdhane</strong> &middot; <span id="footerYear">2026</span></p>
       <div class="footer-links">
-        <a href="../index.html">Portfolio</a>
+        <a href="../../index.html">Portfolio</a>
         <a href="https://github.com/benromdhaneaziz" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:Benromdhane.Aziz@esprit.tn">Email</a>
       </div>
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="project.js"></script>
+  <script src="../../projects/project.js"></script>
 </body>
 </html>
