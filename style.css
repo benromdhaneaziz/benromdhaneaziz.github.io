@@ -1093,3 +1093,23 @@ body.dark .filter-btn:hover{color:#a5b4fc;background:rgba(79,70,229,.14)}
   .project-card{opacity:1;transform:none}
 }
 
+
+/* ===== LANGUAGE SWITCH ===== */
+.lang-switch{
+  display:flex;align-items:center;
+  border:1px solid var(--border);
+  border-radius:99px;overflow:hidden;
+  background:var(--card-bg);
+  flex-shrink:0;
+}
+.lang-btn{
+  font-size:.72rem;font-weight:700;letter-spacing:.04em;
+  padding:5px 10px;color:var(--text-muted);
+  transition:var(--transition);
+}
+.lang-btn:hover{color:var(--primary)}
+.lang-btn.active{background:var(--gradient);color:#fff}
+body.dark .lang-switch{background:transparent;border-color:var(--border)}
+@media(max-width:640px){
+  .lang-switch{margin-left:auto;margin-right:var(--sp-2)}
+}

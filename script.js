@@ -62,7 +62,7 @@
   const typedEl = document.getElementById('typedText');
   if (!typedEl) return;
 
-  const phrases = [
+  const EN_PHRASES = [
     'AI & Backend Engineer @ Worldsoft',
     'Multi-Agent AI Systems Builder',
     'LLM Pipelines · RAG · Voice Agents',
@@ -70,17 +70,32 @@
     'Data Science Engineering Student @ ESPRIT',
     'Python · Java · C# Developer',
   ];
-
-  // Respect reduced-motion: show the first phrase and stop.
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    typedEl.textContent = phrases[0];
-    return;
-  }
-
+  // window.T comes from i18n.js and falls back to English when it is absent.
+  const t = (id, en) => (window.T ? window.T(id, en) : en);
+  let phrases = EN_PHRASES.map((en, i) => t('type.' + i, en));
   let phraseIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
   let typingDelay = 80;
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Switching language mid-phrase would type French into an English word, so
+  // the current phrase restarts from scratch.
+  document.addEventListener('langchange', () => {
+    phrases = EN_PHRASES.map((en, i) => t('type.' + i, en));
+    if (reduced) {
+      typedEl.textContent = phrases[0];
+      return;
+    }
+    charIndex = 0;
+    isDeleting = false;
+  });
+
+  if (reduced) {
+    typedEl.textContent = phrases[0];
+    return;
+  }
 
   function typeEffect() {
     const currentPhrase = phrases[phraseIndex];
@@ -208,6 +223,7 @@ const revealCard = (() => {
 
 /* ===== CONTACT FORM ===== */
 (function () {
+  const t = (id, en) => (window.T ? window.T(id, en) : en);
   const contactForm = document.getElementById('contactForm');
   const formNote = document.getElementById('formNote');
   const submitBtn = document.getElementById('contactSubmit');
@@ -244,7 +260,7 @@ const revealCard = (() => {
     if (!message.value.trim()) { message.classList.add('error'); valid = false; }
 
     if (!valid) {
-      note('Please fill in all fields correctly.', 'error-msg');
+      note(t('form.invalid', 'Please fill in all fields correctly.'), 'error-msg');
       return;
     }
 
@@ -256,7 +272,7 @@ const revealCard = (() => {
     };
 
     if (submitBtn) { submitBtn.disabled = true; submitBtn.classList.add('is-loading'); }
-    note('Sending…');
+    note(t('form.sending', 'Sending…'));
 
     try {
       const res = await fetch('/api/contact', {
@@ -267,18 +283,18 @@ const revealCard = (() => {
       const data = await res.json().catch(() => ({}));
 
       if (res.ok) {
-        note('Thanks! Your message is on its way — I usually reply within a day.', 'success');
+        note(t('form.sent', 'Thanks! Your message is on its way — I usually reply within a day.'), 'success');
         contactForm.reset();
       } else if (data.fallback === 'mailto') {
         // Mail service unavailable: hand the message to the visitor's mail client.
-        note('Opening your email client…');
+        note(t('form.mailto', 'Opening your email client…'));
         mailtoFallback(payload.name, payload.email, payload.message);
       } else {
-        note(data.error || 'Could not send the message. Please try again.', 'error-msg');
+        note(data.error || t('form.failed', 'Could not send the message. Please try again.'), 'error-msg');
       }
     } catch (err) {
       console.error('Contact form error:', err);
-      note('Network error — opening your email client instead…');
+      note(t('form.network', 'Network error — opening your email client instead…'));
       mailtoFallback(payload.name, payload.email, payload.message);
     } finally {
       if (submitBtn) { submitBtn.disabled = false; submitBtn.classList.remove('is-loading'); }
@@ -305,6 +321,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* ===== DARK MODE TOGGLE ===== */
 (function () {
+  const t = (id, en) => (window.T ? window.T(id, en) : en);
   const btn = document.getElementById('themeToggle');
   const DARK = 'dark';
 
@@ -319,12 +336,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     document.body.classList.toggle(DARK);
     const isDark = document.body.classList.contains(DARK);
     localStorage.setItem('theme', isDark ? DARK : 'light');
-    btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    btn.setAttribute('aria-label', isDark ? t('aria.light', 'Switch to light mode') : t('aria.dark', 'Switch to dark mode'));
   });
 })();
 
 /* ===== AI CHATBOT ===== */
 (function () {
+  const t = (id, en) => (window.T ? window.T(id, en) : en);
   const fab       = document.getElementById('chatbotFab');
   const panel     = document.getElementById('chatbotPanel');
   const closeBtn  = document.getElementById('chatbotCloseBtn');
@@ -347,7 +365,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     panel.classList.toggle('open', isOpen);
     panel.setAttribute('aria-hidden', String(!isOpen));
     fab.setAttribute('aria-expanded', String(isOpen));
-    fab.setAttribute('aria-label', isOpen ? 'Close AI assistant' : 'Open AI assistant');
+    fab.setAttribute('aria-label', isOpen ? t('aria.closeChat', 'Close AI assistant') : t('aria.openChat', 'Open AI assistant'));
 
     if (isOpen) {
       setTimeout(() => input.focus(), 300);
@@ -420,14 +438,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         appendMessage(
           'assistant',
           response.status === 429
-            ? (data.error || 'Too many messages — give me a minute and try again.')
-            : (data.error || 'Sorry, something went wrong. Please try again in a moment.')
+            ? (data.error || t('chat.rate', 'Too many messages — give me a minute and try again.'))
+            : (data.error || t('chat.error', 'Sorry, something went wrong. Please try again in a moment.'))
         );
         history.pop();
         return;
       }
 
-      const reply = (data.reply || '').trim() || 'Sorry, I could not generate a response.';
+      const reply = (data.reply || '').trim() || t('chat.empty', 'Sorry, I could not generate a response.');
       appendMessage('assistant', reply);
       history.push({ role: 'assistant', content: reply });
 
@@ -435,7 +453,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       if (history.length > 20) history.splice(0, history.length - 20);
     } catch (err) {
       hideTyping();
-      appendMessage('assistant', 'Sorry, something went wrong. Please try again in a moment.');
+      appendMessage('assistant', t('chat.error', 'Sorry, something went wrong. Please try again in a moment.'));
       history.pop();
       console.error('Chatbot error:', err);
     } finally {
