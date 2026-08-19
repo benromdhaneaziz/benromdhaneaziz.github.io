@@ -9,6 +9,7 @@
 const FR = {
   /* --- navigation --- */
   'nav.about': 'À propos',
+  'nav.experience': 'Expérience',
   'nav.skills': 'Compétences',
   'nav.projects': 'Projets',
   'nav.certifications': 'Certifs',
@@ -20,6 +21,37 @@ const FR = {
   'hero.cta.work': 'Voir mes projets',
   'hero.cta.contact': 'Me contacter',
   'hero.cta.cv': 'Télécharger le CV',
+
+
+  /* --- experience --- */
+  'sec.experience.title': 'Mon <span class="highlight">parcours</span>',
+  'sec.experience.sub': 'Postes, dates et réalisations',
+  'exp.place.tunis': '&#183; Tunis, Tunisie',
+  'exp.worldsoft.role': 'Ingénieur IA / Logiciel',
+  'exp.worldsoft.date': 'Févr. 2026 &#8212; Aujourd’hui',
+  'exp.worldsoft.p1': 'Mise en production de <strong>CurvaTrip</strong>, le concierge de voyage IA de ' +
+    'l’application de réservation : 32 outils d’agent et 28 endpoints en streaming sur FastAPI, recherche ' +
+    'de vols en direct sur le GDS, plans de séjour et voix temps réel en 4 langues dont le derja tunisien. ' +
+    'L’ingénierie des prompts et la mise en cache des catalogues ont ramené la construction d’un plan de ' +
+    '128&nbsp;s à 44&nbsp;s.',
+  'exp.worldsoft.p2': 'Développement complet d’un <strong>SaaS d’extraction de contrats par LLM</strong> : ' +
+    'un extracteur Gemini transforme les contrats fournisseurs PDF/DOCX en un schéma Oracle normalisé de ' +
+    '17 tables, et un moteur déterministe tarife n’importe quel séjour, en remplacement de la saisie ' +
+    'manuelle. 51 endpoints REST, file de traitement asynchrone, multi-location JWT avec SSO, interface ' +
+    'React, suites pytest dans GitLab CI/CD.',
+  'exp.worldsoft.p3': 'Livraison d’une <strong>plateforme analytique à 8 agents</strong> (SQL, analyste, ' +
+    'prévision, anomalie, segmentation, hôtel, vol, orchestrateur) sur LangGraph et DeepSeek : 52 endpoints ' +
+    'REST avec streaming SSE sur Oracle et un tableau de bord Angular 17, en remplacement des rapports SQL ' +
+    'écrits à la main par des KPI, graphiques et cartes en libre-service.',
+  'exp.prosper.role': 'Stagiaire développeur .NET',
+  'exp.prosper.date': 'Juil. &#8212; Août 2023',
+  'exp.prosper.p1': 'Développement de <strong>PharmaReport</strong>, une application ASP.NET Core MVC de ' +
+    'génération de rapports pharmaceutiques structurés : construction des modules MedicalReport et ' +
+    'ReportSheet sur des migrations EF Core, en remplacement de documents rédigés à la main.',
+  'exp.as2e.role': 'Stagiaire développeur web',
+  'exp.as2e.date': 'Juil. &#8212; Août 2022',
+  'exp.as2e.p1': 'Création et maintenance de sites <strong>WordPress</strong> clients, et automatisation du ' +
+    'reporting interne récurrent avec <strong>Google Apps Script</strong>.',
 
   /* --- section headings --- */
   'sec.about.title': 'À propos de <span class="highlight">moi</span>',
@@ -110,7 +142,7 @@ const FR = {
     'voyage, la couche linguistique et le pont vocal sont mon propre code.',
   'metric.curvatrip.0': 'Outils d’agent',
   'metric.curvatrip.1': 'Routes API',
-  'metric.curvatrip.2': 'Lignes de Python',
+  'metric.curvatrip.2': 'Temps de construction d’un plan',
   'metric.curvatrip.3': 'Instances autoscalées',
 
   'proj.hotel-contract-saas.title': 'SaaS Contrats Hôteliers &#x2014; extraction LLM &amp; moteur tarifaire',
@@ -128,7 +160,7 @@ const FR = {
   'metric.hotel-contract-saas.3': 'Lignes de code',
 
   'proj.travel-crm.title': 'CRM &amp; Analytics Voyage &#x2014; système IA multi-agents',
-  'proj.travel-crm.desc': 'CRM voyage d’entreprise construit pendant mon stage. Il embarque un ' +
+  'proj.travel-crm.desc': 'CRM voyage d’entreprise développé chez Worldsoft. Il embarque un ' +
     '<strong>chatbot IA à 8 agents</strong> (SQL, Analyste, Prévision, Anomalie, Segmentation, Hôtel, Vol, ' +
     'Orchestrateur) propulsé par <strong>LangGraph + DeepSeek LLM</strong> via OpenRouter. Le système expose ' +
     '<strong>52 endpoints REST</strong> sur une base Oracle 11.2g, diffuse les réponses en SSE, et se consulte via un ' +

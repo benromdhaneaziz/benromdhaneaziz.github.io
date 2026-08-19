@@ -76,6 +76,7 @@
       <nav>
         <ul class="nav-links" id="navLinks">
           <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
           <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
           <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
           <li><a href="#certifications" data-i18n="nav.certifications">Certs</a></li>
@@ -236,8 +237,73 @@
     </div>
   </section>
 
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="section section-alt" id="experience">
+    <div class="container">
+      <h2 class="section-title" data-i18n="sec.experience.title">Where I&#8217;ve <span class="highlight">Worked</span></h2>
+      <p class="section-subtitle" data-i18n="sec.experience.sub">Roles, dates and what shipped</p>
+
+      <ol class="timeline">
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-body">
+            <div class="timeline-head">
+              <h3 class="timeline-role" data-i18n="exp.worldsoft.role">AI / Software Engineer</h3>
+              <span class="timeline-date" data-i18n="exp.worldsoft.date">Feb 2026 &#8212; Present</span>
+            </div>
+            <p class="timeline-company">Worldsoft <span class="timeline-place" data-i18n="exp.place.tunis">&#183; Tunis, Tunisia</span></p>
+            <ul class="timeline-points">
+              <li data-i18n="exp.worldsoft.p1">Shipped <strong>CurvaTrip</strong>, the AI travel concierge behind the flight-booking app: 32 agent tools and 28 streaming endpoints on FastAPI, live GDS search, trip planning and realtime voice in 4 languages including Tunisian Derja. Prompt engineering and cached catalogs cut plan build from 128&nbsp;s to 44&nbsp;s.</li>
+              <li data-i18n="exp.worldsoft.p2">Built an <strong>LLM contract-extraction SaaS</strong> end to end: a Gemini extractor turns supplier PDF/DOCX contracts into a normalised 17-table Oracle schema and a deterministic engine prices any stay, replacing manual contract entry. 51 REST endpoints, async job queue, multi-tenant JWT with SSO, React UI, pytest suites in GitLab CI/CD.</li>
+              <li data-i18n="exp.worldsoft.p3">Delivered an <strong>8-agent analytics platform</strong> (SQL, analyst, forecast, anomaly, segmentation, hotel, flight, orchestrator) on LangGraph and DeepSeek: 52 REST endpoints with SSE streaming over Oracle and an Angular 17 dashboard, replacing hand-built SQL reports with self-service KPIs, charts and maps.</li>
+            </ul>
+            <div class="project-tags">
+              <span>Python</span><span>FastAPI</span><span>LangGraph</span><span>Gemini</span>
+              <span>Oracle</span><span>React</span><span>Angular</span><span>Docker</span><span>GitLab CI/CD</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-body">
+            <div class="timeline-head">
+              <h3 class="timeline-role" data-i18n="exp.prosper.role">.NET Developer Intern</h3>
+              <span class="timeline-date" data-i18n="exp.prosper.date">Jul &#8212; Aug 2023</span>
+            </div>
+            <p class="timeline-company">Prosper Us</p>
+            <ul class="timeline-points">
+              <li data-i18n="exp.prosper.p1">Developed <strong>PharmaReport</strong>, an ASP.NET Core MVC application generating structured pharmacy reports: built the MedicalReport and ReportSheet modules on EF Core migrations, replacing hand-written report documents.</li>
+            </ul>
+            <div class="project-tags">
+              <span>C#</span><span>ASP.NET Core</span><span>Razor Pages</span><span>EF Core</span><span>SQL</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-body">
+            <div class="timeline-head">
+              <h3 class="timeline-role" data-i18n="exp.as2e.role">Web Developer Intern</h3>
+              <span class="timeline-date" data-i18n="exp.as2e.date">Jul &#8212; Aug 2022</span>
+            </div>
+            <p class="timeline-company">AS2E</p>
+            <ul class="timeline-points">
+              <li data-i18n="exp.as2e.p1">Built and maintained client <strong>WordPress</strong> sites, and automated recurring internal reporting with <strong>Google Apps Script</strong>.</li>
+            </ul>
+            <div class="project-tags">
+              <span>WordPress</span><span>PHP</span><span>JavaScript</span><span>Google Apps Script</span>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <!-- ===== SKILLS ===== -->
-  <section class="section section-alt" id="skills">
+  <section class="section" id="skills">
     <div class="container">
       <h2 class="section-title" data-i18n="sec.skills.title">My <span class="highlight">Skills</span></h2>
       <p class="section-subtitle" data-i18n="sec.skills.sub">Technologies and tools I work with</p>
@@ -253,7 +319,8 @@
             <span class="skill-tag">PHP</span>
             <span class="skill-tag">HTML5</span>
             <span class="skill-tag">CSS3</span>
-            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">SQL / PL-SQL</span>
+            <span class="skill-tag">Bash</span>
           </div>
         </div>
         <div class="skill-category">
@@ -262,6 +329,8 @@
             <span class="skill-tag">LangChain</span>
             <span class="skill-tag">LangGraph</span>
             <span class="skill-tag">Tool-Calling Agents</span>
+            <span class="skill-tag">Prompt Engineering</span>
+            <span class="skill-tag">Model Evaluation</span>
             <span class="skill-tag">RAG</span>
             <span class="skill-tag">OpenRouter</span>
             <span class="skill-tag">Gemini / DeepSeek LLM</span>
@@ -290,6 +359,8 @@
             <span class="skill-tag">SSE Streaming</span>
             <span class="skill-tag">WebSockets</span>
             <span class="skill-tag">Multi-tenancy</span>
+            <span class="skill-tag">OpenAPI</span>
+            <span class="skill-tag">Model Serving</span>
           </div>
         </div>
         <div class="skill-category">
@@ -317,6 +388,7 @@
             <span class="skill-tag">GitLab CI/CD</span>
             <span class="skill-tag">Nginx</span>
             <span class="skill-tag">systemd</span>
+            <span class="skill-tag">Linux</span>
             <span class="skill-tag">Maven</span>
             <span class="skill-tag">Prometheus</span>
             <span class="skill-tag">Grafana</span>
@@ -379,6 +451,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F9ED;</span>
               <div class="project-meta">
+                <span class="project-period">2026</span>
                 <span class="project-badge company" data-i18n="badge.curvatrip.0">&#x1F3E2; Worldsoft</span>
                 <span class="project-badge private" data-i18n="badge.curvatrip.1">&#x1F512; Private &#x2014; GitLab</span>
                 <span class="project-badge wip" data-i18n="badge.curvatrip.2">&#x1F6A7; In Development</span>
@@ -417,6 +490,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F3E8;</span>
               <div class="project-meta">
+                <span class="project-period">2026</span>
                 <span class="project-badge company" data-i18n="badge.hotel-contract-saas.0">&#x1F3E2; Worldsoft</span>
                 <span class="project-badge private" data-i18n="badge.hotel-contract-saas.1">&#x1F512; Private &#x2014; GitLab</span>
                 <span class="project-badge wip" data-i18n="badge.hotel-contract-saas.2">&#x1F6A7; In Development</span>
@@ -454,6 +528,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F30D;</span>
               <div class="project-meta">
+                <span class="project-period">2026</span>
                 <span class="project-badge company" data-i18n="badge.travel-crm.0">&#x1F3E2; Worldsoft</span>
                 <span class="project-badge private" data-i18n="badge.travel-crm.1">&#x1F512; Private &#x2014; GitLab</span>
                 <span class="project-badge" data-i18n="badge.travel-crm.2">&#x2705; Delivered</span>
@@ -461,7 +536,7 @@
             </div>
             <h3 class="project-title" data-i18n="proj.travel-crm.title">Travel CRM &amp; Analytics Platform &#x2014; AI Multi-Agent System</h3>
             <p class="project-desc" data-i18n="proj.travel-crm.desc">
-              Enterprise-grade Travel CRM built during my internship. Features an <strong>8-agent AI chatbot</strong>
+              Enterprise-grade Travel CRM built at Worldsoft. Features an <strong>8-agent AI chatbot</strong>
               (SQL, Analyst, Forecast, Anomaly, Segmentation, Hotel, Flight, Orchestrator) powered by
               <strong>LangGraph + DeepSeek LLM</strong> via OpenRouter. The system exposes
               <strong>52 REST endpoints</strong> over an Oracle 11.2g database, streams responses via SSE,
@@ -491,6 +566,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F4C8;</span>
               <div class="project-meta">
+                <span class="project-period">Feb – Jun 2024</span>
                 <span class="project-badge company" data-i18n="badge.bvmt-analytics.0">&#x1F1F9;&#x1F1F3; ESPRIT Team Project</span>
                 <div class="project-links">
                   <a href="https://github.com/benromdhaneaziz/bvmt-analytics-platform" target="_blank" rel="noopener" aria-label="GitHub">
@@ -523,6 +599,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F50D;</span>
               <div class="project-meta">
+                <span class="project-period">2024</span>
                 <span class="project-badge contrib" data-i18n="badge.anomaly-detection.0">&#x1F465; Forked &amp; Contributed</span>
                 <div class="project-links">
                   <a href="https://github.com/benromdhaneaziz/Anomaly-Detection-and-Intrusion-Detection-System" target="_blank" rel="noopener" aria-label="GitHub">
@@ -552,6 +629,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F4C8;</span>
               <div class="project-meta">
+                <span class="project-period">2024</span>
                 <span class="project-badge contrib" data-i18n="badge.time-series-fred.0">&#x1F465; Forked &amp; Contributed</span>
                 <div class="project-links">
                   <a href="https://github.com/benromdhaneaziz/Time-Series-Project-Federal-Reserve-Economic-Data-FRED-" target="_blank" rel="noopener" aria-label="GitHub">
@@ -582,6 +660,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F9E0;</span>
               <div class="project-meta">
+                <span class="project-period">Sep 2024 – Jan 2025</span>
                 <span class="project-badge contrib" data-i18n="badge.knowledge-graph.0">&#x1F465; Forked &amp; Contributed</span>
                 <div class="project-links">
                   <a href="https://github.com/benromdhaneaziz/A_knowledge_graph_system_for_Project_Management" target="_blank" rel="noopener" aria-label="GitHub">
@@ -611,6 +690,7 @@
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
+              <span class="project-period">2024</span>
               <span class="project-icon">&#x2699;&#xFE0F;</span>
               <div class="project-links">
                 <a href="https://github.com/benromdhaneaziz/Devops-Project" target="_blank" rel="noopener" aria-label="GitHub">
@@ -638,6 +718,7 @@
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
+              <span class="project-period">2025</span>
               <span class="project-icon">&#x1F50C;</span>
               <div class="project-links">
                 <a href="https://github.com/benromdhaneaziz/Simple-Api-Logger" target="_blank" rel="noopener" aria-label="GitHub">
@@ -668,6 +749,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F3E0;</span>
               <div class="project-meta">
+                <span class="project-period">2022</span>
                 <span class="project-badge contrib" data-i18n="badge.smart-real-estate.0">&#x1F465; Forked &amp; Contributed</span>
                 <div class="project-links">
                   <a href="https://github.com/benromdhaneaziz/Smart_Real_Estate_Agency_2A8" target="_blank" rel="noopener" aria-label="GitHub">
@@ -697,6 +779,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F4BB;</span>
               <div class="project-meta">
+                <span class="project-period">2022–2023</span>
                 <span class="project-badge contrib" data-i18n="badge.pidev.0">&#x1F465; Forked &amp; Contributed</span>
                 <div class="project-links">
                   <a href="https://github.com/benromdhaneaziz/PiDev-2022-2023" target="_blank" rel="noopener" aria-label="GitHub">
@@ -724,6 +807,7 @@
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
+              <span class="project-period">2021</span>
               <span class="project-icon">&#x1F3EB;</span>
               <div class="project-links">
                 <a href="https://github.com/benromdhaneaziz/eSchool" target="_blank" rel="noopener" aria-label="eSchool">
@@ -753,6 +837,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F48A;</span>
               <div class="project-meta">
+                <span class="project-period">2023</span>
                 <span class="project-badge company" data-i18n="badge.pharmareport.0">&#x1F3E2; Prosper Us</span>
                 <div class="project-links">
                   <a href="https://github.com/benromdhaneaziz/PharmaReport" target="_blank" rel="noopener" aria-label="GitHub">
@@ -780,6 +865,7 @@
           <div class="project-card-top"></div>
           <div class="project-card-body">
             <div class="project-header">
+              <span class="project-period">2023</span>
               <span class="project-icon">&#x1F4BB;</span>
               <div class="project-links">
                 <a href="https://github.com/benromdhaneaziz/.NetCore-Project-" target="_blank" rel="noopener" aria-label="GitHub">
@@ -807,6 +893,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F33F;</span>
               <div class="project-meta">
+                <span class="project-period">2023</span>
                 <span class="project-badge contrib" data-i18n="badge.javafx-sustainable.0">&#x1F465; Forked &amp; Contributed</span>
                 <div class="project-links">
                   <a href="https://github.com/benromdhaneaziz/JavaFxSustainableDevelopment" target="_blank" rel="noopener" aria-label="GitHub">
@@ -835,6 +922,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F3E8;</span>
               <div class="project-meta">
+                <span class="project-period">2025</span>
                 <span class="project-badge" data-i18n="badge.hotel-nearest-places.0">&#x1F9EA; Personal Project</span>
                 <div class="project-links">
                   <a href="https://github.com/DefNotScreaMy/hotel-nearest-places" target="_blank" rel="noopener" aria-label="GitHub">
@@ -863,6 +951,7 @@
             <div class="project-header">
               <span class="project-icon">&#x2708;&#xFE0F;</span>
               <div class="project-meta">
+                <span class="project-period">2026</span>
                 <span class="project-badge" data-i18n="badge.flight-rag-chatbot.0">&#x1F9EA; Personal Project</span>
                 <div class="project-links">
                   <a href="https://github.com/DefNotScreaMy/flight-rag-chatbot" target="_blank" rel="noopener" aria-label="GitHub">
@@ -891,6 +980,7 @@
             <div class="project-header">
               <span class="project-icon">&#x1F3AE;</span>
               <div class="project-meta">
+                <span class="project-period">2025</span>
                 <span class="project-badge" data-i18n="badge.minecraft-llm-bot.0">&#x1F9EA; Personal Project</span>
                 <div class="project-links">
                   <a href="https://github.com/DefNotScreaMy/minecraft-llm-bot" target="_blank" rel="noopener" aria-label="GitHub">

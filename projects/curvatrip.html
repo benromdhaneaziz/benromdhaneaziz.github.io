@@ -58,7 +58,7 @@
       <div class="metrics-strip">
         <div class="metric-box"><b>32</b><span>Agent tools</span></div>
         <div class="metric-box"><b>28</b><span>API routes</span></div>
-        <div class="metric-box"><b>~26K</b><span>Lines of Python</span></div>
+        <div class="metric-box"><b>-65%</b><span>Trip-plan build time</span></div>
         <div class="metric-box"><b>16</b><span>Autoscaled instances</span></div>
       </div>
     </div>
@@ -77,6 +77,7 @@
           <li>32 agent tools: flight search and refinement, fare rules, branded fares, cheapest-dates, booking, cancellation, price alerts, trip planning, weather, currency and support</li>
           <li>Booking is gated behind payment — the API emits a checkout event so the app opens the SATIM gateway, and a booking that cannot be ticketed degrades to a held PNR instead of failing outright</li>
           <li>Day-by-day trip plans with photos, price bands, distances and tips, built from disk-cached catalogs to keep plan generation responsive</li>
+          <li>Prompt engineering and disk-cached catalogs cut trip-plan build time from 128 s to 44 s — a 65% reduction</li>
           <li>Realtime voice over a Gemini Live bridge (PCM16, 16 kHz in / 24 kHz out) with barge-in support</li>
           <li>SQLite for development, Oracle 11g in production, bridged by a hand-written dialect-translating data layer</li>
           <li>17 golden behaviour scenarios run as an eval harness — language choice, payment gating, guest isolation, round-trip legs, multi-city and more</li>

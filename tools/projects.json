@@ -20,6 +20,7 @@
       "32 agent tools: flight search and refinement, fare rules, branded fares, cheapest-dates, booking, cancellation, price alerts, trip planning, weather, currency and support",
       "Booking is gated behind payment — the API emits a checkout event so the app opens the SATIM gateway, and a booking that cannot be ticketed degrades to a held PNR instead of failing outright",
       "Day-by-day trip plans with photos, price bands, distances and tips, built from disk-cached catalogs to keep plan generation responsive",
+      "Prompt engineering and disk-cached catalogs cut trip-plan build time from 128 s to 44 s — a 65% reduction",
       "Realtime voice over a Gemini Live bridge (PCM16, 16 kHz in / 24 kHz out) with barge-in support",
       "SQLite for development, Oracle 11g in production, bridged by a hand-written dialect-translating data layer",
       "17 golden behaviour scenarios run as an eval harness — language choice, payment gating, guest isolation, round-trip legs, multi-city and more"
@@ -34,8 +35,8 @@
         "label": "API routes"
       },
       {
-        "value": "~26K",
-        "label": "Lines of Python"
+        "value": "-65%",
+        "label": "Trip-plan build time"
       },
       {
         "value": "16",
@@ -202,9 +203,9 @@
       "data"
     ],
     "status": "Delivered",
-    "period": "2025",
+    "period": "2026",
     "summary": [
-      "An enterprise travel CRM where the reporting layer is a conversation. Instead of clicking through dashboards, a manager asks a question and an 8-agent system decides which specialist should answer it: SQL, Analyst, Forecast, Anomaly, Segmentation, Hotel, Flight, or the Orchestrator that routes between them.",
+      "An enterprise travel CRM, built at Worldsoft, where the reporting layer is a conversation. Instead of clicking through dashboards, a manager asks a question and an 8-agent system decides which specialist should answer it: SQL, Analyst, Forecast, Anomaly, Segmentation, Hotel, Flight, or the Orchestrator that routes between them.",
       "The agents run on LangGraph with DeepSeek through OpenRouter, over an Oracle 11.2g database exposed by 52 FastAPI endpoints. Answers stream back over SSE so long analyses render progressively instead of blocking.",
       "The Angular 17 dashboard renders the results as interactive charts and maps, and a separate ingestion path parses hotel contract PDFs with OCR."
     ],
@@ -277,7 +278,7 @@
       "ai"
     ],
     "status": "Complete",
-    "period": "2025",
+    "period": "Feb – Jun 2024",
     "summary": [
       "A multi-page Streamlit application for analysing and predicting stock performance on the Bourse des Valeurs Mobilières de Tunis. Built as a Data Science engineering project at ESPRIT with the Company Value team.",
       "Ten modules cover the market end to end: historical quotations, TUNINDEX and sector indices, dividend forecasting, risk classification, price-direction prediction, clustering, news sentiment, and a RAG chatbot that answers questions about an uploaded PDF."
@@ -461,7 +462,7 @@
       "ai"
     ],
     "status": "Complete",
-    "period": "2025",
+    "period": "Sep 2024 – Jan 2025",
     "summary": [
       "A graph-based recommendation system for project risk management. The knowledge graph is built from PMI standards, PMBOK 6 and 7, a risk-management glossary and real case studies, so recommendations are grounded in the discipline's own literature.",
       "Two recommenders were built and compared: one using BERT embeddings with a custom link predictor, and one combining BERT embeddings with a Relational Graph Convolutional Network for richer structural context before the same predictor."
@@ -967,7 +968,7 @@
       "ai"
     ],
     "status": "Complete",
-    "period": "2025",
+    "period": "2026",
     "summary": [
       "A Streamlit chatbot that answers questions about flight invoices and profit figures. Invoice CSV data is embedded into a local ChromaDB collection, retrieved semantically per question, and passed to the model as context.",
       "Keeping the vector store local means the data never leaves the machine — only the retrieved snippets reach the LLM."

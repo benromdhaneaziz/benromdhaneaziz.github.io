@@ -58,7 +58,7 @@
       <div class="metrics-strip">
         <div class="metric-box"><b>32</b><span>Outils d'agent</span></div>
         <div class="metric-box"><b>28</b><span>Routes API</span></div>
-        <div class="metric-box"><b>~26K</b><span>Lignes de Python</span></div>
+        <div class="metric-box"><b>-65%</b><span>Temps de construction d'un plan</span></div>
         <div class="metric-box"><b>16</b><span>Instances autoscalées</span></div>
       </div>
     </div>
@@ -77,6 +77,7 @@
           <li>32 outils d'agent : recherche et affinage de vols, conditions tarifaires, tarifs de marque, dates les moins chères, réservation, annulation, alertes de prix, planification, météo, devises et support</li>
           <li>La réservation est conditionnée au paiement — l'API émet un événement de checkout pour que l'application ouvre la passerelle SATIM, et une réservation non émise se dégrade en PNR maintenu plutôt que d'échouer</li>
           <li>Plans de voyage jour par jour avec photos, gammes de prix, distances et conseils, construits à partir de catalogues mis en cache sur disque pour rester réactifs</li>
+          <li>L'ingénierie des prompts et la mise en cache des catalogues ont réduit la construction d'un plan de voyage de 128 s à 44 s — soit 65% de moins</li>
           <li>Voix en temps réel via un pont Gemini Live (PCM16, 16 kHz en entrée / 24 kHz en sortie) avec interruption</li>
           <li>SQLite en développement, Oracle 11g en production, reliés par une couche de données qui traduit les dialectes SQL à la main</li>
           <li>17 scénarios de référence exécutés comme banc d'essai — choix de langue, conditionnement au paiement, isolation des invités, allers-retours, multi-destinations et plus</li>

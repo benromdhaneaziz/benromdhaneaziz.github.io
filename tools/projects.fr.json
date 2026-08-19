@@ -45,7 +45,6 @@
       "Archived": "Archivé"
     }
   },
-
   "curvatrip": {
     "tagline": "Concierge de voyage IA",
     "summary": [
@@ -57,11 +56,17 @@
       "32 outils d'agent : recherche et affinage de vols, conditions tarifaires, tarifs de marque, dates les moins chères, réservation, annulation, alertes de prix, planification, météo, devises et support",
       "La réservation est conditionnée au paiement — l'API émet un événement de checkout pour que l'application ouvre la passerelle SATIM, et une réservation non émise se dégrade en PNR maintenu plutôt que d'échouer",
       "Plans de voyage jour par jour avec photos, gammes de prix, distances et conseils, construits à partir de catalogues mis en cache sur disque pour rester réactifs",
+      "L'ingénierie des prompts et la mise en cache des catalogues ont réduit la construction d'un plan de voyage de 128 s à 44 s — soit 65% de moins",
       "Voix en temps réel via un pont Gemini Live (PCM16, 16 kHz en entrée / 24 kHz en sortie) avec interruption",
       "SQLite en développement, Oracle 11g en production, reliés par une couche de données qui traduit les dialectes SQL à la main",
       "17 scénarios de référence exécutés comme banc d'essai — choix de langue, conditionnement au paiement, isolation des invités, allers-retours, multi-destinations et plus"
     ],
-    "metrics": ["Outils d'agent", "Routes API", "Lignes de Python", "Instances autoscalées"],
+    "metrics": [
+      "Outils d'agent",
+      "Routes API",
+      "Temps de construction d'un plan",
+      "Instances autoscalées"
+    ],
     "notes": [
       {
         "title": "Le routage persistant n'était pas optionnel",
@@ -77,7 +82,6 @@
       }
     ]
   },
-
   "hotel-contract-saas": {
     "tagline": "Extraction LLM &amp; moteur tarifaire",
     "summary": [
@@ -94,7 +98,12 @@
       "Score de qualité d'extraction, détection des champs manquants, journal d'audit et facturation à l'événement pour les imports et re-scans",
       "Garde-fous de production : l'application refuse de démarrer avec un secret JWT par défaut, et la documentation d'API est désactivée hors développement"
     ],
-    "metrics": ["Endpoints REST", "Outils de l'assistant", "Tables de contrat", "Lignes de code"],
+    "metrics": [
+      "Endpoints REST",
+      "Outils de l'assistant",
+      "Tables de contrat",
+      "Lignes de code"
+    ],
     "notes": [
       {
         "title": "Pourquoi la tarification n'appelle jamais le modèle",
@@ -106,11 +115,10 @@
       }
     ]
   },
-
   "travel-crm": {
     "tagline": "Système IA multi-agents",
     "summary": [
-      "Un CRM voyage d'entreprise où la couche de reporting est une conversation. Au lieu de naviguer dans des tableaux de bord, un manager pose sa question et un système à 8 agents décide quel spécialiste doit y répondre : SQL, Analyste, Prévision, Anomalie, Segmentation, Hôtel, Vol, ou l'Orchestrateur qui arbitre entre eux.",
+      "Un CRM voyage d'entreprise, développé chez Worldsoft, où la couche de reporting est une conversation. Au lieu de naviguer dans des tableaux de bord, un manager pose sa question et un système à 8 agents décide quel spécialiste doit y répondre : SQL, Analyste, Prévision, Anomalie, Segmentation, Hôtel, Vol, ou l'Orchestrateur qui arbitre entre eux.",
       "Les agents tournent sur LangGraph avec DeepSeek via OpenRouter, au-dessus d'une base Oracle 11.2g exposée par 52 endpoints FastAPI. Les réponses arrivent en streaming SSE, si bien que les analyses longues s'affichent progressivement au lieu de bloquer.",
       "Le tableau de bord Angular 17 restitue les résultats en graphiques et cartes interactives, et une chaîne d'ingestion séparée analyse les contrats hôteliers en PDF avec OCR."
     ],
@@ -122,7 +130,11 @@
       "Analyse des contrats hôteliers en PDF avec OCR",
       "Intégration de l'API Amadeus pour les données de vols et de tarifs"
     ],
-    "metrics": ["Agents IA", "Endpoints REST", "Réponses en streaming"],
+    "metrics": [
+      "Agents IA",
+      "Endpoints REST",
+      "Réponses en streaming"
+    ],
     "notes": [
       {
         "title": "Mieux vaut router qu'un seul gros prompt",
@@ -130,7 +142,6 @@
       }
     ]
   },
-
   "bvmt-analytics": {
     "tagline": "Bourse de Tunis",
     "summary": [
@@ -146,10 +157,12 @@
       "Sentiment de marché à partir de la presse financière tunisienne scrapée",
       "Historique 2016–2023 stocké dans MongoDB Atlas, collecté avec Selenium et BeautifulSoup"
     ],
-    "metrics": ["Modules d'analyse", "Couverture des données"],
+    "metrics": [
+      "Modules d'analyse",
+      "Couverture des données"
+    ],
     "notes": []
   },
-
   "anomaly-detection": {
     "tagline": "GMM + arbre de décision / KNN sur NSL-KDD",
     "summary": [
@@ -162,10 +175,11 @@
       "Arbre de décision et KNN comparés sur le même jeu de variables prétraitées",
       "Chaîne de prétraitement complète : nettoyage, encodage et normalisation de NSL-KDD"
     ],
-    "metrics": ["Classes d'attaques"],
+    "metrics": [
+      "Classes d'attaques"
+    ],
     "notes": []
   },
-
   "time-series-fred": {
     "tagline": "ARIMA / SARIMA en trois phases",
     "summary": [
@@ -179,10 +193,12 @@
       "Modèles ARIMA et SARIMA comparés sur la même série",
       "Diagnostic des résidus traité comme une troisième phase à part entière"
     ],
-    "metrics": ["Séries FRED", "Phases d'analyse"],
+    "metrics": [
+      "Séries FRED",
+      "Phases d'analyse"
+    ],
     "notes": []
   },
-
   "knowledge-graph": {
     "tagline": "Prédiction de liens BERT + RGCN",
     "summary": [
@@ -197,7 +213,9 @@
       "Index vectoriel Pinecone pour la recherche par similarité",
       "GPT-4 Mini pour les questions-réponses en langage naturel sur le graphe"
     ],
-    "metrics": ["Variantes de recommandation"],
+    "metrics": [
+      "Variantes de recommandation"
+    ],
     "notes": [
       {
         "title": "Projet d'équipe",
@@ -205,7 +223,6 @@
       }
     ]
   },
-
   "devops-project": {
     "tagline": "Service Spring Boot avec chaîne complète",
     "summary": [
@@ -224,7 +241,6 @@
     "metrics": [],
     "notes": []
   },
-
   "simple-api-logger": {
     "tagline": "Journalisation FastAPI avec tableau de bord",
     "summary": [
@@ -238,10 +254,12 @@
       "Tableau de bord Bootstrap 5 / Jinja2 rafraîchi toutes les 5 secondes",
       "Mécanisme trigger500 pour tester volontairement les chemins d'erreur"
     ],
-    "metrics": ["Endpoints d'API", "Rafraîchissement"],
+    "metrics": [
+      "Endpoints d'API",
+      "Rafraîchissement"
+    ],
     "notes": []
   },
-
   "smart-real-estate": {
     "tagline": "Projet d'équipe de deuxième année",
     "summary": [
@@ -261,7 +279,6 @@
       }
     ]
   },
-
   "pidev": {
     "tagline": "ChariTeam — plateforme caritative Symfony",
     "summary": [
@@ -279,7 +296,6 @@
     "metrics": [],
     "notes": []
   },
-
   "eschool": {
     "tagline": "Système de gestion scolaire",
     "summary": [
@@ -297,7 +313,6 @@
     "metrics": [],
     "notes": []
   },
-
   "pharmareport": {
     "tagline": "Système de reporting pharmaceutique",
     "summary": [
@@ -311,10 +326,11 @@
       "Module ReportSheet pour les feuilles de rapport pharmaceutique",
       "Solution Visual Studio en trois projets"
     ],
-    "metrics": ["Projets de la solution"],
+    "metrics": [
+      "Projets de la solution"
+    ],
     "notes": []
   },
-
   "dotnet-core-training": {
     "tagline": "Solution de formation en stage",
     "summary": [
@@ -333,7 +349,6 @@
       }
     ]
   },
-
   "javafx-sustainable": {
     "tagline": "Application de bureau JavaFX",
     "summary": [
@@ -353,7 +368,6 @@
       }
     ]
   },
-
   "hotel-nearest-places": {
     "tagline": "Géocodage LLM + itinéraires + météo",
     "summary": [
@@ -367,10 +381,11 @@
       "Enrichissement des lieux par Overpass et OpenStreetMap",
       "API REST Flask compatible CORS"
     ],
-    "metrics": ["Lieux renvoyés"],
+    "metrics": [
+      "Lieux renvoyés"
+    ],
     "notes": []
   },
-
   "flight-rag-chatbot": {
     "tagline": "Questions-réponses augmentées par récupération",
     "summary": [
@@ -386,7 +401,6 @@
     "metrics": [],
     "notes": []
   },
-
   "minecraft-llm-bot": {
     "tagline": "Administration serveur en langage naturel",
     "summary": [
